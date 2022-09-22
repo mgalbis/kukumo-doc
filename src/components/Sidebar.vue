@@ -1,25 +1,23 @@
 <template>
     <aside class="sidebar" :class="{'sidebar--open' : this.$store.state.sidebarOpen}">
-      <div class="scroll">
-        <nav>
-          <ul>
-            <li class="section" v-for="{ node } in $static.menu.edges" :key="node.id">
-              <h3 class="section-title">{{node.section}}</h3>
-              <ul>
-                <li v-for="item in node.topics" :key="item.title">
-                  <g-link class="topic" :to="'/' + item.slug">{{item.title}}</g-link>
-                  <ul v-if="checkAnchors(node.slug, item.slug)" v-for="{ node } in $static.docs.edges" :key="node.id">
-                    <li v-for="heading in filterHeadings(node.headings)" :key="heading.value">
-                      <g-link class="sub-topic" :to="'/' + item.slug + heading.anchor">{{heading.value}}</g-link>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <GitLink class="git" />
-        </nav>
-      </div>
+      <nav>
+        <ul>
+          <li class="section" v-for="{ node } in $static.menu.edges" :key="node.id">
+            <h3 class="section-title">{{node.section}}</h3>
+            <ul>
+              <li v-for="item in node.topics" :key="item.title">
+                <g-link class="topic" :to="'/' + item.slug">{{item.title}}</g-link>
+                <ul v-if="checkAnchors(node, item)" v-for="{ node } in $static.docs.edges" :key="node.id">
+                  <li v-for="heading in filterHeadings(node.headings)" :key="heading.value">
+                    <g-link class="sub-topic" :to="'/' + item.slug + heading.anchor">{{heading.value}}</g-link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <GitLink class="git" />
+      </nav>
     </aside>
 </template>
 
@@ -31,7 +29,12 @@ query Menu {
         section
         topics {
           title
-          slug
+          slug,
+          headings {
+            depth
+            value
+            anchor
+          }
         }
       }
     }
@@ -41,6 +44,7 @@ query Menu {
       node {
         slug
         headings {
+          depth
           value
           anchor
         }
@@ -69,8 +73,11 @@ export default {
         return h.depth < 3
       })
     },
-    checkAnchors(slug, item) {
-      if (slug == item) {
+    checkAnchors(node, item) {
+      if (node.slug == item.slug) {
+        if (item.headings.length > 0) {
+          node.headings = item.headings
+        }
         return true
       }
     },
@@ -86,17 +93,27 @@ export default {
       let fromTop = window.scrollY
 
       mainNavLinks.forEach(link => {
-        let section = document.querySelector(decodeURIComponent(link.hash))
-        let allCurrent = document.querySelectorAll('.current'), i
+        if (link.hash) {
+          let section = document.querySelector(decodeURIComponent(link.hash))
+          let allCurrent = document.querySelectorAll('.current'), i
 
-        if (section.offsetTop <= fromTop) {
-          for (i = 0; i < allCurrent.length; ++i) {
-            allCurrent[i].classList.remove('current')
+          if (section.offsetTop <= fromTop) {
+            for (i = 0; i < allCurrent.length; ++i) {
+              allCurrent[i].classList.remove('current')
+            }
+            link.classList.add('current')
+          } else {
+            link.classList.remove('current')
           }
-          link.classList.add('current')
         } else {
-          link.classList.remove('current')
+          const url = document.URL.replaceAll(/#.*/g, '').replaceAll(/\/$/g, '')
+          if (url.endsWith(link.getAttribute('href'))) {
+            link.classList.add('current');
+          }else {
+            link.classList.remove('current')
+          }
         }
+
       })
     }
   },
@@ -104,6 +121,9 @@ export default {
     this.stateFromSize()
   },
   mounted() {
+    document.querySelectorAll("#app").forEach(element => {
+      element.addEventListener('DOMSubtreeModified', throttle(this.sidebarScroll, 50), false)
+    })
     window.addEventListener('scroll', throttle(this.sidebarScroll, 50))
   }
 }

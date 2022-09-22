@@ -3,7 +3,6 @@
 
 import DefaultLayout from '~/layouts/Default.vue'
 import '~/assets/scss/globals.scss'
-//import '~/assets/css/asciinema-player.css'
 import Vuex from 'vuex'
 require('typeface-source-sans-pro')
 
@@ -20,12 +19,6 @@ export default function (Vue, { router, head, isClient, appOptions }) {
     rel: 'manifest',
     href: '/manifest.json'
   })
-
-  // head.script.push({ src: 'https://cdnjs.cloudflare.com/ajax/libs/asciinema-player/2.6.1/asciinema-player.min.js' })
-  // head.link.push({
-  //   rel: 'stylesheet',
-  //   href: 'https://cdnjs.cloudflare.com/ajax/libs/asciinema-player/2.6.1/asciinema-player.css'
-  // })
 
   head.meta.push({
     name: 'theme-color',

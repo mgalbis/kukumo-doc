@@ -21,9 +21,10 @@ const siteUrl = absolutePath.replace(pathPrefix, '')
 
 
 module.exports = {
-  siteName: 'Jamdocs',
+  siteName: 'Kukumo',
   siteUrl,
   pathPrefix,
+  icon: './src/assets/img/logo.svg',
   plugins: [
     {
       use: '@gridsome/vue-remark',

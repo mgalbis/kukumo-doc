@@ -42,9 +42,9 @@ export default {
   padding-top: 100px;
   margin-top: -80px;
 
-  @include respond-above(md) {
+ /* @include respond-above(md) {
     font-size: 2rem;
-  }
+  } */
 }
 
 /deep/ > p > img {

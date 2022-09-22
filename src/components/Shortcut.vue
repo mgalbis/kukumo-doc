@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import { PlayIcon, SlidersIcon, EyeIcon } from 'vue-feather-icons'
+import { PlayIcon, FileTextIcon, SlidersIcon } from 'vue-feather-icons'
 
 export default {
   components: {
     PlayIcon,
-    SlidersIcon,
-    EyeIcon
+    FileTextIcon,
+    SlidersIcon
   },
   props: {
     link: {
@@ -63,12 +63,12 @@ a {
   flex-direction: column;
 
   .dark & {
-      color: $textDark;
-    }
+    color: $textDark;
+  }
 
-    .bright & {
-      color: $textBright;
-    }
+  .bright & {
+    color: $textBright;
+  }
 }
 
 svg {
