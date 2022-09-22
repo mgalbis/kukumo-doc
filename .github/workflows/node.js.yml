@@ -1,0 +1,41 @@
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  CI_PAGES_DOMAIN: "github.io"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment variables { }
+        run: |
+          REPO=${GITHUB_REPOSITORY#*\/}
+          echo CI_PROJECT_NAME=${REPO} >> $GITHUB_ENV
+          echo CI_PAGES_URL="https://${GITHUB_REPOSITORY_OWNER}.${CI_PAGES_DOMAIN}/${REPO}/" >> $GITHUB_ENV
+
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup node 12 📮
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+          cache: 'npm'
+
+      - name: Install and Build 🔧
+        run: |
+          npm i
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages
+          folder: dist
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
