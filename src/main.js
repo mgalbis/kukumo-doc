@@ -17,7 +17,7 @@ export default function (Vue, { router, head, isClient, appOptions }) {
 
   head.link.push({
     rel: 'manifest',
-    href: '/manifest.json'
+    href: 'manifest.json'
   })
 
   head.meta.push({
