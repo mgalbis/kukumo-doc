@@ -1,23 +1,25 @@
 <template>
     <aside class="sidebar" :class="{'sidebar--open' : this.$store.state.sidebarOpen}">
-      <nav>
-        <ul>
-          <li class="section" v-for="{ node } in $static.menu.edges" :key="node.id">
-            <h3 class="section-title">{{node.section}}</h3>
-            <ul>
-              <li v-for="item in node.topics" :key="item.title">
-                <g-link class="topic" :to="'/' + item.slug">{{item.title}}</g-link>
-                <ul v-if="checkAnchors(node, item)" v-for="{ node } in $static.docs.edges" :key="node.id">
-                  <li v-for="heading in filterHeadings(node.headings)" :key="heading.value">
-                    <g-link class="sub-topic" :to="'/' + item.slug + heading.anchor">{{heading.value}}</g-link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <GitLink class="git" />
-      </nav>
+      <div class="scroll">
+        <nav>
+          <ul>
+            <li class="section" v-for="{ node } in $static.menu.edges" :key="node.id">
+              <h3 class="section-title">{{node.section}}</h3>
+              <ul>
+                <li v-for="item in node.topics" :key="item.title">
+                  <g-link class="topic" :to="'/' + item.slug">{{item.title}}</g-link>
+                  <ul v-if="checkAnchors(node, item)" v-for="{ node } in $static.docs.edges" :key="node.id">
+                    <li v-for="heading in filterHeadings(node.headings)" :key="heading.value">
+                      <g-link class="sub-topic" :to="'/' + item.slug + heading.anchor">{{heading.value}}</g-link>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <GitLink class="git" />
+        </nav>
+      </div>
     </aside>
 </template>
 
