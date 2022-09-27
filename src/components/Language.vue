@@ -1,7 +1,6 @@
 <template>
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
     <globe-icon class="globe" /> {{ language == 'es-es' ? 'EN' : 'ES' }}
-
   </button>
 </template>
 
@@ -33,7 +32,7 @@ export default {
     // },
     toggleLanguage: function() {
 
-      if (process.isClient && localStorage.getItem('language') == 'es-es') {
+      if (process.isClient && this.language == 'es-es') {
         this.language = 'en-gb';
       } else {
         this.language = 'es-es';
