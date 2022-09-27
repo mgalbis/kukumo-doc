@@ -6,7 +6,7 @@
         <!-- To use other icons here, you need to import them in the Shortcut component -->
         <Shortcut link="{{ $tp('introduction/getting-started') }}" text="{{ $t('index1') }}" icon="play-icon" />
         <Shortcut link="{{ $tp('plugins') }}" text="{{ $t('index2') }}" icon="file-text-icon" />
-        <Shortcut link="{{}} $tp('kukumo/architecture#configuración-global') }" text="{{ $t('index3') }}" icon="sliders-icon" />
+        <Shortcut link="{{ $tp('kukumo/architecture#configuración-global') }}" text="{{ $t('index3') }}" icon="sliders-icon" />
       </nav>
       <GitLink class="git" size="large" />
     </div>
