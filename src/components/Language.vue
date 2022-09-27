@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      language: this.$i18n.locale.toString()
+      language: this.$i18n.locale
     }
   },
   methods: {
@@ -32,27 +32,19 @@ export default {
     //   }
     // },
     toggleLanguage: function() {
-      // let self = this
-      // const body = document.querySelector('body')
-      //
-      // if (process.isClient) {
-      //   if (body.classList.contains('en')) {
-      //     localStorage.setItem('language', 'es');
-      //     body.classList.remove('en')
-      //     body.classList.add('es')
-      //     self.language = 'es'
-      //   } else {
-      //     localStorage.setItem('language', 'en');
-      //     body.classList.remove('es')
-      //     body.classList.add('en')
-      //     self.language = 'en'
-      //   }
-      // }
+
+      if (process.isClient && localStorage.getItem('language') == 'es-es') {
+        this.$i18n.locale = 'en-gb';
+      } else {
+        this.$i18n.locale = 'es-es';
+      }
+
+
       console.log("Language: ", this.language)
       this.$router.push({
         path: this.$tp(this.$route.path, this.language, true)
       })
-      this.$emit('language-change')
+      //this.$emit('language-change')
     }
   },
   mounted () {
@@ -65,12 +57,13 @@ export default {
 button {
   background: none;
   border: 0;
-  padding: 0;
+  padding: 0 10px;
   transition: color .15s ease-in-out;
   cursor: pointer;
-  width: 68px;
+  width: 70px;
   height: 48px;
   position: relative;
+  text-align: right;
 
   &:focus {
     outline: none;
