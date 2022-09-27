@@ -1,11 +1,6 @@
 <template>
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
-    <transition name="language">
-      <globe-icon v-if="language == 'es'" class="globe" />EN
-    </transition>
-    <transition name="language">
-      <globe-icon v-if="language == 'en'" class="globe" />ES
-    </transition>
+    <globe-icon class="globe" /> {{ language == 'es-es' ? 'EN' : 'ES' }}
   </button>
 </template>
 
@@ -95,10 +90,10 @@ svg {
   left: 12px;
 }
 
-.language-enter-active, .language-leave-active {
+.theme-enter-active, .theme-leave-active {
   transition: transform .25s ease-in-out, opacity .25s ease-in-out;
 }
-.language-enter, .language-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.theme-enter, .theme-leave-to /* .fade-leave-active below version 2.1.8 */ {
   transform: translateY(20px) scale(.5);
   opacity: 0;
 }
