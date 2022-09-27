@@ -34,9 +34,9 @@ export default {
     toggleLanguage: function() {
 
       if (process.isClient && localStorage.getItem('language') == 'es-es') {
-        this.$i18n.locale = 'en-gb';
+        this.language = 'en-gb';
       } else {
-        this.$i18n.locale = 'es-es';
+        this.language = 'es-es';
       }
 
 
