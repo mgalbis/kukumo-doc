@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      language: this.$i18n.locale
+      language: this.$i18n.locale.toString()
     }
   },
   methods: {
@@ -32,14 +32,14 @@ export default {
     // },
     toggleLanguage: function() {
 
-      if (process.isClient && this.language == 'es-es') {
+      console.log("Language (before): ", this.language)
+      if (this.language == 'es-es') {
         this.language = 'en-gb';
       } else {
         this.language = 'es-es';
       }
 
-
-      console.log("Language: ", this.language)
+      console.log("Language (after): ", this.language)
       this.$router.push({
         path: this.$tp(this.$route.path, this.language, true)
       })
