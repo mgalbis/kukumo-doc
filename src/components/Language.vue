@@ -1,6 +1,7 @@
 <template>
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
     <globe-icon class="globe" /> {{ language == 'es-es' ? 'EN' : 'ES' }}
+
   </button>
 </template>
 
@@ -67,7 +68,7 @@ button {
   padding: 0;
   transition: color .15s ease-in-out;
   cursor: pointer;
-  width: 48px;
+  width: 68px;
   height: 48px;
   position: relative;
 
