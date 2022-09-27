@@ -17,37 +17,20 @@ export default {
     }
   },
   methods: {
-    // setLanguage: function() {
-    //   let self = this
-    //   const body = document.querySelector('body')
-    //
-    //   if (process.isClient && localStorage.getItem('language') === null) {
-    //     localStorage.setItem('language', 'es')
-    //     self.language = 'es'
-    //   }
-    //   if (process.isClient) {
-    //     body.classList.add(localStorage.getItem('language'))
-    //     self.language = localStorage.getItem('language')
-    //   }
-    // },
     toggleLanguage: function() {
-
-      console.log("Language (before): ", this.language)
       if (this.language == 'es-es') {
         this.language = 'en-gb';
       } else {
         this.language = 'es-es';
       }
 
-      console.log("Language (after): ", this.language)
       this.$router.push({
         path: this.$tp(this.$route.path, this.language, true)
       })
-      //this.$emit('language-change')
     }
   },
   mounted () {
-    //this.setLanguage()
+
   }
 }
 </script>
