@@ -95,13 +95,13 @@ svg {
   left: 12px;
 }
 
-//.theme-enter-active, .theme-leave-active {
-//  transition: transform .25s ease-in-out, opacity .25s ease-in-out;
-//}
-//.theme-enter, .theme-leave-to /* .fade-leave-active below version 2.1.8 */ {
-//  transform: translateY(20px) scale(.5);
-//  opacity: 0;
-//}
+.language-enter-active, .language-leave-active {
+  transition: transform .25s ease-in-out, opacity .25s ease-in-out;
+}
+.language-enter, .language-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  transform: translateY(20px) scale(.5);
+  opacity: 0;
+}
 </style>
 
 
