@@ -40,6 +40,27 @@ module.exports = {
       }
     },
     {
+      use: "gridsome-plugin-i18n",
+      options: {
+        locales: [ // locales list
+          'es-es',
+          'en-gb'
+        ],
+        pathAliases: { // path segment alias for each locales
+          'es-es': 'es',
+          'en-gb': 'en'
+        },
+        fallbackLocale: 'es-es', // fallback language
+        defaultLocale: 'es-es', // default language
+        enablePathRewrite: true, // rewrite path with locale prefix, default: true
+        rewriteDefaultLanguage: true, // rewrite default locale, default: true
+        messages: {
+          'es-es': require('./src/assets/locales/es.json'),
+          'en-gb': require('./src/assets/locales/en.json'),
+        }
+      }
+    },
+    {
       use: '@gridsome/plugin-google-analytics',
       options: {
         id: (process.env.GA_ID ? process.env.GA_ID : 'XX-999999999-9')

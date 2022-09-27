@@ -3,6 +3,7 @@
     <Logo :color="logoColor" />
     <nav class="nav">
       <ThemeSwitch v-on:theme-change="updateLogo" />
+      <Language />
       <MenuToggle v-if="menuToggle" />
     </nav>
   </header>
@@ -12,11 +13,12 @@
 import ThemeSwitch from '~/components/ThemeSwitch.vue'
 import MenuToggle from '~/components/MenuToggle.vue'
 import Logo from '~/components/Logo.vue'
-import throttle from 'lodash/throttle'
+import Language from '~/components/Language.vue'
 
 export default {
   components: {
     ThemeSwitch,
+    Language,
     MenuToggle,
     Logo
   },
