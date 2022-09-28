@@ -4,9 +4,9 @@
       <h1>{{ $t('description') }}</h1>
       <nav>
         <!-- To use other icons here, you need to import them in the Shortcut component -->
-        <Shortcut link="{ $tp('introduction/getting-started') }" text="{ $t('index1') }" icon="play-icon" />
-        <Shortcut link="{ $tp('plugins') }" text="{ $t('index2') }" icon="file-text-icon" />
-        <Shortcut link="{ $tp('kukumo/architecture#configuración-global') }" text="{ $t('index3') }" icon="sliders-icon" />
+        <Shortcut v-bind:link="$tp('introduction/getting-started')" v-bind:text="$t('index1')" icon="play-icon" />
+        <Shortcut v-bind:link="$tp('plugins')" v-bind:text="$t('index2')" icon="file-text-icon" />
+        <Shortcut v-bind:link="$tp('kukumo/architecture#configuración-global')" v-bind:text="$t('index3')" icon="sliders-icon" />
       </nav>
       <GitLink class="git" size="large" />
     </div>
