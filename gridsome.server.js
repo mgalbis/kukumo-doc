@@ -5,7 +5,7 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
-const data = require("./data/settings.json");
+
 module.exports = function (api) {
   api.loadSource(store => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api
@@ -33,7 +33,15 @@ module.exports = function (api) {
     )
   })
 
-  api.createPages(({ createPage }) => {
+  api.createManagedPages(({ findPages }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api
+    for (const page in findPages()) {
+        console.log('Page id: ', page.id)
+        console.log('Page path: ', page.path)
+        console.log('Page context: ', page.context)
+        console.log('Page queryVariables: ', page.queryVariables)
+        //page.context['locale']
+    }
+
   })
 }
