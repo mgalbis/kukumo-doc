@@ -64,6 +64,11 @@ export default {
   components: {
     GitLink
   },
+  data() {
+    return {
+      locale: this.$i18n.locale.toString()
+    }
+  },
   watch: {
     '$route' () {
       this.$store.commit('closeSidebar')
