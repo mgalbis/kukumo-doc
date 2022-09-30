@@ -27,8 +27,8 @@ module.exports = function (api) {
 
   api.createManagedPages(({ findPages }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api
-    // const pages = findPages();
-    // console.log('Pages: ', pages)
+    const pages = findPages();
+    console.log('Pages: ', pages)
 
   })
 }
