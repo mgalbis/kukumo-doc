@@ -28,6 +28,7 @@ module.exports = function (api) {
   api.createManagedPages(({ findPages, removePage }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api
     const pages = findPages();
+    console.log("pages class: ", typeof pages);
     ['/es/es', '/es/en', '/en/es', '/en/en'].forEach(value => {
       pages.filter(page => page.path.startsWith(value)).forEach(page => removePage(page));
     });
