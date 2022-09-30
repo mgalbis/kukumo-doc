@@ -1,7 +1,7 @@
 ---
 title: Informe Cucumber 
 date: 2022-09-20
-slug: plugins/cucumber-exporter
+slug: en/plugins/cucumber-exporter
 ---
 
 Un generador de informes que emite un fichero JSON con el formato utilizado por Cucumber. De esta forma, se reutilizan 

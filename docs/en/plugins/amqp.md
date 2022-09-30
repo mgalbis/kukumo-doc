@@ -1,7 +1,7 @@
 ---
 title: Pasos AMQP
 date: 2022-09-20
-slug: plugins/amqp
+slug: en/plugins/amqp
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: Getting started
 date: 2022-09-20
-slug: introduction/getting-started
+slug: en/introduction/getting-started
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: Primeros pasos
 date: 2022-09-20
-slug: introduction/getting-started
+slug: es/introduction/getting-started
 ---
 
 

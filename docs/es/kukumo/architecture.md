@@ -1,7 +1,7 @@
 ---
 title: Arquitectura
 date: 2022-09-20
-slug: kukumo/architecture
+slug: es/kukumo/architecture
 ---
 
 

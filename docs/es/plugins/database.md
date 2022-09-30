@@ -1,7 +1,7 @@
 ---
 title: Pasos DB
 date: 2022-09-20
-slug: plugins/database
+slug: es/plugins/database
 ---
 
 Este plugin proporciona una serie de pasos para interactuar con una base de datos vía JDBC, facilitando la carga y

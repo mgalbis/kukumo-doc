@@ -1,11 +1,11 @@
 ---
-title: Arquitectura
+title: Architecture
 date: 2022-09-20
-slug: kukumo/architecture
+slug: en/kukumo/architecture
 ---
 
 
-## Configuración global
+## Global configuration
 
 La configuración de Kukumo se establece mediante un fichero `yaml` ubicado en el directorio de pruebas. Por defecto, 
 Kukumo buscará el fichero con el nombre `kukumo.yaml`.
@@ -22,7 +22,7 @@ Kukumo buscará el fichero con el nombre `kukumo.yaml`.
 - [`mavenFetcher.remoteRepositories`](#mavenfetcherremoterepositories)
 - [`mavenFetcher.localRepository`](#mavenfetcherlocalrepository)
 
-### Variables de entorno 
+### Environment variables
 
 - [`KUKUMO_LOG_PATH`](#kukumo_log_path)
 - [`KUKUMO_LOG_LEVEL`](#kukumo_log_level)

@@ -1,7 +1,7 @@
 ---
 title: Rest
 date: 2022-09-20
-slug: plugins/rest
+slug: es/plugins/rest
 ---
 
 Este plugin proporciona un conjunto de pasos para interactúan con una API RESTful.
