@@ -23,13 +23,13 @@ module.exports = function (api) {
     createNodes(
         store.addCollection({typeName: 'Menu'}),
         require('./data/settings.json'),
-        'es'
+        'es-es'
     )
 
     createNodes(
         store.addCollection({typeName: 'Menu'}),
         require('./data/settings_en.json'),
-        'en'
+        'en-gb'
     )
   })
 

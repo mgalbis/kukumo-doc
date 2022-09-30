@@ -1,10 +1,10 @@
 <template>
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
     <transition name="theme">
-      <globe-icon v-if="language == 'es-es'" class="globe" /> EN
+      <globe-icon v-if="language == 'es-es'" class="globe" /> {{ 'EN' }}
     </transition>
     <transition name="theme">
-      <globe-icon v-if="language == 'en-gb'" class="globe" /> ES
+      <globe-icon v-if="language == 'en-gb'" class="globe" /> {{ 'ES' }}
     </transition>
   </button>
 </template>
