@@ -25,7 +25,7 @@
 
 <static-query>
 query Menu {
-  menu: allMenu(order:ASC, filter: { locale: { eq: $i18n.locale } }) {
+  menu: allMenu(order:ASC, filter: { locale: { eq: $locale } }) {
     edges {
       node {
         section
