@@ -10,37 +10,25 @@ module.exports = function (api) {
   api.loadSource(store => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api
 
-    const createNodes = (collection, data, locale) => {
+    const createNodes = (collection, data) => {
         for(const item of data.sidebar){
           collection.addNode({
               section: item.section,
-              topics: item.topics,
-              locale
+              topics: item.topics
           })
       }
     }
 
     createNodes(
         store.addCollection({typeName: 'Menu'}),
-        require('./data/settings.json'),
-        'es-es'
-    )
-
-    createNodes(
-        store.addCollection({typeName: 'Menu'}),
-        require('./data/settings_en.json'),
-        'en-gb'
+        require('./data/settings.json')
     )
   })
 
   api.createManagedPages(({ findPages }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api
-    const pages = findPages();
-    console.log('Pages: ', pages)
-    // for (const pages in findPages()) {
-    //     console.log('Pages: ', pages)
-    //     //page.context['locale']
-    // }
+    // const pages = findPages();
+    // console.log('Pages: ', pages)
 
   })
 }

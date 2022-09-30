@@ -24,8 +24,8 @@
 </template>
 
 <static-query>
-query Menu($locale: String) {
-  menu: allMenu(order:ASC, filter: { locale: { eq: $locale } }) {
+query Menu {
+  menu: allMenu(order:ASC) {
     edges {
       node {
         section
@@ -63,11 +63,6 @@ import throttle from 'lodash/throttle'
 export default {
   components: {
     GitLink
-  },
-  data() {
-    return {
-      locale: this.$i18n.locale.toString()
-    }
   },
   watch: {
     '$route' () {
