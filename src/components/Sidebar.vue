@@ -24,7 +24,7 @@
 </template>
 
 <static-query>
-query Menu {
+query Menu($locale: String) {
   menu: allMenu(order:ASC, filter: { locale: { eq: $locale } }) {
     edges {
       node {
