@@ -46,6 +46,10 @@ module.exports = {
           'es',
           'en'
         ],
+        pathAliases: { // path segment alias for each locales
+          'es': 'es',
+          'en': 'en'
+        },
         fallbackLocale: 'es', // fallback language
         defaultLocale: 'es', // default language
         enablePathRewrite: true, // rewrite path with locale prefix, default: true
