@@ -31,7 +31,7 @@ module.exports = {
       options: {
         typeName: 'Doc',
         baseDir: 'docs',
-        // route: '/:slug',
+        route: ':locale/:slug',
         template: './src/templates/Doc.vue',
         plugins: [
           '@gridsome/remark-prismjs',
@@ -54,6 +54,15 @@ module.exports = {
         defaultLocale: 'es', // default language
         enablePathRewrite: true, // rewrite path with locale prefix, default: true
         rewriteDefaultLanguage: false, // rewrite default locale, default: true
+        // enablePathGeneration: false,
+        // routes: {
+        //   es: {
+        //
+        //   },
+        //   en: {
+        //
+        //   }
+        // },
         messages: {
           'es': require('./src/assets/locales/es.json'),
           'en': require('./src/assets/locales/en.json'),
