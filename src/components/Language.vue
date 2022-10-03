@@ -1,12 +1,12 @@
 <template>
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
     <transition name="theme">
-      <globe-icon v-if="language == 'es-es'" class="globe" />
+      <globe-icon v-if="language == 'es'" class="globe" />
     </transition>
     <transition name="theme">
-      <globe-icon v-if="language == 'en-gb'" class="globe" />
+      <globe-icon v-if="language == 'gb'" class="globe" />
     </transition>
-    {{ language == 'es-es' ? 'EN' : 'ES' }}
+    {{ language == 'es' ? 'EN' : 'ES' }}
   </button>
 </template>
 
@@ -24,10 +24,10 @@ export default {
   },
   methods: {
     toggleLanguage: function() {
-      if (this.language == 'es-es') {
-        this.language = 'en-gb';
+      if (this.language == 'es') {
+        this.language = 'en';
       } else {
-        this.language = 'es-es';
+        this.language = 'es';
       }
 
       this.$router.push({
