@@ -31,7 +31,7 @@ module.exports = {
       options: {
         typeName: 'Doc',
         baseDir: 'docs',
-        // route: '/:slug',
+        route: ':locale/:slug',
         template: './src/templates/Doc.vue',
         plugins: [
           '@gridsome/remark-prismjs',
@@ -43,20 +43,16 @@ module.exports = {
       use: "gridsome-plugin-i18n",
       options: {
         locales: [ // locales list
-          'es-es',
-          'en-gb'
+          'es',
+          'en'
         ],
-        pathAliases: { // path segment alias for each locales
-          'es-es': 'es',
-          'en-gb': 'en'
-        },
-        fallbackLocale: 'es-es', // fallback language
-        defaultLocale: 'es-es', // default language
+        fallbackLocale: 'es', // fallback language
+        defaultLocale: 'es', // default language
         enablePathRewrite: true, // rewrite path with locale prefix, default: true
-        rewriteDefaultLanguage: true, // rewrite default locale, default: true
+        rewriteDefaultLanguage: false, // rewrite default locale, default: true
         messages: {
-          'es-es': require('./src/assets/locales/es.json'),
-          'en-gb': require('./src/assets/locales/en.json'),
+          'es': require('./src/assets/locales/es.json'),
+          'en': require('./src/assets/locales/en.json'),
         }
       }
     },
