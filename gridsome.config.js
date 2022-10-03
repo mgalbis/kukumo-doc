@@ -31,7 +31,7 @@ module.exports = {
       options: {
         typeName: 'Doc',
         baseDir: 'docs',
-        route: ':locale/:slug',
+        // route: '/:slug',
         template: './src/templates/Doc.vue',
         plugins: [
           '@gridsome/remark-prismjs',
