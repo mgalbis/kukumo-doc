@@ -1,7 +1,7 @@
 ---
 title: Informe HTML
 date: 2022-09-20
-slug: es/plugins/html-reporter
+slug: plugins/html-reporter
 ---
 
 Un generador de informes en formato `HTML` con los resultados de las pruebas.

@@ -1,7 +1,7 @@
 ---
 title: Plugins
 date: 2022-09-20
-slug: es/plugins
+slug: plugins
 ---
 
 Kukumo, por sí solo, no tiene pasos definidos, sino que se incluyen a través de diferentes plugins. Actualmente, existen 

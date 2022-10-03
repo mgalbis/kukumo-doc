@@ -1,7 +1,7 @@
 ---
 title: ¿Qué es Kukumo?
 date: 2022-09-20
-slug: es/introduction/what-is-kukumo
+slug: introduction/what-is-kukumo
 ---
 
 
