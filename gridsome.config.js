@@ -33,9 +33,6 @@ module.exports = {
         baseDir: 'docs/es',
         // route: '/:slug',
         template: './src/templates/Doc.vue',
-        context: {
-          locale: 'es'
-        },
         plugins: [
           '@gridsome/remark-prismjs',
           ["@mgalbis/remark-prefix-links", { pathPrefix }]
@@ -49,9 +46,6 @@ module.exports = {
         baseDir: 'docs/en',
         // route: '/:slug',
         template: './src/templates/Doc.vue',
-        context: {
-          locale: 'en'
-        },
         plugins: [
           '@gridsome/remark-prismjs',
           ["@mgalbis/remark-prefix-links", { pathPrefix }]
