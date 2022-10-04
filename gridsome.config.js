@@ -30,8 +30,8 @@ module.exports = {
       use: '@gridsome/vue-remark',
       options: {
         typeName: 'Doc',
-        baseDir: 'docs/es',
-        // route: '/:slug',
+        baseDir: 'docs',
+        route: '/:slug',
         template: './src/templates/Doc.vue',
         plugins: [
           '@gridsome/remark-prismjs',
@@ -39,19 +39,19 @@ module.exports = {
         ]
       }
     },
-    {
-      use: '@gridsome/vue-remark',
-      options: {
-        typeName: 'Doc',
-        baseDir: 'docs/en',
-        route: 'en/:slug',
-        template: './src/templates/Doc.vue',
-        plugins: [
-          '@gridsome/remark-prismjs',
-          ["@mgalbis/remark-prefix-links", { pathPrefix }]
-        ]
-      }
-    },
+    // {
+    //   use: '@gridsome/vue-remark',
+    //   options: {
+    //     typeName: 'Doc',
+    //     baseDir: 'docs/en',
+    //     route: '/en/:slug',
+    //     template: './src/templates/Doc.vue',
+    //     plugins: [
+    //       '@gridsome/remark-prismjs',
+    //       ["@mgalbis/remark-prefix-links", { pathPrefix }]
+    //     ]
+    //   }
+    // },
     {
       use: "gridsome-plugin-i18n",
       options: {
@@ -63,21 +63,21 @@ module.exports = {
         defaultLocale: 'es', // default language
         enablePathRewrite: false, // rewrite path with locale prefix, default: true
         rewriteDefaultLanguage: false, // rewrite default locale, default: true
-        enablePathGeneration: false,
-        routes: {
-          es: [
-            {
-              path: '/',
-              component: './src/pages/Index.vue'
-            }
-          ],
-          en: [
-            {
-              path: '/en/',
-              component: './src/pages/Index.vue'
-            }
-          ]
-        },
+        // enablePathGeneration: false,
+        // routes: {
+        //   es: [
+        //     {
+        //       path: '/',
+        //       component: './src/pages/Index.vue'
+        //     }
+        //   ],
+        //   en: [
+        //     {
+        //       path: '/en/',
+        //       component: './src/pages/Index.vue'
+        //     }
+        //   ]
+        // },
         messages: {
           'es': require('./src/assets/locales/es.json'),
           'en': require('./src/assets/locales/en.json'),
