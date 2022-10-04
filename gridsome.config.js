@@ -63,7 +63,7 @@ module.exports = {
         defaultLocale: 'es', // default language
         enablePathRewrite: false, // rewrite path with locale prefix, default: true
         rewriteDefaultLanguage: false, // rewrite default locale, default: true
-        // enablePathGeneration: false,
+        enablePathGeneration: false,
         // routes: {
         //   es: [
         //     {
