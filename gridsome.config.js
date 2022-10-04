@@ -30,7 +30,7 @@ module.exports = {
       use: '@gridsome/vue-remark',
       options: {
         typeName: 'Doc',
-        baseDir: 'docs/es',
+        baseDir: 'docs',
         // route: '/:slug',
         template: './src/templates/Doc.vue',
         plugins: [
@@ -48,17 +48,23 @@ module.exports = {
         ],
         fallbackLocale: 'es', // fallback language
         defaultLocale: 'es', // default language
-        enablePathRewrite: true, // rewrite path with locale prefix, default: true
+        enablePathRewrite: false, // rewrite path with locale prefix, default: true
         rewriteDefaultLanguage: false, // rewrite default locale, default: true
-        // enablePathGeneration: false,
-        // routes: {
-        //   es: {
-        //
-        //   },
-        //   en: {
-        //
-        //   }
-        // },
+        enablePathGeneration: false,
+        routes: {
+          es: [
+            {
+              path: '/',
+              component: './src/pages/Index.vue'
+            }
+          ],
+          en: [
+            {
+              path: '/en/',
+              component: './src/pages/Index.vue'
+            }
+          ]
+        },
         messages: {
           'es': require('./src/assets/locales/es.json'),
           'en': require('./src/assets/locales/en.json'),

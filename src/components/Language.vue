@@ -4,7 +4,7 @@
       <globe-icon v-if="language == 'es'" class="globe" />
     </transition>
     <transition name="theme">
-      <globe-icon v-if="language == 'gb'" class="globe" />
+      <globe-icon v-if="language == 'en'" class="globe" />
     </transition>
     {{ language == 'es' ? 'EN' : 'ES' }}
   </button>
