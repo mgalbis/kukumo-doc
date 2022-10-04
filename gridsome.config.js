@@ -40,19 +40,6 @@ module.exports = {
       }
     },
     {
-      use: '@gridsome/vue-remark',
-      options: {
-        typeName: 'Doc',
-        baseDir: 'docs/en',
-        // route: '/:slug',
-        template: './src/templates/Doc.vue',
-        plugins: [
-          '@gridsome/remark-prismjs',
-          ["@mgalbis/remark-prefix-links", { pathPrefix }]
-        ]
-      }
-    },
-    {
       use: "gridsome-plugin-i18n",
       options: {
         locales: [ // locales list
