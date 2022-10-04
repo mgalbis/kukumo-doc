@@ -30,9 +30,28 @@ module.exports = {
       use: '@gridsome/vue-remark',
       options: {
         typeName: 'Doc',
-        baseDir: 'docs',
-        // route: ':locale/:slug',
+        baseDir: 'docs/es',
+        // route: '/:slug',
         template: './src/templates/Doc.vue',
+        context: {
+          locale: 'es'
+        },
+        plugins: [
+          '@gridsome/remark-prismjs',
+          ["@mgalbis/remark-prefix-links", { pathPrefix }]
+        ]
+      }
+    },
+    {
+      use: '@gridsome/vue-remark',
+      options: {
+        typeName: 'Doc',
+        baseDir: 'docs/en',
+        // route: '/:slug',
+        template: './src/templates/Doc.vue',
+        context: {
+          locale: 'en'
+        },
         plugins: [
           '@gridsome/remark-prismjs',
           ["@mgalbis/remark-prefix-links", { pathPrefix }]
@@ -46,10 +65,6 @@ module.exports = {
           'es',
           'en'
         ],
-        // pathAliases: { // path segment alias for each locales
-        //   'es': 'es',
-        //   'en': 'en'
-        // },
         fallbackLocale: 'es', // fallback language
         defaultLocale: 'es', // default language
         enablePathRewrite: true, // rewrite path with locale prefix, default: true
