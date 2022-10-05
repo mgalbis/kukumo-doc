@@ -23,6 +23,11 @@ export default {
     }
   },
   methods: {
+    setLanguage: function () {
+      this.$router.push({
+        path: this.$tp(this.$route.path, this.language, true)
+      })
+    },
     toggleLanguage: function() {
       if (this.language == 'es') {
         this.language = 'en';
@@ -30,10 +35,11 @@ export default {
         this.language = 'es';
       }
 
-      this.$router.push({
-        path: this.$tp(this.$route.path, this.language, true)
-      })
+      this.setLanguage();
     }
+  },
+  mounted () {
+    this.setLanguage();
   }
 }
 </script>
