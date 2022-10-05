@@ -62,22 +62,8 @@ module.exports = {
         fallbackLocale: 'es', // fallback language
         defaultLocale: 'es', // default language
         enablePathRewrite: false, // rewrite path with locale prefix, default: true
-        rewriteDefaultLanguage: false, // rewrite default locale, default: true
+        rewriteDefaultLanguage: true, // rewrite default locale, default: true
         enablePathGeneration: false,
-        // routes: {
-        //   es: [
-        //     {
-        //       path: '/',
-        //       component: './src/pages/Index.vue'
-        //     }
-        //   ],
-        //   en: [
-        //     {
-        //       path: '/en/',
-        //       component: './src/pages/Index.vue'
-        //     }
-        //   ]
-        // },
         messages: {
           'es': require('./src/assets/locales/es.json'),
           'en': require('./src/assets/locales/en.json'),
