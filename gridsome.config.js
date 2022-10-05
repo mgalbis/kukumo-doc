@@ -32,7 +32,7 @@ module.exports = {
         typeName: 'Doc',
         baseDir: 'docs/en',
       //  route: '/:slug',
-      //   pathPrefix: 'en',
+        pathPrefix: 'en',
         template: './src/templates/Doc.vue',
         plugins: [
           '@gridsome/remark-prismjs',
@@ -40,19 +40,19 @@ module.exports = {
         ]
       }
     },
-    // {
-    //   use: '@gridsome/vue-remark',
-    //   options: {
-    //     typeName: 'Doc',
-    //     baseDir: 'docs/en',
-    //     route: '/en/:slug',
-    //     template: './src/templates/Doc.vue',
-    //     plugins: [
-    //       '@gridsome/remark-prismjs',
-    //       ["@mgalbis/remark-prefix-links", { pathPrefix }]
-    //     ]
-    //   }
-    // },
+    {
+      use: '@gridsome/vue-remark',
+      options: {
+        typeName: 'Doc',
+        baseDir: 'docs/es',
+        // route: '/:slug',
+        template: './src/templates/Doc.vue',
+        plugins: [
+          '@gridsome/remark-prismjs',
+          ["@mgalbis/remark-prefix-links", { pathPrefix }]
+        ]
+      }
+    },
     {
       use: "gridsome-plugin-i18n",
       options: {
