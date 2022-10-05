@@ -30,9 +30,9 @@ module.exports = {
       use: '@gridsome/vue-remark',
       options: {
         typeName: 'Doc',
-        baseDir: 'docs',
+        baseDir: 'docs/en',
       //  route: '/:slug',
-        pathPrefix: 'en',
+      //   pathPrefix: 'en',
         template: './src/templates/Doc.vue',
         plugins: [
           '@gridsome/remark-prismjs',
