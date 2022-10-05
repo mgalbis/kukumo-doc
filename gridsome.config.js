@@ -19,12 +19,14 @@ const absolutePath = process.env.CI_PAGES_URL
 const pathPrefix = new URL(absolutePath).pathname
 const siteUrl = absolutePath.replace(pathPrefix, '')
 
+const defaultLocale = 'es';
 
 module.exports = {
   siteName: 'Kukumo',
   siteUrl,
   pathPrefix,
   icon: './src/assets/img/logo.svg',
+
   templates: {
     Doc: node => node.slug
   },
@@ -52,7 +54,7 @@ module.exports = {
           'en'
         ],
         fallbackLocale: 'es', // fallback language
-        defaultLocale: 'es', // default language
+        defaultLocale, // default language
         enablePathRewrite: false, // rewrite path with locale prefix, default: true
         rewriteDefaultLanguage: false, // rewrite default locale, default: true
         enablePathGeneration: false,

@@ -39,6 +39,8 @@ export default {
     }
   },
   mounted () {
+    console.log("Locale: ", this.$context.locale)
+    console.log("Default Locale: ", this.$context.defaultLocale)
     this.setLanguage();
   }
 }
