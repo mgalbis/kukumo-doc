@@ -25,34 +25,79 @@ module.exports = {
   siteUrl,
   pathPrefix,
   icon: './src/assets/img/logo.svg',
+  templates: {
+    Doc: node => node.slug
+  },
   plugins: [
+    // {
+    //   use: '@gridsome/vue-remark',
+    //   options: {
+    //     typeName: 'Doc',
+    //     baseDir: 'docs',
+    //     // route: '/:slug',
+    //     template: './src/templates/Doc.vue',
+    //     plugins: [
+    //       '@gridsome/remark-prismjs',
+    //       ["@mgalbis/remark-prefix-links", { pathPrefix }]
+    //     ]
+    //   }
+    // },
+    // {
+    //   use: '@gridsome/vue-remark',
+    //   options: {
+    //     typeName: 'Doc',
+    //     baseDir: 'docs/en',
+    //   //  route: '/:slug',
+    //     pathPrefix: 'en',
+    //     template: './src/templates/Doc.vue',
+    //     plugins: [
+    //       '@gridsome/remark-prismjs',
+    //       ["@mgalbis/remark-prefix-links", { pathPrefix }]
+    //     ]
+    //   }
+    // },
+    // {
+    //   use: '@gridsome/vue-remark',
+    //   options: {
+    //     typeName: 'Doc',
+    //     baseDir: 'docs/es',
+    //     // route: '/:slug',
+    //     template: './src/templates/Doc.vue',
+    //     plugins: [
+    //       '@gridsome/remark-prismjs',
+    //       ["@mgalbis/remark-prefix-links", { pathPrefix }]
+    //     ]
+    //   }
+    // },
     {
-      use: '@gridsome/vue-remark',
+      use: '@gridsome/source-filesystem',
       options: {
+        path: '**/*.md',
+        baseDir: 'docs',
+        // pathPrefix: 'en',
         typeName: 'Doc',
-        baseDir: 'docs/en',
-      //  route: '/:slug',
-        pathPrefix: 'en',
-        template: './src/templates/Doc.vue',
-        plugins: [
-          '@gridsome/remark-prismjs',
-          ["@mgalbis/remark-prefix-links", { pathPrefix }]
-        ]
+        remark: {
+          plugins: [
+            '@gridsome/remark-prismjs',
+            ["@mgalbis/remark-prefix-links", { pathPrefix }]
+          ]
+        }
       }
     },
-    {
-      use: '@gridsome/vue-remark',
-      options: {
-        typeName: 'Doc',
-        baseDir: 'docs/es',
-        // route: '/:slug',
-        template: './src/templates/Doc.vue',
-        plugins: [
-          '@gridsome/remark-prismjs',
-          ["@mgalbis/remark-prefix-links", { pathPrefix }]
-        ]
-      }
-    },
+    // {
+    //   use: '@gridsome/source-filesystem',
+    //   options: {
+    //     path: '**/*.es.md',
+    //     baseDir: 'docs',
+    //     typeName: 'Doc',
+    //     remark: {
+    //       plugins: [
+    //         '@gridsome/remark-prismjs',
+    //         ["@mgalbis/remark-prefix-links", { pathPrefix }]
+    //       ]
+    //     }
+    //   }
+    // },
     {
       use: "gridsome-plugin-i18n",
       options: {
