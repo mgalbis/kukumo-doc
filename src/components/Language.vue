@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     getLanguage: function() {
-      return this.$route.path.contains('/en/') ? 'en' : 'es';
+      return this.$route.path.toString().contains('/en/') ? 'en' : 'es';
     },
     toggleLanguage: function() {
       const language = this.$context.locale == 'es' ? 'en' : 'es';
@@ -36,6 +36,7 @@ export default {
     }
   },
   mounted () {
+    console.log("Route: " + this.$route.path)
     this.$context.locale = this.getLanguage();
   }
 }
