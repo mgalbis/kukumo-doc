@@ -22,22 +22,21 @@ export default {
     }
   },
   methods: {
-    setLanguage: function () {
-
+    getLanguage: function() {
+      return this.$route.path.contains('/en/') ? 'en' : 'es';
     },
     toggleLanguage: function() {
       const language = this.$context.locale == 'es' ? 'en' : 'es';
 
-      this.$router.push({
-        path: this.$tp(this.$route.path, language, false)
-      })
+      if (language != this.getLanguage) {
+        this.$router.push({
+          path: this.$tp(this.$route.path, language, false)
+        })
+      }
     }
   },
   mounted () {
-    console.log("Locale: " + this.$context.locale)
-    console.log("$context: " + JSON.stringify(this.$context))
-    console.log("$i18n: " + JSON.stringify(this.$i18n))
-    this.setLanguage();
+    this.$context.locale = this.getLanguage();
   }
 }
 </script>
