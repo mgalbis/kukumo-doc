@@ -24,9 +24,7 @@ export default {
   },
   methods: {
     setLanguage: function () {
-      this.$router.push({
-        path: this.$tp(this.$route.path, this.language, true)
-      })
+
     },
     toggleLanguage: function() {
       if (this.language == 'es') {
@@ -35,12 +33,15 @@ export default {
         this.language = 'es';
       }
 
-      this.setLanguage();
+      this.$router.push({
+        path: this.$tp(this.$route.path, this.language, false)
+      })
     }
   },
   mounted () {
-    console.log("Locale: ", this.$context.locale)
-    console.log("Default Locale: ", this.$context.defaultLocale)
+    console.log("Locale: " + this.$context.locale)
+    console.log("Default Locale: " + this.$context.defaultLocale)
+    console.log("Locale: " + this.$i18n.locale)
     this.setLanguage();
   }
 }
