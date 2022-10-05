@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      language: this.$i18n.locale.toString()
+      language: this.$context.locale
     }
   },
   methods: {
@@ -40,8 +40,7 @@ export default {
   },
   mounted () {
     console.log("Locale: " + this.$context.locale)
-    console.log("Default Locale: " + this.$context.defaultLocale)
-    console.log("Locale: " + this.$i18n.locale)
+    console.log("Default Locale: " + JSON.stringify(this.$context))
     this.setLanguage();
   }
 }
