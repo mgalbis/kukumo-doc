@@ -1,12 +1,12 @@
 <template>
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
     <transition name="theme">
-      <globe-icon v-if="language == 'es'" class="globe" />
+      <globe-icon v-if="$context.locale == 'es'" class="globe" />
     </transition>
     <transition name="theme">
-      <globe-icon v-if="language == 'en'" class="globe" />
+      <globe-icon v-if="$context.locale == 'en'" class="globe" />
     </transition>
-    {{ language == 'es' ? 'EN' : 'ES' }}
+    {{ $context.locale == 'es' ? 'EN' : 'ES' }}
   </button>
 </template>
 
@@ -19,7 +19,6 @@ export default {
   },
   data() {
     return {
-      language: this.$context.locale
     }
   },
   methods: {
@@ -27,20 +26,17 @@ export default {
 
     },
     toggleLanguage: function() {
-      if (this.language == 'es') {
-        this.language = 'en';
-      } else {
-        this.language = 'es';
-      }
+      const language = this.$context.locale == 'es' ? 'en' : 'es';
 
       this.$router.push({
-        path: this.$tp(this.$route.path, this.language, false)
+        path: this.$tp(this.$route.path, language, false)
       })
     }
   },
   mounted () {
     console.log("Locale: " + this.$context.locale)
-    console.log("Default Locale: " + JSON.stringify(this.$context))
+    console.log("$context: " + JSON.stringify(this.$context))
+    console.log("$i18n: " + JSON.stringify(this.$i18n))
     this.setLanguage();
   }
 }
