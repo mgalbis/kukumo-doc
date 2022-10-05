@@ -29,46 +29,6 @@ module.exports = {
     Doc: node => node.slug
   },
   plugins: [
-    // {
-    //   use: '@gridsome/vue-remark',
-    //   options: {
-    //     typeName: 'Doc',
-    //     baseDir: 'docs',
-    //     // route: '/:slug',
-    //     template: './src/templates/Doc.vue',
-    //     plugins: [
-    //       '@gridsome/remark-prismjs',
-    //       ["@mgalbis/remark-prefix-links", { pathPrefix }]
-    //     ]
-    //   }
-    // },
-    // {
-    //   use: '@gridsome/vue-remark',
-    //   options: {
-    //     typeName: 'Doc',
-    //     baseDir: 'docs/en',
-    //   //  route: '/:slug',
-    //     pathPrefix: 'en',
-    //     template: './src/templates/Doc.vue',
-    //     plugins: [
-    //       '@gridsome/remark-prismjs',
-    //       ["@mgalbis/remark-prefix-links", { pathPrefix }]
-    //     ]
-    //   }
-    // },
-    // {
-    //   use: '@gridsome/vue-remark',
-    //   options: {
-    //     typeName: 'Doc',
-    //     baseDir: 'docs/es',
-    //     // route: '/:slug',
-    //     template: './src/templates/Doc.vue',
-    //     plugins: [
-    //       '@gridsome/remark-prismjs',
-    //       ["@mgalbis/remark-prefix-links", { pathPrefix }]
-    //     ]
-    //   }
-    // },
     {
       use: '@gridsome/source-filesystem',
       options: {
@@ -84,20 +44,6 @@ module.exports = {
         }
       }
     },
-    // {
-    //   use: '@gridsome/source-filesystem',
-    //   options: {
-    //     path: '**/*.es.md',
-    //     baseDir: 'docs',
-    //     typeName: 'Doc',
-    //     remark: {
-    //       plugins: [
-    //         '@gridsome/remark-prismjs',
-    //         ["@mgalbis/remark-prefix-links", { pathPrefix }]
-    //       ]
-    //     }
-    //   }
-    // },
     {
       use: "gridsome-plugin-i18n",
       options: {
@@ -108,7 +54,7 @@ module.exports = {
         fallbackLocale: 'es', // fallback language
         defaultLocale: 'es', // default language
         enablePathRewrite: false, // rewrite path with locale prefix, default: true
-        rewriteDefaultLanguage: true, // rewrite default locale, default: true
+        rewriteDefaultLanguage: false, // rewrite default locale, default: true
         enablePathGeneration: false,
         routes: {
           es: [
