@@ -28,7 +28,7 @@ export default {
     toggleLanguage: function() {
       const language = this.$context.locale == 'es' ? 'en' : 'es';
 
-      if (language != this.getLanguage) {
+      if (language != this.getLanguage()) {
         this.$router.push({
           path: this.$tp(this.$route.path, language, false)
         })
