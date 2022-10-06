@@ -9,7 +9,7 @@ require('typeface-source-sans-pro')
 export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.use(Vuex)
 
- // console.log("Main options: " + JSON.stringify(appOptions))
+  console.log("Main options: " + Object.keys(appOptions))
 
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
@@ -19,7 +19,7 @@ export default function (Vue, { router, head, isClient, appOptions }) {
 
   head.link.push({
     rel: 'manifest',
-    href: 'manifest.json'
+    href: '/manifest.json'
   })
 
   head.meta.push({
