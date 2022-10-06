@@ -7,28 +7,64 @@
 
 
 module.exports = function (api) {
-  api.loadSource(store => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api
+    api.loadSource(store => {
+        // Use the Data Store API here: https://gridsome.org/docs/data-store-api
 
-    const createNodes = (collection, data) => {
-        for(const item of data.sidebar){
-          collection.addNode({
-              section: item.section,
-              topics: item.topics
-          })
+        const createNodes = (collection, data) => {
+            for (const item of data.sidebar) {
+                collection.addNode({
+                    section: item.section,
+                    topics: item.topics
+                })
+            }
+        }
+
+        createNodes(
+            store.addCollection({typeName: 'Menu'}),
+            require('./data/settings.json')
+        )
+    })
+
+    api.createManagedPages(async ({createPage, removePage, graphql}) => {
+      // query your data source to retrieve pages
+      const response = await graphql(`
+      query {
+        allDoc {
+          edges {
+            node {
+              id
+              path
+            }
+          }
+        }
       }
-    }
+    `)
 
-    createNodes(
-        store.addCollection({typeName: 'Menu'}),
-        require('./data/settings.json')
-    )
-  })
 
-  api.createManagedPages(({ findPages, removePage, findAndRemovePages }) => {
-    // Use the Pages API here: https://gridsome.org/docs/pages-api
 
-    // console.log('Pages: ', findPages())
+      if (response.errors) {
+        throw response.errors[0]
+      }
 
-  })
+      // generate pages from query response
+      response.data.allDoc.edges.map(edge => edge.node).forEach((page) => {
+          const locale = page.path.includes('/en/') ? 'en' : 'es';
+          try {
+            removePage(page.id)
+            createPage({
+              path: page.path,
+              component: './src/templates/Doc.vue',
+              context: {
+                id: page.id,
+                locale
+              },
+              route: {
+                meta: {
+                  locale
+                }
+              }
+            })
+          } catch (e) { }
+      })
+    });
 }

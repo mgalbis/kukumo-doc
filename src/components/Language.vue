@@ -30,13 +30,15 @@ export default {
 
       if (language != this.getLanguage()) {
         this.$router.push({
-          path: this.$tp(this.$route.path, language, false)
+          path: this.$tp(this.$route.path, language, true)
         })
       }
     }
   },
   mounted () {
-    this.$context.locale = this.getLanguage();
+    console.log('Current language: ' + this.$context.locale)
+    //this.$context.locale = this.getLanguage();
+
   }
 }
 </script>
