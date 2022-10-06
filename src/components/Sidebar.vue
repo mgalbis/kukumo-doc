@@ -80,9 +80,10 @@ export default {
       return edges.filter( e => e.node.locale == this.$context.locale)
     },
     checkAnchors(node, item) {
+      console.log("Node: " + JSON.stringify(node))
+      console.log("Item: " + JSON.stringify(item))
+      console.log("--------------------------------")
       if (node.slug == item.slug) {
-        console.log("Node: " + JSON.stringify(node))
-        console.log("Item: " + JSON.stringify(item))
         if (item.headings.length > 0) {
           node.headings = item.headings
         }
