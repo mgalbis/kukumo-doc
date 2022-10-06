@@ -5,11 +5,11 @@
       "topics": [
         {
           "title": "What is Kukumo?",
-          "slug": "en/introduction/what-is-kukumo"
+          "slug": "/en/introduction/what-is-kukumo"
         },
         {
           "title": "Getting started",
-          "slug": "en/introduction/getting-started"
+          "slug": "/en/introduction/getting-started"
         }
       ]
     },
@@ -18,11 +18,11 @@
       "topics": [
         {
           "title": "Architecture",
-          "slug": "en/kukumo/architecture"
+          "slug": "/en/kukumo/architecture"
         },
         {
           "title": "Plugins",
-          "slug": "en/plugins",
+          "slug": "/en/plugins",
           "headings": [
             {
               "value": "REST steps",
