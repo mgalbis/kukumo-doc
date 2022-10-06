@@ -25,7 +25,7 @@ module.exports = function (api) {
         )
     })
 
-    api.createManagedPages(async ({createPage, removePage, graphql}) => {
+    api.createManagedPages(async ({createPage, removePageByPath, graphql}) => {
       // query your data source to retrieve pages
       const response = await graphql(`
       query {
@@ -49,8 +49,9 @@ module.exports = function (api) {
       // generate pages from query response
       response.data.allDoc.edges.map(edge => edge.node).forEach((page) => {
           const locale = page.path.includes('/en/') ? 'en' : 'es';
+          console.log("Page: " + JSON.stringify(page) + ", " + "Locale: " + locale)
           try {
-            removePage(page.id)
+            removePageByPath(page.path)
             createPage({
               path: page.path,
               component: './src/templates/Doc.vue',
@@ -64,7 +65,9 @@ module.exports = function (api) {
                 }
               }
             })
-          } catch (e) { }
+          } catch (e) {
+              console.error(e)
+          }
       })
     });
 }
