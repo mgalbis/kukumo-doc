@@ -9,7 +9,7 @@ require('typeface-source-sans-pro')
 export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.use(Vuex)
 
-  console.log("Main options: " + Object.keys(appOptions))
+  console.log("Main options: " + JSON.stringify(appOptions.data))
 
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
