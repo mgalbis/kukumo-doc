@@ -17,10 +17,6 @@ export default {
   components: {
     GlobeIcon
   },
-  data() {
-    return {
-    }
-  },
   methods: {
     getLanguage: function() {
       return this.$route.path.includes('/en/') ? 'en' : 'es';
@@ -34,11 +30,6 @@ export default {
         })
       }
     }
-  },
-  mounted () {
-    console.log('Current language: ' + this.$context.locale)
-    //this.$context.locale = this.getLanguage();
-
   }
 }
 </script>
