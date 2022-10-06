@@ -9,18 +9,16 @@ require('typeface-source-sans-pro')
 export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.use(Vuex)
 
-  console.log("Main options: " + JSON.stringify(appOptions.data))
-
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
 
   // Add attributes to HTML tag
   head.htmlAttrs = { lang: 'es' }
 
-  head.link.push({
-    rel: 'manifest',
-    href: '/manifest.json'
-  })
+  // head.link.push({
+  //   rel: 'manifest',
+  //   href: '/manifest.json'
+  // })
 
   head.meta.push({
     name: 'theme-color',
