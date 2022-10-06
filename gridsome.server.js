@@ -57,6 +57,7 @@ module.exports = function (api) {
               component: './src/templates/Doc.vue',
               context: {
                 id: page.id,
+                path: page.path,
                 locale
               },
               route: {
