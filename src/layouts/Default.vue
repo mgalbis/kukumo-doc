@@ -36,7 +36,7 @@ export default {
     if (process.isClient) {
       if('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('/sw.js')
+          .register(this.$static.metadata.prefix + '/sw.js')
           .then(function() { console.log("Service Worker Registered"); });
       }
     }
