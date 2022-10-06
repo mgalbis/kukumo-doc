@@ -12,6 +12,7 @@
 query {
   metadata {
     siteName
+    pathPrefix
   }
 }
 </static-query>
@@ -36,7 +37,7 @@ export default {
     if (process.isClient) {
       if('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register(this.$static.metadata.prefix + '/sw.js')
+          .register(this.$static.metadata.pathPrefix + '/sw.js')
           .then(function() { console.log("Service Worker Registered"); });
       }
     }

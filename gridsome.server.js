@@ -11,7 +11,7 @@ module.exports = function (api) {
     api.loadSource(store => {
         // Use the Data Store API here: https://gridsome.org/docs/data-store-api
 
-        store.addMetadata('prefix', api.config.pathPrefix)
+       // store.addMetadata('prefix', api.config.pathPrefix)
 
         const locales = api.config.plugins
             .filter(p => p.use == 'gridsome-plugin-i18n')[0].options.locales;
