@@ -23,17 +23,11 @@ export default {
   components: {
     GlobeIcon
   },
-  data() {
-    return {
-      locales: this.$static.metadata.locales,
-      defaultLocale: this.$static.metadata.defaultLocale
-    }
-  },
   methods: {
     getLanguage: function() {
-      let locale = this.locales.filter(locale => locale != this.defaultLocale)
+      let locale = this.$static.metadata.locales.filter(locale => locale != this.defaultLocale)
           .find(locale => this.$route.path.includes(`/${locale}/`))
-      return locale ? locale : this.defaultLocale;
+      return locale ? locale : this.$static.metadata.defaultLocale;
     },
     toggleLanguage: function() {
       const language = this.$context.locale == 'es' ? 'en' : 'es';
