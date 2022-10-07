@@ -1,7 +1,7 @@
 {
   "name": "Kukumo",
   "short_name": "Kukumo",
-  "lang": "es-ES",
+  "lang": "es",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#33c275",

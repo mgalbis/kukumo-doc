@@ -13,7 +13,7 @@ Pull Kukumo docker image with:
 docker pull kukumo/kukumo
 ```
 
-[//]: # (Consulta [otras opciones de instalación]&#40;setup/installation&#41;)
+[//]: # (See other [installation options]&#40;setup/installation&#41;)
 
 ### 2. Launch tests
 
@@ -23,5 +23,5 @@ cd ~/test
 docker run --rm -it -v "$(pwd):/kukumo" kukumo/kukumo
 ```
 
-[//]: # (Consulta las [instrucciones de uso]&#40;setup/usage&#41; para conocer todos los comandos y opciones.)
+[//]: # (See [usage instructions]&#40;setup/usage&#41; to learn about all commands and options.)
 

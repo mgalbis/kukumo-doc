@@ -26,7 +26,6 @@ module.exports = {
   siteUrl,
   pathPrefix,
   icon: './src/assets/img/logo.svg',
-
   templates: {
     Doc: node => node.slug
   },
@@ -36,7 +35,6 @@ module.exports = {
       options: {
         path: '**/*.md',
         baseDir: 'docs',
-        // pathPrefix: 'en',
         typeName: 'Doc',
         remark: {
           plugins: [
@@ -49,10 +47,7 @@ module.exports = {
     {
       use: "gridsome-plugin-i18n",
       options: {
-        locales: [ // locales list
-          'es',
-          'en'
-        ],
+        locales: [ 'es', 'en' ],
         fallbackLocale: 'es', // fallback language
         defaultLocale, // default language
         enablePathRewrite: false, // rewrite path with locale prefix, default: true

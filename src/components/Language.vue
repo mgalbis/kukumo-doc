@@ -1,14 +1,20 @@
 <template>
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
     <transition name="theme">
-      <globe-icon v-if="$context.locale == 'es'" class="globe" />
+      <globe-icon class="globe" />
     </transition>
-    <transition name="theme">
-      <globe-icon v-if="$context.locale == 'en'" class="globe" />
-    </transition>
-    {{ $context.locale == 'es' ? 'EN' : 'ES' }}
+    {{ $context.locale }}
   </button>
 </template>
+
+<static-query>
+query {
+  metadata {
+    locales
+    defaultLocale
+  }
+}
+</static-query>
 
 <script>
 import { GlobeIcon } from 'vue-feather-icons'
@@ -17,9 +23,17 @@ export default {
   components: {
     GlobeIcon
   },
+  data() {
+    return {
+      locales: this.$static.metadata.locales,
+      defaultLocale: this.$static.metadata.defaultLocale
+    }
+  },
   methods: {
     getLanguage: function() {
-      return this.$route.path.includes('/en/') ? 'en' : 'es';
+      let locale = this.locales.filter(locale => locale != this.defaultLocale)
+          .find(locale => this.$route.path.includes(`/${locale}/`))
+      return locale ? locale : this.defaultLocale;
     },
     toggleLanguage: function() {
       const language = this.$context.locale == 'es' ? 'en' : 'es';

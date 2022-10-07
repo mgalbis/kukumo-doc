@@ -13,7 +13,7 @@ Descarga la imagen docker de Kukumo:
 docker pull kukumo/kukumo
 ```
 
-[//]: # (Consulta [otras opciones de instalación]&#40;setup/installation&#41;)
+[//]: # (Consulta otras [opciones de instalación]&#40;setup/installation&#41;)
 
 ### 2. Ejecuta los tests
 

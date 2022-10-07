@@ -80,7 +80,7 @@ export default {
       return edges.filter( e => e.node.locale == this.$context.locale)
     },
     checkAnchors(node, item) {
-      if (node.slug == `/${item.slug}`) {
+      if (node.slug.replaceAll(/^\//g, '') == item.slug.replaceAll(/^\//g, '')) {
         if (item.headings.length > 0) {
           node.headings = item.headings
         }

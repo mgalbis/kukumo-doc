@@ -1,38 +1,35 @@
 ---
-title: What is Kukumo?
+title: ¿Qué es Kukumo?
 date: 2022-09-20
 slug: /en/introduction/what-is-kukumo
 ---
 
 
-> **Conocimiento básico** <br />
-> Esta guía asume que conoce los conceptos básicos de [Cucumber](https://cucumber.io/docs/guides/overview/), 
-> [Gherkin](https://cucumber.io/docs/gherkin/) y metodología [Behaviour-Driven Development](https://cucumber.io/docs/bdd/).
+> **Basic knowledge** <br />
+> This guide assumes that you know the basics of [Cucumber](https://cucumber.io/docs/guides/overview/),
+> [Gherkin](https://cucumber.io/docs/gherkin/) and [Behaviour-Driven Development](https://cucumber.io/docs/bdd/)
+> methodology.
 
+**Kukumo** is a Cucumber-inspired tool written in Java focused on blackbox testing using natural language.
 
-**Kukumo** es una herramienta de pruebas automáticas inspirada en Cucumber y escrita en Java.
+Just like Cucumber, you can define your tests using natural and human-readable language by adopting, for example, the
+Gherkin *grammar*. However, with Kukumo you do not bind each step to your test code; instead, steps are bound to 
+reusable, common-purpose code provided by external plugins.
 
-Al igual que Cucumber, puede definir sus pruebas utilizando un lenguaje natural y legible por humanos adoptando, por 
-ejemplo, la *gramática* Gherkin. Sin embargo, Kukumo no vincula cada paso a su código de prueba, sino que los pasos 
-están vinculados a un código reutilizable de propósito común proporcionado por plugins externos. Por lo tanto, Kukumo 
-resulta ser una herramienta conveniente si su objetivo es probar su sistema a través de accesos estandarizados como 
-servicios web REST o conexión JDBC, que tienden a ser un gran porcentaje de las pruebas escritas para la mayoría de las 
-aplicaciones. No es necesario escribir ningún código de prueba, por lo que incluso los no programadores pueden definir y 
-ejecutar sus propias pruebas.
+Thus, Kukumo turns out to be a convenient tool if your aim is test your system via standardized protocols such as REST
+web services or JDBC connection, which tend to be a great deal of percentage of the tests written for most applications.
+Also, no test code is required to be written, so even non-programmers can define and execute their own tests.
 
-Otras características proporcionadas por Kukumo son:
+Other features provided by Kukumo are:
 
-- **Lanzadores alternativos**: ejecute Kukumo como un conjunto de pruebas de JUnit, como un objetivo de verificación de 
-- Maven o directamente como un comando de consola.
-- **Totalmente internacionalizable**: puede usar su propio idioma siempre que proporcione a Kukumo un archivo de 
-- traducción.
-- **Fácilmente extensible**: escriba sus propios plugins para cualquier punto de extensión (pasos, reporters, 
-- analizadores de idioma, etc.) y compártalos con la comunidad.
-- **No solo Gherkin**: los archivos de características de Gherkin son la fuente de definición de prueba inicial 
-- implementada, pero no están vinculados internamente a Kukumo; cualquier plugin puede proporcionar otras formas de 
-- recopilar las definiciones de prueba que se utilizarán.
+- **Two-layered Gherkin**: you can make use of the Gherkin grammar at two levels of abstraction, one aimed to customer
+  communication, and other aimed to system details.
+- **Fully localizable**: you can use your own language as long as you provided Kukumo with a translation file.
+- **Easily extensible**: write your own plugins for any extension point (steps, reporters, language parsers, etc) and
+  share them with the community.
+- **Alternative launchers**: execute Kukumo as a JUnit test suite, as a Maven verify goal, or directly as a console
+  command.
 
-
-> **RECUERDA** <br />
-> Kukumo es una herramienta, no un *framework de test*. Úsalo cuando se adapte a las circunstancias. Tampoco es un 
-> sustituto de Cucumber: según tus necesidades, ¡puedes usar *ambos*! 
+> **REMEMBER** <br />
+> Kukumo is a *tool*, not a *testing framework*. Use it when fits the circumstances. Neither is it a replacement for
+> Cucumber: according your necessities, you might use *both*!

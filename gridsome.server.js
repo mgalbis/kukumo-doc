@@ -13,27 +13,21 @@ module.exports = function (api) {
 
        // store.addMetadata('prefix', api.config.pathPrefix)
 
-        const locales = api.config.plugins
-            .filter(p => p.use == 'gridsome-plugin-i18n')[0].options.locales;
-
-        const createNodes = (collection, data, locale) => {
-            for (const item of data.sidebar) {
-                collection.addNode({
-                    section: item.section,
-                    topics: item.topics,
-                    locale
-                })
-            }
+        const i18n = api.config.plugins.find(p => p.use == 'gridsome-plugin-i18n');
+        if (i18n) {
+            store.addMetadata('defaultLocale', i18n.options.defaultLocale);
+            store.addMetadata('locales', i18n.options.locales);
+            i18n.options.locales.forEach(locale => {
+                const settings = require(`./data/settings_${locale}.json`);
+                for (const item of settings.sidebar) {
+                    store.addCollection({typeName: 'Menu'}).addNode({
+                        section: item.section,
+                        topics: item.topics,
+                        locale
+                    })
+                }
+            });
         }
-
-        locales.forEach(locale =>
-            createNodes(
-                store.addCollection({typeName: 'Menu'}),
-                require(`./data/settings_${locale}.json`),
-                locale
-            )
-        );
-
     })
 
     api.createManagedPages(async ({createPage, removePageByPath, graphql}) => {
