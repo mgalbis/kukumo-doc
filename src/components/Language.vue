@@ -3,7 +3,7 @@
     <transition name="theme">
       <globe-icon class="globe" />
     </transition>
-    {{ $context.locale }}
+    {{ text[$context.locale] }}
   </button>
 </template>
 
@@ -24,6 +24,14 @@ export default {
     GlobeIcon
   },
   methods: {
+    data() {
+      return {
+        text: {
+          es: 'EN',
+          en: 'ES'
+        }
+      }
+    },
     getLanguage: function() {
       let locale = this.$static.metadata.locales.filter(locale => locale != this.defaultLocale)
           .find(locale => this.$route.path.includes(`/${locale}/`))
