@@ -2,12 +2,11 @@
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
     <transition name="theme">
       <globe-icon v-if="$context.locale == 'es'" class="globe" />
-      <span>EN</span>
     </transition>
     <transition name="theme">
       <globe-icon v-if="$context.locale == 'en'" class="globe" />
-      <span>ES</span>
     </transition>
+    {{ text[$context.locale] }}
   </button>
 </template>
 
@@ -28,6 +27,14 @@ export default {
     GlobeIcon
   },
   methods: {
+    data() {
+      return {
+        text: {
+          es: 'EN',
+          en: 'ES'
+        }
+      }
+    },
     getLanguage: function() {
       let locale = this.$static.metadata.locales.filter(locale => locale != this.defaultLocale)
           .find(locale => this.$route.path.includes(`/${locale}/`))
