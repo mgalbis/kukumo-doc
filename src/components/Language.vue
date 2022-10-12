@@ -1,10 +1,12 @@
 <template>
   <button id="languageSwitch" @click="toggleLanguage()" aria-label="Switch language between spanish and english">
     <transition name="theme">
-      <globe-icon v-if="$context.locale == 'es'" v-text="'EN'" class="globe" />
+      <globe-icon v-if="$context.locale == 'es'" class="globe" />
+      <span>EN</span>
     </transition>
     <transition name="theme">
-      <globe-icon v-if="$context.locale == 'en'" v-text="'ES'" class="globe" />
+      <globe-icon v-if="$context.locale == 'en'" class="globe" />
+      <span>ES</span>
     </transition>
   </button>
 </template>
