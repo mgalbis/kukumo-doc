@@ -1,5 +1,5 @@
 ---
-title: Architecture
+title: Core
 date: 2022-09-20
 slug: /en/kukumo/architecture
 ---
@@ -7,8 +7,8 @@ slug: /en/kukumo/architecture
 
 ## Global configuration
 
-La configuración de Kukumo se establece mediante un fichero `yaml` ubicado en el directorio de pruebas. Por defecto, 
-Kukumo buscará el fichero con el nombre `kukumo.yaml`.
+Kukumo's configuration is defined via `yaml` file located in the test directory. By default, Kukumo will look for the 
+file named `kukumo.yaml`.
 
 - [`kukumo.resourceTypes`](#kukumoresourcetypes)
 - [`kukumo.resourcePath`](#kukumoresourcepath)
@@ -30,9 +30,9 @@ Kukumo buscará el fichero con el nombre `kukumo.yaml`.
 ---
 ### `kukumo.resourceTypes`
 
-Establece el lenguaje de los escenarios de prueba. Actualmente sólo está disponible `gherkin`.
+Sets the language for test scenarios. Only `gherkin` is available for now.
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -43,11 +43,11 @@ kukumo:
 
 ### `kukumo.resourcePath`
 
-Establece la ruta donde se encuentran los ficheros de las pruebas.
+Sets the path where the test files are located.
 
-El valor por defecto es `.` (ruta donde se encuentra el fichero de configuración).
+Default value is `.` (path where the configuration file is located).
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -58,11 +58,11 @@ kukumo:
 
 ### `kukumo.outputFilePath`
 
-Establece el directorio de salida del fichero con el resultado de las pruebas.
+Sets the results file directory.
 
-El valor por defecto es `kukumo.json`.
+Default value is `kukumo.json` (in the current directory).
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -74,10 +74,9 @@ kukumo:
 
 ### `kukumo.tagFilter`
 
-Filtra los escenarios etiquetados con la etiqueta indicada. Debe contener una 
-[expresión](https://cucumber.io/docs/cucumber/api/#tag-expressions) válida.
+Filter scenarios tagged with the indicated [expression](https://cucumber.io/docs/cucumber/api/#tag-expressions).
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -88,11 +87,11 @@ kukumo:
 
 ### `kukumo.idTagPattern`
 
-Establece el patrón de identificadores de los escenarios. Debe contener una expresión regular válida.
+Sets the indicated scenario id tag pattern. It must contains a valid regular expression.
 
-El valor por defecto es `ID-(\w*)`.
+Default value is `ID-(\w*)`.
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -103,11 +102,12 @@ kukumo:
 
 ### `kukumo.launcher.modules`
 
+Sets 
 Establece los módulos que serán utilizados durante las pruebas. Estos módulos son artefactos maven ubicados en un 
 [repositorio indicado en la configuración](#mavenfetcher-remoterepositories). Se debe indicar con el patrón 
 `<groupId>:<artifactId>:<version>`.
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -124,9 +124,9 @@ kukumo:
 
 Indica si se debe generar el informe con el resultados de las pruebas al terminar la ejecución o no.
 
-El valor por defecto es `true`.
+Default value is `true`.
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -138,7 +138,7 @@ kukumo:
 
 ### `kukumo.htmlReport.output`
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -152,9 +152,9 @@ kukumo:
 
 Establece la etiqueta para indicar que la **caracteristica** es una [definición]().
 
-El valor por defecto es `definition`.
+Default value is `definition`.
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -168,9 +168,9 @@ kukumo:
 
 Establece la etiqueta para indicar que la **caracteristica** es una [implementación]().
 
-El valor por defecto es `implementation`.
+Default value is `implementation`.
 
-Ejemplo:
+Example:
 
 ```yaml
 kukumo:
@@ -184,7 +184,7 @@ kukumo:
 
 Establece repositorios remotos.
 
-Ejemplo:
+Example:
 
 ```yaml
 mavenFetcher:
@@ -196,7 +196,7 @@ mavenFetcher:
 
 Establece la ubicación del repositorio local.
 
-Ejemplo:
+Example:
 
 ```yaml
 mavenFetcher:
@@ -209,7 +209,7 @@ mavenFetcher:
 
 Establece la ruta donde se generará el log de ejecución.
 
-El valor por defecto es `/var/log`.
+Default value is `/var/log`.
 
 ```
 KUKUMO_LOG_PATH=/kukumo/result
@@ -222,7 +222,7 @@ Establece el nivel de los logs de kukumo. Dependiendo del nivel indicado se most
 Los posibles valores son: `info`, `error`, `fatal`, `warning`, `debug`, `trace`.
 [Leer más](https://unpocodejava.com/2011/01/17/niveles-log4j/)
 
-El valor por defecto es `info`.
+Default value is `info`.
 
 ```
 KUKUMO_LOG_LEVEL=trace
@@ -235,47 +235,47 @@ KUKUMO_LOG_LEVEL=trace
 ## Tipos de datos
 
 ### `text`
-Cualquier texto entrecomillado con `''`. Ejemplo: `'texto de ejemplo'`.
+Cualquier texto entrecomillado con `''`. Example: `'texto de ejemplo'`.
 
 ### `word`
-Cualquier palabra (admite guiones). Ejemplo: `AB_C-1D`.
+Cualquier palabra (admite guiones). Example: `AB_C-1D`.
 
 ### `file`
-Una ruta local (relativa o absoluta). Ejemplo: `'dir/file.yaml'`.
+Una ruta local (relativa o absoluta). Example: `'dir/file.yaml'`.
 
 ### `url`
-Una dirección URL. Ejemplo: `'https://localhost/test'`.
+Una dirección URL. Example: `'https://localhost/test'`.
 
 ### `integer`
-Un número entero. Ejemplo: `14`.
+Un número entero. Example: `14`.
 
 ### `decimal`
-Un número con decimales. Ejemplo: `14.5`.
+Un número con decimales. Example: `14.5`.
 
 ### `date`
-Una fecha con formato `yyyy-MM-dd`. Ejemplo: `'2022-02-22'`.
+Una fecha con formato `yyyy-MM-dd`. Example: `'2022-02-22'`.
 
 ### `time`
-Una hora con formato `hh:mm`, `hh:mm:ss` o `hh:mm:ss.SSS`. Ejemplo: `'12:05:06.468'`.
+Una hora con formato `hh:mm`, `hh:mm:ss` o `hh:mm:ss.SSS`. Example: `'12:05:06.468'`.
 
 ### `datetime`
-Una fecha y hora con formato `yyyy-MM-ddThh:mm`, `yyyy-MM-ddThh:mm:ss` o `yyyy-MM-ddThh:mm:ss.SSS`. Ejemplo: 
+Una fecha y hora con formato `yyyy-MM-ddThh:mm`, `yyyy-MM-ddThh:mm:ss` o `yyyy-MM-ddThh:mm:ss.SSS`. Example: 
 `'2022-02-22T12:05:06.468'`.
 
 ### `text-assertion`
-Comparador de textos. [Ver más](#comparadores). Ejemplo: `es igual a 'algo'`.
+Comparador de textos. [Ver más](#comparadores). Example: `es igual a 'algo'`.
 
 ### `long-assertion`
-Comparador de números enteros. [Ver más](#comparadores). Ejemplo: `es igual o mayor que 13`.
+Comparador de números enteros. [Ver más](#comparadores). Example: `es igual o mayor que 13`.
 
 ### `float-assertion`
-Comparador de números decimales. [Ver más](#comparadores). Ejemplo: `es igual o menor que 10.02`.
+Comparador de números decimales. [Ver más](#comparadores). Example: `es igual o menor que 10.02`.
 
 ### `document`
 Bloque de texto ubicado en la siguiente línea de la descripción del paso. 
 [Ver más](https://cucumber.io/docs/gherkin/reference/#doc-strings). 
 
-Ejemplo:
+Example:
 ```gherkin
 """
 Un texto 
@@ -287,7 +287,7 @@ multilínea
 Tabla de datos ubicada en la siguiente línea de la descipción del paso.
 [Ver más](https://cucumber.io/docs/gherkin/reference/#data-tables).
 
-Ejemplo:
+Example:
 ```gherkin
 | USER  | STATE | BLOCKING_DATE |
 | user1 | 2     | <null>        |

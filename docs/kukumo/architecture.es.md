@@ -1,5 +1,5 @@
 ---
-title: Arquitectura
+title: Core
 date: 2022-09-20
 slug: /kukumo/architecture
 ---
