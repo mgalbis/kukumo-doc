@@ -26,15 +26,15 @@ export default {
   components: {
     GlobeIcon
   },
-  methods: {
-    data() {
-      return {
-        text: {
-          es: 'EN',
-          en: 'ES'
-        }
+  data() {
+    return {
+      text: {
+        es: 'EN',
+        en: 'ES'
       }
-    },
+    }
+  },
+  methods: {
     getLanguage: function() {
       let locale = this.$static.metadata.locales.filter(locale => locale != this.defaultLocale)
           .find(locale => this.$route.path.includes(`/${locale}/`))
