@@ -5,14 +5,12 @@ slug: /en/plugins/amqp
 ---
 
 
-Este plugin proporciona una serie de pasos para interactuar con una aplicación vía 
-[Advanced Message Queuing Protocol](https://amqp.org). La implementación subyacente se basa en 
-[RabbitMQ](https://rabbitmq.com), aunque podría cambiar en futuras versiones.
+A set of steps to interact with an application via the [Advanced Message Queuing Protocol](https://amqp.org). 
+The underlying implementation is based on [RabbitMQ](https://rabbitmq.com), although it might change in further versions.
 
-Actualmente, esta librería proporciona una funcionalidad muy limitada y existe como prueba de concepto.
+Currently, this library provides very limited functionality and exists mostly as a proof of concept.
 
-
-**Configuración**:
+**Configuration**:
 - [`amqp.connection.url`](#amqpconnectionurl)
 - [`amqp.connection.username`](#amqpconnectionusername)
 - [`amqp.connection.password`](#amqpconnectionpassword)
@@ -20,23 +18,23 @@ Actualmente, esta librería proporciona una funcionalidad muy limitada y existe 
 - [`amqp.queue.exclusive`](#amqpqueueexclusive)
 - [`amqp.queue.autodelete`](#amqpqueueautodelete)
 
-**Pasos**:
-- [Definir conexión](#definir-conexi%C3%B3n)
-- [Definir cola destino](#definir-cola-destino)
-- [Enviar mensaje a cola](#enviar-mensaje-a-cola)
-- [Enviar mensaje a cola (fichero)](#enviar-mensaje-a-cola-fichero)
-- [Establecer pausa](#establecer-pausa)
-- [Validar mensaje](#validar-mensaje)
-- [Validar mensaje (fichero)](#validar-mensaje-fichero)
+**Steps**:
+- [Define connection](#define-connection)
+- [Define destination queue](#define-destination-queue)
+- [Send message to queue](#send-message-to-queue)
+- [Send message to queue (file)](#send-message-to-queue-file)
+- [Set pause](#set-pause)
+- [Validate message](#validate-message)
+- [Validate message (file)](#validate-message-file)
 
 
-## Configuración
+## Configuration
 
 ---
 ###  `amqp.connection.url`
-Establece la URL que utilizará el agente AMQP.
+Sets the URL to be used by the AMQP broker.
 
-Ejemplo:
+Example:
 
 ```yaml
 amqp:
@@ -46,9 +44,9 @@ amqp:
 
 ---
 ###  `amqp.connection.username`
-Establece el nombre de usuario que utilizará el agente AMQP.
+Sets the username to be used by the AMQP broker.
 
-Ejemplo:
+Example:
 
 ```yaml
 amqp:
@@ -58,9 +56,9 @@ amqp:
 
 ---
 ###  `amqp.connection.password`
-Establece la contraseña de usuario que utilizará el agente AMQP.
+Sets the password to be used by the AMQP broker.
 
-Ejemplo:
+Example:
 
 ```yaml
 amqp:
@@ -70,11 +68,11 @@ amqp:
 
 ---
 ###  `amqp.queue.durable`
-Establece si la cola será duradera o no (la cola sobrevivirá a un reinicio del servidor).
+Sets whether the queue will be durable or not (the queue will survive a server reboot).
 
-El valor por defecto es `false`.
+Default value is `false`.
 
-Ejemplo:
+Example:
 
 ```yaml
 amqp:
@@ -86,9 +84,9 @@ amqp:
 ###  `amqp.queue.exclusive`
 Establece si la cola será exclusiva (restringida a la conexión actual).
 
-El valor por defecto es `false`.
+Default value is `false`.
 
-Ejemplo:
+Example:
 
 ```yaml
 amqp:
@@ -98,11 +96,11 @@ amqp:
 
 ---
 ###  `amqp.queue.autodelete`
-Establece si la cola de eliminación automática (el servidor la eliminará cuando ya no esté en uso).
+Sets whether to auto delete queue (will be deleted by server when no longer in use).
 
-El valor por defecto es `false`.
+Default value is `false`.
 
-Ejemplo:
+Example:
 
 ```yaml
 amqp:
@@ -111,68 +109,67 @@ amqp:
 ```
 
 
-## Pasos
+## Steps
 
 ---
-### Definir conexión
+### Define connection
 
 ```
-la conexión AMQP con URL {url:text} usando el usuario {username:text} y la contraseña {password:text}
+the AMQP connection URL {url} using the user {username} and the password {password}
 ```
-Establece la URL y las credenciales que utilizará el agente AMQP. Esta es la forma descriptiva de establecer las 
-propiedades [`amqp.connection.url`](#amqpconnectionurl), [`amqp.connection.username`](#amqpconnectionusername), 
+Sets the URL and credentials to be used by the AMQP broker. This is the descriptive way of setting the configuration 
+properties [`amqp.connection.url`](#amqpconnectionurl), [`amqp.connection.username`](#amqpconnectionusername),
 [`amqp.connection.password`](#amqpconnectionpassword).
 
 
-#### Parámetros:
-| Nombre     | Kukumo type | Descripción           |
-|------------|-------------|-----------------------|
-| `url`      | `text`      | La URL del agente     |
-| `username` | `text`      | Nombre de usuario     |
-| `password` | `text`      | Contraseña de usuario |
+#### Parameters
+| Name       | Kukumo type | Description              |
+|------------|-------------|--------------------------|
+| `url`      | `text`      | The broker URL           |
+| `username` | `text`      | The credentials username |
+| `password` | `text`      | The credentials password |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Dada la conexión AMQP con URL 'amqp://127.0.0.1:5671' usando el usuario 'guest' y la contraseña 'guest'
+  Given the AMQP connection URL 'amqp://127.0.0.1:5671' using the user 'guest' and the password 'guest'
 ```
 
 
 ---
-### Definir cola destino
+### Define destination queue
 
 ```
-la cola de destino {word}
+the destination queue {word}
 ```
-Establece el nombre de la cola que se observará.
+Sets the name of the queue to watch.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción       |
-|--------|-------------|-------------------|
-| `word` | `word`      | Nombre de la cola |
+#### Parameters
+| Name   | Kukumo type | Description  |
+|--------|-------------|--------------|
+| `word` | `word`      | A queue name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Dada la cola de destino TEST
+  Given the destination queue TEST
 ```
-
 
 ---
-### Enviar mensaje a cola
+### Send message to queue
 
 ```
-se envía a la cola {word} el siguiente mensaje JSON:
+the following JSON message is sent to the queue {word}:
 ```
-Envía un mensaje JSON a la cola indicada.
+Sends a JSON message to the given queue.
 
-#### Parámetros:
-| Nombre | Kukumo type  | Descripción       |
-|--------|--------------|-------------------|
-| `word` | `word`       | Nombre de la cola |
-|        | `document`   | Mensaje JSON      |
+#### Parameters
+| Name   | Kukumo type  | Description          |
+|--------|--------------|----------------------|
+| `word` | `word`       | A queue name         |
+|        | `document`   | A JSON message body  |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se envía a la cola TEST el siguiente mensaje JSON:
+  When the following JSON message is sent to the queue TEST:
     ```json
     {
         "data": {
@@ -184,61 +181,59 @@ Envía un mensaje JSON a la cola indicada.
 
 
 ---
-### Enviar mensaje a cola (fichero)
+### Send message to queue (file)
 ```
-se envía a la cola {queue:word} el mensaje del fichero JSON {file:file}
+the message from the JSON file {file} is sent to the queue {queue}
 ```
-Envía el contenido de un fichero JSON a la cola indicada.
+Sends a JSON message extracted from a local file to the given queue.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción       |
-|---------|-------------|-------------------|
-| `file`  | `file`      | Fichero JSON      |
-| `queue` | `word`      | Nombre de la cola |
+#### Parameters
+| Name    | Kukumo type | Description                         |
+|---------|-------------|-------------------------------------|
+| `file`  | `file`      | A local file with the JSON message  |
+| `queue` | `word`      | A queue name                        |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se envía a la cola TEST el mensaje del fichero JSON 'data/message.json'
+  When the message from the JSON file 'data/message.json' is sent to the queue TEST
 ```
 
 
 ---
-### Establecer pausa
-
+### Set pause
 ```
-se espera durante {integer} segundo(s)
+wait for {integer} second(s)
 ```
-Se produce una espera de un número fijo de segundos (generalmente para asegurarse de que se haya procesado el mensaje).
+Waits a fixed number of seconds (usually to ensure a message has been processed).
 
-#### Parámetros:
-| Nombre    | Kukumo type | Descripción                      |
-|-----------|-------------|----------------------------------|
-| `integer` | `integer`   | Cantidad de tiempo (en segundos) |
+#### Parameters
+| Name      | Kukumo type | Description                 |
+|-----------|-------------|-----------------------------|
+| `integer` | `integer`   | Amount of time (in seconds) |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  * se espera durante 2 segundos
+  * Wait for 2 seconds
 ```
 
 
 ---
-### Validar mensaje
+### Validate message
 
 ```
-el siguiente mensaje JSON se recibe en {integer} segundos:
+the following JSON message is received within {integer} seconds:
 ```
-Valida que se reciba un mensaje JSON específico en la [cola observada](#definir-cola-destino), produciéndose un fallo 
-después del tiempo de espera indicado.
+Validates that a specific JSON message is received in the destination queue, failing after a certain timeout.
 
-#### Parámetros:
-| Nombre    | Kukumo type | Descripción                      |
-|-----------|-------------|----------------------------------|
-| `integer` | `integer`   | Cantidad de tiempo (en segundos) |
-|           | `document`  | Mensaje JSON                     |
+#### Parameters
+| Name      | Kukumo type | Description                 |
+|-----------|-------------|-----------------------------|
+| `integer` | `integer`   | Amount of time (in seconds) |
+|           | `document`  | A JSON message body         |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando el siguiente mensaje JSON se recibe en 5 segundos:
+  Then the following JSON message is received within 5 seconds:
     ```json
       {
         "data": {
@@ -249,23 +244,21 @@ después del tiempo de espera indicado.
 
 
 ---
-### Validar mensaje (fichero)
-
+### Validate message (file)
 ```
-el mensaje del fichero JSON {file:file} se recibe en {seconds:integer} segundos
+the message from the JSON file {file} is received within {seconds} seconds
 ```
-Valida que se reciba el contenido de un fichero JSON específico en la [cola observada](#definir-cola-destino), 
-produciéndose un fallo después del tiempo de espera indicado.
+Validates that a specific JSON message is received in the destination queue, failing after a certain timeout.
 
-#### Parámetros:
-| Nombre | Kukumo type  | Descripción                      |
-|--------|--------------|----------------------------------|
-| `file` | `file`       | Fichero JSON                     |
-|        | `integer`    | Cantidad de tiempo (en segundos) |
+#### Parameters
+| Name   | Kukumo type  | Description                        |
+|--------|--------------|------------------------------------|
+| `file` | `file`       | A local file with the JSON message |
+|        | `integer`    | Amount of time (in seconds)        |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando el mensaje del fichero JSON 'data/message.json' se recibe en 5 segundos
+  Then the message from the JSON file 'data/message.json' is received within 5 seconds
 ```
 
 

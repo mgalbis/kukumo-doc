@@ -466,7 +466,7 @@ proporcionen datos se rellenarán con datos aleatorios.
 ---
 ### Insertar datos (CSV)
 ```
-se (ha) inserta(do) el contenido del fichero CSV {csv:file} en la tabla de BBDD {table}
+se (ha) inserta(do) el contenido del fichero CSV {csv} en la tabla de BBDD {table}
 ```
 Inserta en una tabla dada las files contenidas en el fichero CSV proporcionado. Las columnas no-nulables para las que no
 se proporcionen datos se rellenarán con datos aleatorios.
@@ -650,7 +650,7 @@ a una tabla.
 ```
 el contenido del fichero CSV {csv} existe en la tabla de BBDD {table}
 ```
-Comprueba que todas las filas del fichero CSV proporcionado existen en una tabla dada.
+Comprueba que todas las filas incluidas en el fichero CSV proporcionado existen en una tabla dada.
 
 #### Parámetros:
 | Nombre   | Kukumo type | Descripción         |
@@ -668,7 +668,7 @@ Comprueba que todas las filas del fichero CSV proporcionado existen en una tabla
 ```
 el contenido del fichero CSV {csv} no existe en la tabla de BBDD {table}
 ```
-Comprueba que todas las filas incluidas en el fichero CSV proporcionado existen en una tabla dada
+Comprueba que todas las filas incluidas en el fichero CSV proporcionado no existen en una tabla dada.
 
 #### Parámetros:
 | Nombre   | Kukumo type | Descripción         |
@@ -718,7 +718,7 @@ Comprueba que ninguna fila de la tabla dada satisface la claúsula SQL indicada.
 #### Ejemplos:
 ```gherkin
   Entonces usuarios que satisfacen la siguiente cláusula SQL no existen en la tabla de BBDD USER:
-    """sql
+    """
     STATE IN (2,3) OR BLOCKING_DATE IS NULL
     """
 ```
@@ -732,12 +732,12 @@ Comprueba que el número de filas que satisfacen la condición indicada en la ta
 numérica indicada.
 
 #### Parámetros:
-| Nombre    | Kukumo type      | Descripción          |
-|-----------|------------------|----------------------|
-| `column`  | `word`           | Nombre de la columna |
-| `value`   | `text`           | Valor de la columna  |
-| `table`   | `word`           | Nombre de la tabla   |
-| `matcher` | `long-assertion` | Comparador numérico  |
+| Nombre    | Kukumo type      | Descripción              |
+|-----------|------------------|--------------------------|
+| `column`  | `word`           | Nombre de la columna     |
+| `value`   | `text`           | Valor de la columna      |
+| `table`   | `word`           | Nombre de la tabla       |
+| `matcher` | `long-assertion` | [Comparador][2] numérico |
 
 #### Ejemplos:
 ```gherkin
@@ -753,11 +753,11 @@ Comprueba que el número de filas que satisfacen los valores indicados en la tab
 numérica indicada.
 
 #### Parámetros:
-| Nombre    | Kukumo type      | Descripción         |
-|-----------|------------------|---------------------|
-| `table`   | `word`           | Nombre de la tabla  |
-| `matcher` | `long-assertion` | Comparador numérico |
-|           | `table`          | Tabla con los datos |
+| Nombre    | Kukumo type      | Descripción              |
+|-----------|------------------|--------------------------|
+| `table`   | `word`           | Nombre de la tabla       |
+| `matcher` | `long-assertion` | [Comparador][2] numérico |
+|           | `table`          | Tabla con los datos      |
 
 #### Ejemplos:
 ```gherkin
@@ -775,11 +775,11 @@ Comprueba que el número de filas que satisfacen la condición indicada en la ta
 numérica indicada.
 
 #### Parámetros:
-| Nombre    | Kukumo type      | Descripción         |
-|-----------|------------------|---------------------|
-| `table`   | `word`           | Nombre de la tabla  |
-| `matcher` | `long-assertion` | Comparador numérico |
-|           | `document`       | Cláusula where      |
+| Nombre    | Kukumo type      | Descripción              |
+|-----------|------------------|--------------------------|
+| `table`   | `word`           | Nombre de la tabla       |
+| `matcher` | `long-assertion` | [Comparador][2] numérico |
+|           | `document`       | Cláusula where           |
 
 #### Ejemplos:
 ```gherkin
@@ -828,3 +828,4 @@ Comprueba que existe al menos una fila en la tabla indicada.
 
 
 [1]:  https://commons.apache.org/proper/commons-csv/
+[2]: plugins/kukumo/architecture#comparador

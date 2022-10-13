@@ -4,74 +4,74 @@ date: 2022-09-20
 slug: /en/plugins/rest
 ---
 
-Este plugin proporciona un conjunto de pasos para interactúan con una API RESTful.
+This plugin provides a set of steps to interact with a RESTful API.
 
-**Configuración**:
+**Configuration**:
 - [`rest.baseURL`](#restbaseurl)
 - [`rest.contentType`](#restcontenttype)
 - [`rest.httpCodeThreshold`](#resthttpcodethreshold)
-- [`rest.oauth2.url`](#rest-oauth2url)
+- [`rest.oauth2.url`](#restoauth2url)
 - [`rest.oauth2.clientId`](#restoauth2clientid)
 - [`rest.oauth2.clientSecret`](#restoauth2clientsecret)
 
-**Pasos**:
-- [Definir tipo de contenido](#definir-tipo-de-contenido)
-- [Definir URL base](#definir-url-base)
-- [Definir servicio](#definir-servicio)
-- [Definir identificador](#definir-identificador)
-- [Definir parámetros de solicitud (request)](#definir-par%C3%A1metros-de-solicitud-request)
-- [Definir parámetros de búsqueda (query)](#definir-par%C3%A1metros-de-solicitud-query)
-- [Definir parámetros de ruta (path)](#definir-par%C3%A1metros-de-solicitud-path)
-- [Definir cabeceras](#definir-cabeceras)
-- [Definir timeout](#definir-timeout)
-- [Definir umbral de códigos HTTP](#definir-umbral-de-cdigos-http)
-- [Definir autenticación básica](#definir-autenticaci%C3%B3n-b%C3%A1sica)
-- [Definir token de autenticación](#definir-token-de-autenticaci%C3%B3n)
-- [Definir token de autenticación (fichero)](#definir-token-de-autenticaci%C3%B3n-fichero)
-- [Definir autenticación oauth2](#definir-autenticaci%C3%B3n-oauth2)
-- [Definir archivo adjunto](#definir-archivo-adjunto)
-- [Definir archivo adjunto (fichero)](#definir-archivo-adjunto-fichero)
-- [Realizar llamada GET](#realizar-llamada-get)
-- [Realizar llamada DELETE](#realizar-llamada-delete)
-- [Realizar llamada PUT con mensaje](#realizar-llamada-put-con-mensaje)
-- [Realizar llamada PUT con mensaje (fichero)](#realizar-llamada-put-con-mensaje-fichero)
-- [Realizar llamada PATCH](#realizar-llamada-patch)
-- [Realizar llamada PATCH con mensaje](#realizar-llamada-patch-con-mensaje)
-- [Realizar llamada PATCH con mensaje (fichero)](#realizar-llamada-patch-con-mensaje-fichero)
-- [Realizar llamada POST](#realizar-llamada-post)
-- [Realizar llamada POST con mensaje](#realizar-llamada-post-con-mensaje)
-- [Realizar llamada POST con mensaje (fichero)](#realizar-llamada-post-con-mensaje-fichero)
-- [Comprobar código de respuesta](#comprobar-c%C3%B3digo-de-respuesta)
-- [Comprobar mensaje de respuesta](#comprobar-mensaje-de-respuesta)
-- [Comprobar mensaje de respuesta (fichero)](#comprobar-mensaje-de-respuesta-fichero)
-- [Comprobar fragmento de la respuesta](#comprobar-fragmento-de-la-respuesta)
-- [Comprobar tipo de contenido de la respuesta](#comprobar-tipo-de-contenido-de-la-respuesta)
-- [Comprobar tamaño de la respuesta](#comprobar-tama%C3%B1o-de-la-respuesta)
-- [Comprobar cabecera](#comprobar-cabecera)
+**Steps**:
+- [Define content type](#define-content-type)
+- [Define base URL](#define-base-url)
+- [Define service](#define-service)
+- [Define id](#define-id)
+- [Define request parameters](#define-request-parameters)
+- [Define query parameters](#define-query-parameters)
+- [Define path parameters](#define-path-parameters)
+- [Define headers](#define-headers)
+- [Define timeout](#define-timeout)
+- [Define HTTP code threshold](#define-http-code-threshold)
+- [Define basic authentication](#define-basic-authentication)
+- [Define authentication token](#define-authentication-token)
+- [Define authentication token (file)](#define-authentication-token-file)
+- [Define oauth2 authentication](#define-oauth2-authentication)
+- [Define attached file](#define-attached-file)
+- [Define attached file (file)](#define-attached-file-file)
+- [Make GET request](#make-get-request)
+- [Make DELETE request](#make-delete-request)
+- [Make PUT request with body](#make-put-request-with-body)
+- [Make PUT request with body (file)](#make-put-request-with-body-file)
+- [Make PATCH request](#make-patch-request)
+- [Make PATCH request with body](#make-patch-request-with-body)
+- [Make PATCH request with body (file)](#make-patch-request-with-body-file)
+- [Make POST request](#make-post-request)
+- [Make POST request with body](#make-post-request-with-body)
+- [Make POST request with body (file)](#make-post-request-with-body-file)
+- [Check response HTTP code](#check-response-http-code)
+- [Check response body](#check-response-body)
+- [Check response body (file)](#check-response-body-file)
+- [Check response body fragment](#check-response-body-fragment)
+- [Check response content type](#check-response-content-type)
+- [Check response size](#check-response-size)
+- [Check response header](#check-response-header)
 
 
 
 
-## Configuración
+## Configuration
 
 ---
 ###  `rest.baseURL`
-Establece la URL base para las llamadas REST.
-Esto es equivalente al paso `{word} como el tipo de contenido REST` si se prefiere una declaración más descriptiva.
+Set the base URL for subsequents API calls. This is equivalent to the step "[Define base URL](#define-base-url)" in you 
+prefer the descriptive configuration.
 
-Ejemplo:
+Example:
 
 ```yaml
 rest:
-  baseURL: http://example.org/api/v2
+  baseURL: https://example.org/api/v2
 ```
 
 ---
 ### `rest.contentType`
-Establece el tipo de contenido que se enviará en la cabecera de las llamadas REST.
-Los valores aceptados son:
+Set the content type that would be sent in the request header of subsequent API calls.
+Accepted values are:
 
-| literal    | valor de la cabecera `content-type`                                    |
+| literal    | `content-type` header value                                            |
 |------------|------------------------------------------------------------------------|
 | `ANY`      | `*/*`                                                                  |
 | `TEXT`     | `text/plain`                                                           |
@@ -82,9 +82,9 @@ Los valores aceptados son:
 | `BINARY`   | `application/octet-stream`                                             |
 
 
-El valor por defecto es `JSON`.
+Default value is `JSON`.
 
-Ejemplo:
+Example:
 
 ```yaml
 rest:
@@ -93,14 +93,12 @@ rest:
 
 ---
 ### `rest.httpCodeThreshold`
+Sets a global HTTP response code threshold. Every time an API call returns an HTTP code equals or greater, the step 
+would automatically fail regardless any other condition.
 
-Establece un límite a los códigos de respuesta HTTP. Cada vez que una llamada REST retorne un
-código HTTP igual o superior a este valor, el paso se marcará como fallido automáticamente, sin
-comprobar ninguna otra condición.
+Default value is `500`.
 
-El valor por defecto es `500`.
-
-Ejemplo:
+Example:
 
 ```yaml
 rest:
@@ -109,11 +107,10 @@ rest:
 
 ---
 ### `rest.oauth2.url`
+Set an [OAuth 2.0][oauth2] authentication service that would be used to generate a token in the request header 
+`Authorization` of the API calls.
 
-Establece el servicio de autenticación [OAuth 2.0][oauth2] que se usará para generar el token que se enviará
-en la cabecera HTTP `Authorization` de las llamadas REST.
-
-Ejemplo:
+Example:
 
 ```yaml
 rest:
@@ -124,10 +121,9 @@ rest:
 
 ---
 ### `rest.oauth2.clientId`
-Establece el parámetro `clientId` para el servicio de autenticación [OAuth 2.0][oauth2] definido
-por el valor de la propiedad de configuración `rest.oauth2.url`.
+Sets the parameter `clientId` of the [OAuth 2.0][oauth2] authentication service defined by the `rest.oauth2.url` value.
 
-Ejemplo:
+Example:
 
 ```yaml
 rest:
@@ -137,10 +133,10 @@ rest:
 
 ---
 ### `rest.oauth2.clientSecret`
-Establece el parámetro `clientSecret` para el servicio de autenticación [OAuth 2.0][oauth2] definido
-por el valor de la propiedad de configuración `rest.oauth2.url`.
+Sets the parameter `clientSecret` of the [OAuth 2.0][oauth2] authentication service defined by the `rest.oauth2.url` 
+value.
 
-Ejemplo:
+Example:
 
 ```yaml
 rest:
@@ -150,358 +146,363 @@ rest:
 
 
 
-## Pasos
+## Steps
 
 ---
-### Definir tipo de contenido
+### Define content type
 ```
-{type} como el tipo de contenido REST
+the REST content type {word}
 ```
-Establece el tipo de contenido de la API en la cabecera `content-type`. Este paso es equivalente a configurar la 
-propiedad [`rest.contentType`](#restcontenttype). 
+Declarative-way for setting the configuration property [`rest.contentType`](#restcontenttype).
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción        |
-|--------|-------------|--------------------|
-| `type` | `word`      | La URL de conexión |
+#### Parameters:
+| Name   | Kukumo type | Description    |
+|--------|-------------|----------------|
+| `type` | `word`      | Connection URL |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Dado XML como el tipo de contenido REST
+  Given the REST content type XML
 ```
 
 ---
-### Definir URL base
+### Define base URL
 ```
-la URL base {url}
+the base URL {url}
 ```
-Establece la ruta base de la API. Este paso es equivalente a configurar la propiedad [`rest.baseURL`](#restbaseurl). 
+Declarative-way for setting the configuration property [`rest.baseURL`](#restbaseurl). 
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción |
-|--------|-------------|-------------|
-| `url`  | `url`       | URL base    |
+#### Parameters:
+| Name  | Kukumo type | Description |
+|-------|-------------|-------------|
+| `url` | `url`       | Base URL    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Dada la URL base http//example.org/api
+  Given the base URL https://example.org/api
 ```
 
 ---
-### Definir servicio
+### Define service
 ```
-el servicio REST {service}
+the REST service {text}
 ```
-Establece la ruta del servicio a probar. Se concatenará al valor de la [url base](#definir-url-base).
+Sets the service path that would be tested. It would be appended to the `baseURL`.
 
-#### Parámetros:
-| Nombre    | Kukumo type | Descripción  |
-|-----------|-------------|--------------|
-| `service` | `text`      | Segmento URL |
+#### Parameters:
+| Name      | Kukumo type | Description      |
+|-----------|-------------|------------------|
+| `service` | `text`      | URL segment path |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Dado el servicio REST '/users`
+  Given the REST service '/users`
 ```
 
 ---
-### Definir identificador
+### Define id
 ```
-* identificad(o|a|os|as) por {text}
+* identified by {text}
 ```
-Establece un identificador de recurso REST para ser usado por el servicio. Se concatenará al valor de la 
-[url base](#definir-url-base) y del [servicio](#definir-servicio) en concreto.
+Sets an entity identifier to be used by the REST service. It would be appended to the `baseURL` and the service.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción                 |
+#### Parameters:
+| Name   | Kukumo type | Description          |
+|--------|-------------|----------------------|
+| `text` | `text`      | An entity identifier |
+
+#### Examples:
+```gherkin
+  Given a user identified by 'john'
+```
+```gherkin
+  Given the borrowed book identified by '978-3-16-148410-0'
+```
+
+---
+### Define request parameters
+```
+the following request parameters:
+```
+Sets the request parameters using a data table. The parameters will be sent as form data for POST requests.
+
+##### Parameters:
+| Name | Kukumo type | Description                             |
+|------|-------------|-----------------------------------------|
+|      | `table`     | A table with `name` and `value` columns |
+
+##### Examples:
+```gherkin
+  Given the following request parameters:
+    | Name | Value    |
+    | age  | 13       |
+    | city | Valencia |
+```
+
+---
+### Define query parameters
+```
+the following query parameters:
+```
+Set the request parameters for a query. The parameters will be pass after the service URL, like 
+`/user?param1=abc&param2=123`.
+
+##### Parameters:
+| Name | Kukumo type | Description                             |
+|------|-------------|-----------------------------------------|
+|      | `table`     | A table with `name` and `value` columns |
+
+##### Examples:
+```gherkin
+  Given the following query parameters:
+    | Name | Value    |
+    | age  | 13       |
+    | city | Valencia |
+```
+
+---
+### Define path parameters
+```
+the following path parameters:
+```
+Sets parameterized path segments for a query. The parameters will be part of the request URL replacing the segments 
+marked with `{}`.
+
+##### Parameters:
+| Name | Kukumo type | Description                             |
+|------|-------------|-----------------------------------------|
+|      | `table`     | A table with `name` and `value` columns |
+
+##### Examples:
+```gherkin
+  Given the service 'user/{user}/items/{item}'
+  And the following path parameters:
+    | Name | Value |
+    | user | 25    |
+    | item | 7     |
+```
+
+---
+### Define headers
+```
+the following headers:
+```
+Define the HTTP headers that would be sent by the subsequent requests.
+
+##### Parameters:
+| Name | Kukumo type | Description                             |
+|------|-------------|-----------------------------------------|
+|      | `table`     | A table with `name` and `value` columns |
+
+##### Examples:
+```gherkin
+  Given the following headers:
+    | Name       | Value |
+    | Age        | 3600  |
+    | Keep-Alive | 1200  |
+```
+
+---
+### Define timeout
+```
+a timeout of {int} (milli)seconds
+```
+Sets a response timeout (in second or milliseconds) for the subsequent HTTP requests.
+
+##### Parameters:
+| Name   | Kukumo type | Description                 |
 |--------|-------------|-----------------------------|
-| `text` | `text`      | Un identificador de recurso |
+| `int`  | `int`       | The timeout in milliseconds |
 
-#### Ejemplos:
+##### Examples:
 ```gherkin
-  Dado un usuario identificado por 'john'
+  Given a timeout of 12000 milliseconds
 ```
 ```gherkin
-  Dado un libro identificado por '978-3-16-148410-0'
+  Given a timeout of 2 seconds
 ```
 
 ---
-### Definir parámetros de solicitud (request)
+### Define HTTP code threshold
 ```
-los siguiente parámetros de solicitud:
+any request will fail when response HTTP code {matcher}
 ```
-Establece los parámetros de la petición REST. Estos parámetros se enviaran como datos de formulario.
+Similar to setting the configuration property [`rest.httpCodeTreshold`](#resthttpcodethreshold) but using any integer 
+assertion.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                                   |
-|--------|-------------|-----------------------------------------------|
-|        | `table`     | Una tabla con las columnas `nombre` y `valor` |
+##### Parameters:
+| Name      | Kukumo type         | Description             |
+|-----------|---------------------|-------------------------|
+| `matcher` | `integer-assertion` | Numeric [comparator][1] |
 
-##### Ejemplos:
+##### Example:
 ```gherkin
-  Dados los siguiente parámetros de solicitud:
-    | nombre | valor    |
-    | age    | 13       |
-    | city   | Valencia |
+  * any request will fail when response HTTP code is greater than 500
 ```
 
 ---
-### Definir parámetros de solicitud (query)
+### Define basic authentication
 ```
-los siguiente parámetros de búsqueda:
+the service use the basic authentication credentials {username}:{password}
 ```
-Establece los parámetros de la petición REST. Estos parámetros se concatenerán a la URL de la petición tras la ruta, 
-por ejemplo `/user?param1=abc&param2=123`.
+Sets the basic authentication credentials to be sent in the `Authorization` header for the subsequent requests.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                                   |
-|--------|-------------|-----------------------------------------------|
-|        | `table`     | Una tabla con las columnas `nombre` y `valor` |
+##### Parameters:
+| Name       | Kukumo type | Description  |
+|------------|-------------|--------------|
+| `username` | `text`      | The username |
+| `password` | `text`      | The password |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Dados los siguiente parámetros de solicitud:
-    | nombre | valor    |
-    | age    | 13       |
-    | city   | Valencia |
+  Given the service use the basic authentication credentials 'us1532':'xxxxx'
 ```
 
 ---
-### Definir parámetros de solicitud (path)
+### Define authentication token
 ```
-los siguiente parámetros de ruta:
+the service use the authentication token {text}
 ```
-Establece los parámetros de la petición REST. Estos parámetros formarán parte de la ruta de la URL, sustituyendo a los 
-fragmentos indicados con `{}`.
+Sets the authentication token to be sent in the `Authorization` header for the subsequent requests.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                                   |
-|--------|-------------|-----------------------------------------------|
-|        | `table`     | Una tabla con las columnas `nombre` y `valor` |
-
-##### Ejemplos:
-```gherkin
-  Dado el servicio 'user/{usuario}/items/{item}'
-  Y los siguientes parámetros de ruta:
-    | nombre  | valor    |
-    | usuario | 25       |
-    | item    | 7        |
-```
-
----
-### Definir cabeceras
-```
-las siguientes cabeceras:
-```
-Establece las cabeceras de la petición REST.
-
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                                   |
-|--------|-------------|-----------------------------------------------|
-|        | `table`     | Una tabla con las columnas `nombre` y `valor` |
-
-##### Ejemplos:
-```gherkin
-  Dadas las siguientes cabeceras:
-    | nombre       | valor |
-    | Age          | 3600  |
-    | Keep-Alive   | 1200  |
-```
-
----
-### Definir timeout
-```
-un timeout de {int} (mili)segundos
-```
-Establece un tiempo máximo de respuesta (en segundos o milisegundos) para las siguientes peticiones HTTP.
-
-##### Parámetros:
-| Nombre | Kukumo type | Descripción      |
-|--------|-------------|------------------|
-| `int`  | `int`       | El tiempo máximo |
-
-##### Ejemplos:
-```gherkin
-  Dado un timeout de 12000 milisegundos
-```
-```gherkin
-  Dado un timeout de 10 segundos
-```
-
----
-### Definir umbral de códigos HTTP
-```
-(que) toda petición se considera fallida si su código HTTP {matcher}
-```
-Establece una validación general para el código HTTP de todas las respuestas siguientes. Es similar a la propiedad de 
-configuración [`rest.httpCodeTreshold`](#resthttpcodethreshold) pero con una validación de enteros personalizada.
-
-##### Parámetros:
-| Nombre    | Kukumo type         | Descripción               |
-|-----------|---------------------|---------------------------|
-| `matcher` | `integer-assertion` | Una validación de enteros |
-
-##### Ejemplo:
-```gherkin
-  * toda petición se considera fallida si su código HTTP es igual o mayor que 500
-```
-
----
-### Definir autenticación básica
-```
-(que) el servicio usa autenticación básica con las credenciales {username}:{password}
-```
-Establece las credenciales de autenticación básica que se enviarán en la cabecera HTTP `Authorization`.
-
-##### Parámetros:
-| Nombre     | Kukumo type | Descripción       |
-|------------|-------------|-------------------|
-| `username` | `text`      | Nombre de usuario |
-| `password` | `text`      | Contraseña        |
-
-##### Ejemplos:
-```gherkin
-  Dado que el servicio usa autenticación básica con las credenciales 'us1532':'xxxxx'
-```
-
----
-### Definir token de autenticación
-```
-(que) el servicio usa el token de autenticación {text}
-```
-Establece el token de autenticación que se enviará en la cabecera `Authorization` para las siguientes peticiones. 
-
-##### Parámetros:
-| Nombre | Kukumo type | Descripción            |
+##### Parameters:
+| Name   | Kukumo type | Description            |
 |--------|-------------|------------------------|
-| `text` | `text`      | Token de autenticación |
+| `text` | `text`      | An authorization token |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Dado que el servicio usa el token de autenticación 'hudytw9834y9cqy32t94'
+  Given the service use the authentication token 'hudytw9834y9cqy32t94'
 ```
 
 ---
-### Definir token de autenticación (fichero)
+### Define authentication token (file)
 ```
 (que) el servicio usa el token de autenticación del fichero {file}
 ```
-Establece el token de autenticación que se enviará en la cabecera `Authorization` para las siguientes llamadas, obtenido 
-desde un fichero.
+Sets the authentication token to be sent in the `Authorization` header for the subsequent requests.
 
-##### Parámetros:
-| Nombre | Kukumo type  | Descripción                           |
-|--------|--------------|---------------------------------------|
-| `file` | `file`       | Fichero con el token de autenticación |
+##### Parameters:
+| Name   | Kukumo type  | Description                        |
+|--------|--------------|------------------------------------|
+| `file` | `file`       | File with the authentication token |
 
-##### Ejemplo:
+##### Example:
 ```gherkin
-  Dado que el servicio usa el token de autenticación del fichero 'token.txt'
+  Given the service use the authentication token of file 'data/token.txt'
 ```
 
 ---
-### Definir autenticación oauth2
+### Define oauth2 authentication
 ```
-(que) el servicio usa el proveedor de autenticación con los siguientes datos:
+the service use the authentication provider with the following data:
 ```
-Establece el cuerpo que se enviará al servicio de autenticación.
+Sets the [OAuth 2.0][oauth2] authentication parameters.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                                |
-|--------|-------------|--------------------------------------------|
-|        | `document`  | Cadena con los parámetros de autenticación |
+##### Parameters:
+| Name | Kukumo type | Description                                 |
+|------|-------------|---------------------------------------------|
+|      | `document`  | A string with the authentication parameters |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Dado que el servicio usa el proveedor de autenticación con los siguientes datos:
+  Given the service use the authentication provider with the following data:
     """
     grant_type=password&username=OficinaTest4&password=xxxxx
     """
 ```
 
 ---
-### Definir archivo adjunto
+### Define attached file
 ```
-(que) se incluye el fichero adjunto con los siguientes datos:
+the attached file is included with the following data:
 ```
-Indica el texto que se incluirá como fichero adjunto en datos de formulario.
+Sets a multipart form-data including an attachment from the given in-document content.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción          |
-|--------|-------------|----------------------|
-|        | `document`  | Contenido a adjuntar |
+##### Parameters:
+| Name | Kukumo type | Description          |
+|------|-------------|----------------------|
+|      | `document`  | Content to be attach |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Dado que se incluye el fichero adjunto con los siguientes datos:
+  Given the attached file is included with the following data:
     """
-    Contenido del fichero
+    File content
     """
 ```
 
 ---
-### Definir archivo adjunto (fichero)
+### Define attached file (file)
 ```
-(que) se incluye el fichero adjunto {file}
+the attached file {file} is included
 ```
-Indica el fichero cuyo contenido se incluirá como fichero adjunto en datos de formulario.
+Sets a multipart form-data including an attachment from the given in-document content.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                         |
-|--------|-------------|-------------------------------------|
-| `file` | `file`      | Fichero con el contenido a adjuntar |
+##### Parameters:
+| Name   | Kukumo type | Description       |
+|--------|-------------|-------------------|
+| `file` | `file`      | File to be attach |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Dado que se incluye el fichero adjunto 'data.txt'
+  Given the attached file 'data/data.txt' is included
 ```
 
 ---
-### Realizar llamada GET
+### Make GET request
 ```
-se realiza la búsqueda *
+* (is|are) (queried|requested)
 ```
-```
-se consulta(n) *
-```
-Envía una petición `GET` al servicio con los parámetros definidos previamente.
+Sends a `GET` request to the previously defined parameters.
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se realiza la búsqueda de usuarios
+  Given the service 'users'
+  And the following query parameters:
+    | Name | Value |
+    | user | 25    |
+    | item | 7     |
+  When the users are queried
 ```
 ```gherkin
-  Cuando se consulta el usuario
+  Given the REST service 'users'
+  And a user identified by '123'
+  When the user is requested
 ```
 
 ---
-### Realizar llamada DELETE
+### Make DELETE request
 ```
-se elimina(n) *
+* (is|are) deleted
 ```
-Envía una petición `DELETE` al servicio y recurso REST definido previamente.
+Sends a `DELETE` request to the previously defined endpoint formed with the base URL, the REST service and the entity id.
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se elimina el usuario
+  Given the REST service 'users'
+  And a user identified by '123'
+  When the user is deleted
 ```
 
 ---
-### Realizar llamada PUT con mensaje
+### Make PUT request with body
 ```
-se reemplaza(n) * con los siguientes datos:
+* (is|are) modified with following data:
 ```
-Envía una petición `PUT` al servicio y recurso REST definido previamente. El cuerpo de la petición será el contenido 
-indicado a continuación.
+Sends a `PUT` request to the previously defined endpoint formed with the base URL, the REST service and the entity id. 
+The payload is provided in-document.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción              |
-|--------|-------------|--------------------------|
-|        | `document`  | El cuerpo de la petición |
+##### Parameters:
+| Name | Kukumo type | Description              |
+|------|-------------|--------------------------|
+|      | `document`  | The request payload body |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se reemplaza el usuario con los siguientes datos:
+  Given the REST service 'users'
+  And a user identified by '123'
+  When the user is modified with the following data:
     """json
     {
         "firstName": "John",
@@ -513,51 +514,61 @@ indicado a continuación.
 ```
 
 ---
-### Realizar llamada PUT con mensaje (fichero)
+### Make PUT request with body (file)
 ```
-se reemplaza(n) * con los datos del fichero {file}
+* (is|are) modified with the data from the file {file}
 ```
-Envía una petición `PUT` al servicio y recurso REST definido previamente. El cuerpo de la petición será el contenido del 
-fichero indicado.
+Sends a `PUT` request to the previously defined endpoint formed with the base URL, the REST service and the entity id. 
+The payload is provided by the given file.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                          |
-|--------|-------------|--------------------------------------|
-| `file` | `file`      | Fichero con el cuerpo de la petición |
+##### Parameters:
+| Name   | Kukumo type | Description                                |
+|--------|-------------|--------------------------------------------|
+| `file` | `file`      | A file containing the request payload body |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se reemplaza el usuario con los datos del fichero 'data/user123.json'
+  Given the REST service 'users'
+  And a user identified by '123'
+  When the user is modified with the data from the file 'data/user123.json'
 ```
 
 ---
-### Realizar llamada PATCH
+### Make PATCH request
 ```
-se modifica(n) * 
+* (is|are) patched
 ```
-Envía una petición `PATCH` al servicio y recurso REST definido previamente. 
+Sends a `PATCH` request to the previously defined endpoint formed with the base URL, the REST service and the entity id.
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se modifica el usuario
+  Given the REST service 'users'
+  And a user identified by '123'
+  And the following query parameters:
+    | Name | Value    |
+    | age  | 13       |
+    | city | Valencia |
+  When the user is patched
 ```
 
 ---
-### Realizar llamada PATCH con mensaje
+### Make PATCH request with body
 ```
-se modifica(n) * con los siguientes datos:
+* (is|are) patched with the following data:
 ```
-Envía una petición `PATCH` al servicio y recurso REST definido previamente. El cuerpo de la petición será el contenido 
-indicado a continuación.
+Sends a `PATCH` request to the previously defined endpoint formed with the base URL, the REST service and the entity id. 
+The payload is provided in-document.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción              |
-|--------|-------------|--------------------------|
-|        | `document`  | El cuerpo de la petición |
+##### Parameters:
+| Name | Kukumo type | Description              |
+|------|-------------|--------------------------|
+|      | `document`  | The request payload body |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se modifica el usuario con los siguientes datos:
+  Given the REST service 'users'
+  And a user identified by '123'
+  When the user is patched with the following data:
     """json
     {
         "firstName": "Jim"
@@ -566,54 +577,65 @@ indicado a continuación.
 ```
 
 ---
-### Realizar llamada PATCH con mensaje (fichero)
+### Make PATCH request with body (file)
 ```
-se modifica(n) * con los datos del fichero {file}
+* (is|are) patched with the data from the file {file}
 ```
-Envía una petición `PATCH` al servicio y recurso REST definido previamente. El cuerpo de la petición será el contenido 
-del fichero indicado.
+Sends a `PATCH` request to the previously defined endpoint formed with the base URL, the REST service and the entity id. 
+The payload is provided by the given file.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                          |
-|--------|-------------|--------------------------------------|
-| `file` | `file`      | Fichero con el cuerpo de la petición |
+##### Parameters:
+| Name   | Kukumo type | Description                                |
+|--------|-------------|--------------------------------------------|
+| `file` | `file`      | A file containing the request payload body |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se modifica el usuario con los datos del fichero 'data/user123.json'
+  Given the REST service 'users'
+  And a user identified by '123'
+  When the user is patched with the data from the file 'data/user123.json'
 ```
 
 ---
-### Realizar llamada POST
+### Make POST request
 ```
-se crea(n) *
+* (is|are) created
 ```
-Envía una petición `POST` al servicio definido previamente.
+```
+the data info is sent to the service
+```
+Sends a `POST` request to the previously defined endpoint formed with the base URL and the REST service. The payload is 
+empty.
 
-##### Ejemplo:
+##### Example:
 ```gherkin
-  Cuando se crea el usuario
+  Given the REST service 'users'
+  And the following request parameters:
+    | nombre | valor    |
+    | age    | 13       |
+    | city   | Valencia |
+  When the data info is sent to the service
 ```
 
 ---
-### Realizar llamada POST con mensaje
+### Make POST request with body
 ```
-se crea(n) * con los siguientes datos:
+* (is|are) created with the following data:
 ```
 ```
-se envía al servicio los siguientes datos:
+the following data is sent to the service:
 ```
-Envía una petición `POST` al servicio definido previamente. El cuerpo de la petición se rellenará con el contenido 
-indicado a continuación.
+Send a `POST` request to the previously defined endpoint formed with the base URL and the REST service. The payload is 
+provided in-document.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción              |
-|--------|-------------|--------------------------|
-|        | `document`  | El cuerpo de la petición |
+##### Parameters:
+| Name | Kukumo type | Description     |
+|------|-------------|-----------------|
+|      | `document`  | Request payload |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se crea un usuario con los siguientes datos:
+  When the user is created with the following data:
     """json
     {
         "firstName": "John",
@@ -624,7 +646,7 @@ indicado a continuación.
     """
 ```
 ```gherkin
-  Cuando se envía al servicio los siguientes datos:
+  When the following data is sent to the service:
     """json
     {
         "date": "2021-10-30"
@@ -633,70 +655,70 @@ indicado a continuación.
 ```
 
 ---
-### Realizar llamada POST con mensaje (fichero)
+### Make POST request with body (file)
 ```
-se crea(n) * con los datos del fichero {file}
+* (is|are) created with the data from the file {file}
 ```
 ```
-se envía al servicio los datos del fichero {file}
+the data from the file {file} is sent to the service
 ```
-Envía una petición `POST` al servicio definido previamente. El cuerpo de la petición se rellenará con el contenido del 
-fichero indicado.
+Sends a `POST` request to the previously defined endpoint formed with the base URL and the REST service. The payload is 
+provided by the given file.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción                          |
-|--------|-------------|--------------------------------------|
-| `file` | `file`      | Fichero con el cuerpo de la petición |
+##### Parameters:
+| Name   | Kukumo type | Description                                |
+|--------|-------------|--------------------------------------------|
+| `file` | `file`      | A file containing the request payload body |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Cuando se crea un usuario con los datos del fichero 'data/user123.json'
+  When the user is created with the data from the file 'data/user123.json'
 ```
 ```gherkin
-  Cuando se envía al servicio los datos del fichero 'booking.json'
+  When the data from the file 'data/booking.json' is sent to the service
 ```
 
 ---
-### Comprobar código de respuesta
+### Check response HTTP code
 ```
-el código de respuesta HTTP {matcher}
+the response HTTP code {matcher}
 ```
-Comprueba que el código HTTP de la última respuesta satisface una validación de enteros.
+Validate that the HTTP code of the last response satisfies the given assertion.
 
-##### Parámetros:
-| Nombre    | Kukumo type         | Descripción               |
-|-----------|---------------------|---------------------------|
-| `matcher` | `integer-assertion` | Una validación de enteros |
+##### Parameters:
+| Name      | Kukumo type         | Description            |
+|-----------|---------------------|------------------------|
+| `matcher` | `integer-assertion` | Number [comparator][1] |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Entonces el código de respuesta HTTP es 201
+  Then the response HTTP code is equals to 201
 ```
 
 
 ---
-### Comprobar mensaje de respuesta
+### Check response body
 ```
-la respuesta es exactamente:
+the response is:
 ```
-Valida que el cuerpo de la respuesta sea exacto al indicado, incluyendo el orden de los campos.
+Validates that the last response body is exactly the content of the in-document content.
 ```
-la respuesta es exactamente (en cualquier orden):
+the response is \(in any order\):
 ```
-Valida que el cuerpo de la respuesta sea exacto al indicado, pero pueden llegar los campos en diferente orden.
+Validates that the last response body has all the elements specified by the in-document content, but in any order.
 ```
-la respuesta es parcialmente:
+the response contains:
 ```
-Valida que el cuerpo de la respuesta incluya, al menos, los campos indicados.
+Validates that the last response body contains the given in-document content.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción           |
-|--------|-------------|-----------------------|
-|        | `document`  | El contenido esperado |
+##### Parameters:
+| Name | Kukumo type | Description                  |
+|------|-------------|------------------------------|
+|      | `document`  | The expected partial content |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Entonces la respuesta es exactamente:
+  Then the response is:
     """json
     {
         "age": 23,
@@ -706,110 +728,109 @@ Valida que el cuerpo de la respuesta incluya, al menos, los campos indicados.
 ```
 
 ---
-### Comprobar mensaje de respuesta (fichero)
+### Check response body (file)
 ```
-la respuesta es exactamente el contenido del fichero {file}
+the response is equal to the file {file}
 ```
-Valida que el cuerpo de la respuesta sea exacto al indicado en el fichero, incluyendo el orden de los campos.
+Validates that the last response body is exactly the content of the given file.
 ```
-la respuesta es exactamente el contenido del fichero {file} \(en cualquier orden\)
+the response is equal to the file {file} \(in any order\)
 ```
-Valida que el cuerpo de la respuesta sea exacto al indicado en el fichero, pero pueden llegar los campos en diferente orden.
+Validates that the last response body has all the elements provided by the given file, but in any order.
 ```
-la respuesta es parcialmente el contenido del fichero {file}
+the response contains the file {file}
 ```
-Valida que el cuerpo de la respuesta incluya, al menos, los campos indicados en el fichero.
+Validates that the last response body contains the content of the given file.
 
-##### Parámetros:
-| Nombre | Kukumo type | Descripción          |
-|--------|-------------|----------------------|
-| `file` | `file`      | Un fichero existente |
+##### Parameters:
+| Name   | Kukumo type | Description      |
+|--------|-------------|------------------|
+| `file` | `file`      | An existing file |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Entonces la respuesta es parcialmente el contenido del fichero 'data/response1.json'
+  Then the response contains the file 'data/response1.json'
 ```
 
 ---
-### Comprobar fragmento de la respuesta
+### Check response body fragment
 ```
-el (texto|entero|decimal) del fragmento de la respuesta {fragment} {matcher}
+the (text|integer|decimal) from response fragment {fragment} {matcher}
 ```
-Valida el valor (*texto*, *entero* o *decimal*) de un fragmento del cuerpo de respuesta, localizado mediante una ruta dada
-(usando [JSONPath][jsonpath] o [XPath][xpath] dependiendo del tipo de contenido).
+Validates the value from a [JSONPath][jsonpath] or [XPath][xpath] response fragment according a 
+*text*, *integer* or *decimal* assertion.
 
-##### Parámetros:
-| Nombre     | Kukumo type   | Descripción                 |
-|------------|---------------|-----------------------------|
-| `fragment` | `text`        | Una ruta JSONPath or XPath  |
-| `matcher`  | `*-assertion` | El comparador del fragmento |
-`*`: `text`, `integer` o `decimal`, dependiendo del tipo indicado en el paso.
+##### Parameters:
+| Name       | Kukumo type   | Description               |
+|------------|---------------|---------------------------|
+| `fragment` | `text`        | A JSONPath or XPath query |
+| `matcher`  | `*-assertion` | [Comparator][1]           |
+`*`: `text`, `integer` o `decimal`.
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Entonces el decimal del fragmento de la respuesta 'users[1].account.availableMoney` es mayor que 23.57
+  Then the decimal from response fragment 'users[1].account.availableMoney' is greater than 23.57
 ```
 ```gherkin
-  Entonces el texto del fragmento de la respuesta 'users[1].name` no es 'John'
+  Then the decimal from response fragment 'users[0].lastName' starts with 'J'
 ```
 
 
 ---
-### Comprobar tipo de contenido de la respuesta
+### Check response content type
 ```
-el tipo de contenido de la respuesta es {word}
+the response content type is {word}
 ```
-Valida que el tipo de contenido de la última respuesta es el esperado.
-Este paso equivale a validar que el valor de la cabecera `Content-Type` de la respuesta es el tipo MIME correspondiente.
+Validate that the content type of the last response is the expected. This step would be equivalent to validate the 
+`Content-Type` response header against the corresponding MIME type.
 
-##### Parámetros:
-| Nombre  | Kukumo type | Descripción                                        |
-|---------|-------------|----------------------------------------------------|
-| `word`  | `word`      | `ANY`,`TEXT`,`JSON`,`XML`,`HTML`,`URLENC`,`BINARY` |
+##### Parameters:
+| Name   | Kukumo type | Description                                        |
+|--------|-------------|----------------------------------------------------|
+| `word` | `word`      | `ANY`,`TEXT`,`JSON`,`XML`,`HTML`,`URLENC`,`BINARY` |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Entonces el tipo de contenido de la respuesta es JSON
+  Then the response content type is JSON
 ```
 
 ---
-### Comprobar tamaño de la respuesta
+### Check response size
 ```
-el tamaño de la respuesta {matcher}
+the response length {matcher}
 ```
-Comprueba que la longitud en bytes de la última respuesta satisface una validación.
+Validate that the length in bytes of the last response satisfies the given assertion.
 
-##### Parámetros:
-| Nombre    | Kukumo type         | Descripción               |
-|-----------|---------------------|---------------------------|
-| `matcher` | `integer-assertion` | Una validación de enteros |
+##### Parameters:
+| Name      | Kukumo type         | Description            |
+|-----------|---------------------|------------------------|
+| `matcher` | `integer-assertion` | Number [comparator][1] |
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Entonces el tamaño de la respuesta es menor que 500
+  Then the response length is less than 500
 ```
 
 ---
-### Comprobar cabecera
+### Check response header
 ```
-el (texto|entero|decimal) de la cabecera de la respuesta {name} {matcher}
+the (texto|entero|decimal) response header {name} {matcher}
 ```
-Comprueba que una determinada cabecera HTTP en la última respuesta satisface una validación de *texto*, *entero* o 
-*decimal*.
+Validate that a header value from the last REST response satisfies the *text*, *integer* or *decimal* assertion.
 
-##### Parámetros:
-| Nombre    | Kukumo type   | Descripción                 |
-|-----------|---------------|-----------------------------|
-| `name`    | `text`        | Nombre de la cabecera       |
-| `matcher` | `*-assertion` | El comparador del fragmento |
-`*`: `text`, `integer` o `decimal`, dependiendo del tipo indicado en el paso.
+##### Parameters:
+| Name      | Kukumo type   | Description          |
+|-----------|---------------|----------------------|
+| `name`    | `text`        | The HTTP header name |
+| `matcher` | `*-assertion` | [Comparator][1]      |
+`*`: `text`, `integer` o `decimal`.
 
-##### Ejemplos:
+##### Examples:
 ```gherkin
-  Entonces el texto de la cabecera de la respuesta Content-Encoding contiene 'gzip'
+  Then the text response header Content-Encoding contains 'gzip'
 ```
 ```gherkin
-  Entonces el entero de la cabecera de la respuesta Age es mayor que 10
+  Then the integer response header Age is greater than 10
 ```
 
 
@@ -819,3 +840,4 @@ Comprueba que una determinada cabecera HTTP en la última respuesta satisface un
 [jsonpath]: https://goessner.net/articles/JsonPath/
 [xmlschema]: https://www.w3.org/2001/XMLSchema (XML Schema)
 [xpath]: https://en.wikipedia.org/wiki/XPath (XPath)
+[1]: kukumo/architecture#comparators

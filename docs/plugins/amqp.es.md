@@ -117,7 +117,7 @@ amqp:
 ### Definir conexión
 
 ```
-la conexión AMQP con URL {url:text} usando el usuario {username:text} y la contraseña {password:text}
+la conexión AMQP con URL {url} usando el usuario {username} y la contraseña {password}
 ```
 Establece la URL y las credenciales que utilizará el agente AMQP. Esta es la forma descriptiva de establecer las 
 propiedades [`amqp.connection.url`](#amqpconnectionurl), [`amqp.connection.username`](#amqpconnectionusername), 
@@ -186,7 +186,7 @@ Envía un mensaje JSON a la cola indicada.
 ---
 ### Enviar mensaje a cola (fichero)
 ```
-se envía a la cola {queue:word} el mensaje del fichero JSON {file:file}
+se envía a la cola {queue} el mensaje del fichero JSON {file}
 ```
 Envía el contenido de un fichero JSON a la cola indicada.
 
@@ -252,7 +252,7 @@ después del tiempo de espera indicado.
 ### Validar mensaje (fichero)
 
 ```
-el mensaje del fichero JSON {file:file} se recibe en {seconds:integer} segundos
+el mensaje del fichero JSON {file} se recibe en {seconds} segundos
 ```
 Valida que se reciba el contenido de un fichero JSON específico en la [cola observada](#definir-cola-destino), 
 produciéndose un fallo después del tiempo de espera indicado.

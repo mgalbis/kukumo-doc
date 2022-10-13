@@ -4,24 +4,24 @@ date: 2022-09-20
 slug: /en/plugins/cucumber-exporter
 ---
 
-Un generador de informes que emite un fichero JSON con el formato utilizado por Cucumber. De esta forma, se reutilizan 
-algunas herramientas diseñadas para funcionar con Cucumber, por ejemplo este
-[Complemento de informes de Jenkins Cucumber](https://github.com/jenkinsci/cucumber-reports-plugin).
+A simple report generator that emits a JSON file with the format used by Cucumber. This is a convenient way of reusing 
+some pieces of software designed to work with Cucumber, for example the
+[Jenkins Cucumber report plugin](https://github.com/jenkinsci/cucumber-reports-plugin).
 
-Hay que tener en cuenta que, aunque Cucumber y Kukumo comparten similitudes estructurales en su formato de resultado, 
-hay partes específicas de información que no son intercambiables. Por ejemplo, Kukumo trabaja con planes de prueba de 
-profundidad ilimitada, mientras que Cucumber espera una estructura fija de tres niveles. Por lo tanto, el fichero JSON 
-de Cucumber exportado podría no ser una representación fiel del plan de prueba ejecutado.
+Notice that, although Cucumber and Kukumo share structural similarities in their result format, there are specific 
+pieces of information that are not interchangeable. For example, Kukumo works with test plans of unrestricted depth, 
+whereas Cucumber expects a fixed three-level structure. Thus, the exported Cucumber JSON file might not be a faithful 
+representation of the executed test plan.
 
-## Configuración
+## Configuration
 
 ---
 ####  `cucumberExporter.outputFile`
-La ruta (relativa) y el nombre del archivo generado.
+The (relative) path and name of the generated file.
 
-El valor por defecto es `cucumber-report.json`.
+Default value is `cucumber-report.json`.
 
-Ejemplo:
+Example:
 
 ```yaml
 cucumberExporter:
@@ -30,14 +30,14 @@ cucumberExporter:
 
 ---
 #### `cucumberExporter.multiLevelStrategy`
-Establece la estrategia de mapeo utilizada cuando el plan de Kukumo tiene más niveles del esperado por Cucumber. Los 
-valores aceptados son:
-- `innerSteps`: Sólo se incluirán los pasos de implementación, descartando los de definición.
-- `outerSteps`: Sólo se incluirán los pasos de definición, descartando los de implementación.
+Sets the mapping strategy used when the Kukumo plan has more levels than the expected by Cucumber. Accepted values are:
+- `innerSteps`: Only the most inner steps would be included, discarding step aggregation levels
+- `outerSteps` : Inner steps for any step aggregation would be discarded. The reported step would be the step 
+  aggregation itself, although the potential error messages of the inner steps would be reported.
 
-El valor por defecto es `innerSteps`.
+Default value is `innerSteps`.
 
-Ejemplo:
+Example:
 
 ```yaml
 cucumberExporter:

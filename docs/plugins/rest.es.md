@@ -4,13 +4,13 @@ date: 2022-09-20
 slug: /plugins/rest
 ---
 
-Este plugin proporciona un conjunto de pasos para interactúan con una API RESTful.
+Este plugin proporciona un conjunto de pasos para interactuar con una API RESTful.
 
 **Configuración**:
 - [`rest.baseURL`](#restbaseurl)
 - [`rest.contentType`](#restcontenttype)
 - [`rest.httpCodeThreshold`](#resthttpcodethreshold)
-- [`rest.oauth2.url`](#rest-oauth2url)
+- [`rest.oauth2.url`](#restoauth2url)
 - [`rest.oauth2.clientId`](#restoauth2clientid)
 - [`rest.oauth2.clientSecret`](#restoauth2clientsecret)
 
@@ -41,7 +41,7 @@ Este plugin proporciona un conjunto de pasos para interactúan con una API RESTf
 - [Realizar llamada POST](#realizar-llamada-post)
 - [Realizar llamada POST con mensaje](#realizar-llamada-post-con-mensaje)
 - [Realizar llamada POST con mensaje (fichero)](#realizar-llamada-post-con-mensaje-fichero)
-- [Comprobar código de respuesta](#comprobar-c%C3%B3digo-de-respuesta)
+- [Comprobar código HTTP de respuesta](#comprobar-c%C3%B3digo-http-de-respuesta)
 - [Comprobar mensaje de respuesta](#comprobar-mensaje-de-respuesta)
 - [Comprobar mensaje de respuesta (fichero)](#comprobar-mensaje-de-respuesta-fichero)
 - [Comprobar fragmento de la respuesta](#comprobar-fragmento-de-la-respuesta)
@@ -63,7 +63,7 @@ Ejemplo:
 
 ```yaml
 rest:
-  baseURL: http://example.org/api/v2
+  baseURL: https://example.org/api/v2
 ```
 
 ---
@@ -184,7 +184,7 @@ Establece la ruta base de la API. Este paso es equivalente a configurar la propi
 
 #### Ejemplos:
 ```gherkin
-  Dada la URL base http//example.org/api
+  Dada la URL base https//example.org/api
 ```
 
 ---
@@ -250,7 +250,7 @@ Establece los parámetros de la petición REST. Estos parámetros se enviaran co
 ```
 los siguiente parámetros de búsqueda:
 ```
-Establece los parámetros de la petición REST. Estos parámetros se concatenerán a la URL de la petición tras la ruta, 
+Establece los parámetros de la petición REST. Estos parámetros se concatenarán a la URL de la petición tras la ruta, 
 por ejemplo `/user?param1=abc&param2=123`.
 
 ##### Parámetros:
@@ -337,9 +337,9 @@ Establece una validación general para el código HTTP de todas las respuestas s
 configuración [`rest.httpCodeTreshold`](#resthttpcodethreshold) pero con una validación de enteros personalizada.
 
 ##### Parámetros:
-| Nombre    | Kukumo type         | Descripción               |
-|-----------|---------------------|---------------------------|
-| `matcher` | `integer-assertion` | Una validación de enteros |
+| Nombre    | Kukumo type         | Descripción              |
+|-----------|---------------------|--------------------------|
+| `matcher` | `integer-assertion` | [Comparador][1] numérico |
 
 ##### Ejemplo:
 ```gherkin
@@ -468,9 +468,16 @@ Envía una petición `GET` al servicio con los parámetros definidos previamente
 
 ##### Ejemplos:
 ```gherkin
+  Dado el servicio REST '/users'
+  Y los siguientes parámetros de búsqueda:
+    | name | value    |
+    | age  | 13       |
+    | city | Valencia |
   Cuando se realiza la búsqueda de usuarios
 ```
 ```gherkin
+  Dado el servicio REST '/users'
+  Y un usuario identificado por '123'
   Cuando se consulta el usuario
 ```
 
@@ -483,6 +490,8 @@ Envía una petición `DELETE` al servicio y recurso REST definido previamente.
 
 ##### Ejemplos:
 ```gherkin
+  Dado el servicio REST '/users'
+  Y un usuario identificado por '123'
   Cuando se elimina el usuario
 ```
 
@@ -501,6 +510,8 @@ indicado a continuación.
 
 ##### Ejemplos:
 ```gherkin
+  Dado el servicio REST '/users'
+  Y un usuario identificado por '123'
   Cuando se reemplaza el usuario con los siguientes datos:
     """json
     {
@@ -527,6 +538,8 @@ fichero indicado.
 
 ##### Ejemplos:
 ```gherkin
+  Dado el servicio REST '/users'
+  Y un usuario identificado por '123'
   Cuando se reemplaza el usuario con los datos del fichero 'data/user123.json'
 ```
 
@@ -539,6 +552,12 @@ Envía una petición `PATCH` al servicio y recurso REST definido previamente.
 
 ##### Ejemplos:
 ```gherkin
+  Dado el servicio REST '/users'
+  Y un usuario identificado por '123'
+  Y los siguientes parámetros de búsqueda:
+    | name | value    |
+    | age  | 13       |
+    | city | Valencia |
   Cuando se modifica el usuario
 ```
 
@@ -557,6 +576,8 @@ indicado a continuación.
 
 ##### Ejemplos:
 ```gherkin
+  Dado el servicio REST '/users'
+  Y un usuario identificado por '123'
   Cuando se modifica el usuario con los siguientes datos:
     """json
     {
@@ -580,6 +601,8 @@ del fichero indicado.
 
 ##### Ejemplos:
 ```gherkin
+  Dado el servicio REST '/users'
+  Y un usuario identificado por '123'
   Cuando se modifica el usuario con los datos del fichero 'data/user123.json'
 ```
 
@@ -588,11 +611,19 @@ del fichero indicado.
 ```
 se crea(n) *
 ```
+```
+se envía al servicio la información
+```
 Envía una petición `POST` al servicio definido previamente.
 
 ##### Ejemplo:
 ```gherkin
-  Cuando se crea el usuario
+  Dado el servicio REST '/users'
+  Dados los siguiente parámetros de solicitud:
+    | nombre | valor    |
+    | age    | 13       |
+    | city   | Valencia |
+  Cuando envía al servicio la información
 ```
 
 ---
@@ -657,7 +688,7 @@ fichero indicado.
 ```
 
 ---
-### Comprobar código de respuesta
+### Comprobar código HTTP de respuesta
 ```
 el código de respuesta HTTP {matcher}
 ```
@@ -681,7 +712,7 @@ la respuesta es exactamente:
 ```
 Valida que el cuerpo de la respuesta sea exacto al indicado, incluyendo el orden de los campos.
 ```
-la respuesta es exactamente (en cualquier orden):
+la respuesta es exactamente \(en cualquier orden\):
 ```
 Valida que el cuerpo de la respuesta sea exacto al indicado, pero pueden llegar los campos en diferente orden.
 ```
@@ -798,10 +829,10 @@ Comprueba que una determinada cabecera HTTP en la última respuesta satisface un
 *decimal*.
 
 ##### Parámetros:
-| Nombre    | Kukumo type   | Descripción                 |
-|-----------|---------------|-----------------------------|
-| `name`    | `text`        | Nombre de la cabecera       |
-| `matcher` | `*-assertion` | El comparador del fragmento |
+| Nombre    | Kukumo type   | Descripción                         |
+|-----------|---------------|-------------------------------------|
+| `name`    | `text`        | Nombre de la cabecera               |
+| `matcher` | `*-assertion` | [Comparador][1] de texto o numérico |
 `*`: `text`, `integer` o `decimal`, dependiendo del tipo indicado en el paso.
 
 ##### Ejemplos:
@@ -819,3 +850,4 @@ Comprueba que una determinada cabecera HTTP en la última respuesta satisface un
 [jsonpath]: https://goessner.net/articles/JsonPath/
 [xmlschema]: https://www.w3.org/2001/XMLSchema (XML Schema)
 [xpath]: https://en.wikipedia.org/wiki/XPath (XPath)
+[1]: kukumo/architecture#comparadores

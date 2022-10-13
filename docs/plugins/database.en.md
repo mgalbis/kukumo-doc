@@ -4,17 +4,17 @@ date: 2022-09-20
 slug: /en/plugins/database
 ---
 
-Este plugin proporciona una serie de pasos para interactuar con una base de datos vía JDBC, facilitando la carga y
-validación de datos.
+This plugin provides a set of steps that interact with a database via JDBC, easing the effort required to load and 
+assert data.
 
-> **RECUERDA** <br />
-> Debido a los muchos motores existentes de bases de datos, este plugin no incluye ningún driver específico. Esto
-> significa que, para funcionar correctamente, es necesario inluir el módulo con el controlador JDBC adecuado en la
-> configuración de kukumo.
+> **KEEP IN MIND** <br />
+> Regarding the multiple database implementations existing, this plugin does not include any specific driver. In order 
+> to work properly, do not forget to include the module with the JDBC driver(s) that your database connection would 
+> require.
 
 
 
-**Configuración**:
+**Configuration**:
 - [`database.connection.url`](#databaseconnectionurl)
 - [`database.connection.username`](#databaseconnectionusername)
 - [`database.connection.password`](#databaseconnectionpassword)
@@ -25,37 +25,37 @@ validación de datos.
 - [`database.nullSymbol`](#databasenullsymbol)
 - [`database.enableCleanupUponCompletion`](#databaseenablecleanupuponcompletion)
 
-**Pasos**:
-- [Definir conexión](#definir-conexi%C3%B3n)
-- [Definir script post ejecución](#definir-script-post-ejecuci%C3%B3n)
-- [Definir script post ejecución (fichero)](#definir-script-post-ejecuci%C3%B3n-fichero)
-- [Ejecutar script](#ejecutar-script)
-- [Ejecutar script (fichero)](#ejecutar-script-fichero)
-- [Vaciar tabla](#vaciar-tabla)
-- [Eliminar datos](#eliminar-datos)
-- [Eliminar datos (tabla)](#eliminar-datos-tabla)
-- [Eliminar datos (xls)](#eliminar-datos-xls)
-- [Eliminar datos (csv)](#eliminar-datos-csv)
-- [Insertar datos (tabla)](#insertar-datos-tabla)
-- [Insertar datos (xls)](#insertar-datos-xls)
-- [Insertar datos (csv)](#insertar-datos-csv)
-- [Comprobar existencia de datos](#comprobar-existencia-de-datos)
-- [Comprobar inexistencia de datos](#comprobar-inexistencia-de-datos)
-- [Comprobar existencia de datos (id)](#comprobar-existencia-de-datos-id)
-- [Comprobar inexistencia de datos (id)](#comprobar-inexistencia-de-datos-id)
-- [Comprobar existencia de datos (tabla)](#comprobar-existencia-de-datos-tabla)
-- [Comprobar inexistencia de datos (tabla)](#comprobar-inexistencia-de-datos-tabla)
-- [Comprobar existencia de datos (XLS)](#comprobar-existencia-de-datos-xls)
-- [Comprobar inexistencia de datos (XLS)](#comprobar-inexistencia-de-datos-xls)
-- [Comprobar existencia de datos (CSV)](#comprobar-existencia-de-datos-csv)
-- [Comprobar inexistencia de datos (CSV)](#comprobar-inexistencia-de-datos-csv)
-- [Comprobar existencia de datos (documento)](#comprobar-existencia-de-datos-documento)
-- [Comprobar inexistencia de datos (documento)](#comprobar-inexistencia-de-datos-documento)
-- [Comprobar número de filas](#comprobar-n%C3%BAmero-de-filas)
-- [Comprobar número de filas (documento)](#comprobar-n%C3%BAmero-de-filas-documento)
-- [Comprobar número de filas (tabla)](#comprobar-n%C3%BAmero-de-filas-documento)
-- [Comprobar tabla vacía](#comprobar-tabla-vac%C3%ADa)
-- [Comprobar tabla no vacía](#comprobar-tabla-no-vac%C3%ADa)
+**Steps**:
+- [Define connection](#define-connection)
+- [Define script post execution](#define-script-post-execution)
+- [Define script post execution (file)](#define-script-post-execution-file)
+- [Execute script](#execute-script)
+- [Execute script (file)](#execute-script-file)
+- [Clear table](#clear-table)
+- [Delete data](#delete-data)
+- [Delete data (table)](#delete-data-table)
+- [Delete data (xls)](#delete-data-xls)
+- [Delete data (csv)](#delete-data-csv)
+- [Insert data (table)](#insert-data-table)
+- [Insert data (xls)](#insert-data-xls)
+- [Insert data (csv)](#insert-data-csv)
+- [Check data exists](#check-data-exists)
+- [Check data not exists](#check-data-not-exists)
+- [Check data exists (id)](#check-data-exists-id)
+- [Check data not exists (id)](#check-data-not-exists-id)
+- [Check data exists (table)](#check-data-exists-table)
+- [Check data not exists (table)](#check-data-not-exists-table)
+- [Check data exists (XLS)](#check-data-exists-xls)
+- [Check data not exists (XLS)](#check-data-not-exists-xls)
+- [Check data exists (CSV)](#check-data-exists-csv)
+- [Check data not exists (CSV)](#check-data-not-exists-csv)
+- [Check data exists (document)](#check-data-exists-document)
+- [Check data not exists (document)](#check-data-not-exists-document)
+- [Check row count](#check-row-count)
+- [Check row count (document)](#check-row-count-document)
+- [Check row count (table)](#check-row-count-document)
+- [Check table is empty](#check-table-is-empty)
+- [Check table is not empty](#check-table-is-not-empty)
 
 
 
@@ -64,10 +64,9 @@ validación de datos.
 
 ---
 ### `database.connection.url`
-Establece la URL de conexión a la base de datos con esquema JDBC. El driver usado para acceder a la base de datos se
-determinará a partir del formato de URL indicado.
+Sets the JDBC database connection URL. The driver used to access the database will be determined by the URL format.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   connection:
@@ -76,9 +75,9 @@ database:
 
 ---
 ### `database.connection.username`
-Establece el nombre de usuario requerido para conectar a la base de datos.
+Sets the connection username, required to connect.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   connection:
@@ -87,9 +86,9 @@ database:
 
 ---
 ### `database.connection.password`
-Establece la contraseña requerida para conectar a la base de datos.
+Sets the connection password, required to connect.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   connection:
@@ -98,10 +97,10 @@ database:
 
 ---
 ### `database.metadata.schema`
-Establece manualmente el esquema de base de datos que se usará para recuperar metadatos como claves privadas y/o
-nulabilidad. Si no se indica, se usará el esquema por defecto que retorne la conexión.
+Sets the schema that should be used in order to retrieve metadata as primary keys and nullability. If not specified, 
+the default schema returned by the connection will be used.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   metadata:
@@ -110,10 +109,10 @@ database:
 
 ---
 ### `database.metadata.catalog`
-Establece manualmente el catálogo de base de datos (si el motor soporta esta característica) que se usará para recuperar
-metadatos como claves privadas y/o nulabilidad. Si no se indica, se usará el esquema por defecto que retorne la conexión.
+Sets the catalog that should be used in order to retrieve meta-data as primary keys and nullability. If not specified, 
+the default catalog returned by the connection will be used (in case the database system uses one).
 
-Ejemplo:
+Example:
 ```yaml
 database:
   metadata:
@@ -122,14 +121,14 @@ database:
 
 ---
 ### `database.metadata.caseSensititvy`
-Establece si se debería hacer alguna transformación de mayúsculas/minúsculas cuando se intente acceder a los metadatos.
-Algunos motores son estrictos con respecto a esto, y puede causar errores inesperados si no se configura correctamente.
-Los posibles valores son:
-- `INSENSITIVE`: Los identificadores se mantendrán como estén escritos.
-- `LOWER_CASED`: Los identificadores se convertirán a minúsculas.
-- `UPPER_CASED`: Los identificadores se convertirán a mayúsculas.
+Sets whether any upper/lower case transformation should be done when trying to access meta-data. Some engines are 
+very strict regarding this issue, and can cause unexpected errors if this property is not properly configured.
+Possible values are:
+- `INSENSITIVE`: Identifiers will be kept as they are written.
+- `LOWER_CASED`: Identifiers will be converted to lowercase.
+- `UPPER_CASED`: Identifiers will be converted to uppercase.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   metadata:
@@ -138,10 +137,8 @@ database:
 
 ---
 ### `database.csv.format`
-
-Establece la variante de formato usado a la hora de leer ficheros CSV. Los valores aceptados son directamente los usados
-por el projecto [Commons CSV][1] (consultar el enlace para una explicación exhaustiva de cada variante). Los posibles
-valores son:
+Sets the format used to parse CSV files. The accepted values are directly imported from the [Commons CSV][1] project, 
+check it for detailed explanation of each format. Possible values are:
 - `DEFAULT`
 - `INFORMIX_UNLOAD`
 - `INFORMIX_UNLOAD_CSV`
@@ -151,9 +148,9 @@ valores son:
 - `POSTGRESQL_TEXT`
 - `RFC4180`
 
-El valor por defecto es `DEFAULT`.
+Default value is `DEFAULT`.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   csv:
@@ -162,12 +159,11 @@ database:
 
 ---
 ### `database.xls.ignoreSheetPattern`
-Establece la expresión regular usada para determinar qué hojas se deberían ignorar cuando se cargan datos de un fichero
-XLSX.
+Sets regex pattern used to determine what sheets to be ignored when loading XLSX files.
 
-El valor por defecto es `#.*`.
+Default value is `#.*`.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   xls:
@@ -176,12 +172,12 @@ database:
 
 ---
 ### `database.nullSymbol`
-Establece el literal usado para marcar una celda específica con el valor correspondiente al `NULL` de SQL. Se usa en
-cualquier orígen de datos (ficheros CSV, XLSX, y tablas embebidas en la definición del test).
+Sets literal used to handle a specific cell value as the SQL `NULL` element. It is used in any data source like CSV, XLS, 
+and in-line tables.
 
-El valor por defecto es `<null>`.
+Default value is `<null>`.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   nullSymbol: (null)
@@ -189,15 +185,13 @@ database:
 
 ---
 ### `database.enableCleanupUponCompletion`
-El comportamiento por defecto del plugin no realiza ninguna operación de limpieza de la base de datos al acabar la
-ejecución de los tests. Esto es así para poder comprobar resultados manualmente y depurar errores. Los posibles valores
-son:
-- `false`: no se realizará ninguna acción de limpieza.
-- `true`: se forzará a limpiar la base de datos borrando los datos de prueba introducidos durante la ejecución.
+The default behaviour does not perform any clean-up operation following the test plan execution so that you can check 
+the resulting data afterwards. Switching this parameter to `true` will force clean-up operations so no test data will 
+remain in the database after the execution of the tests.
 
-El valor por defecto es `false`.
+Default value is `false`.
 
-Ejemplo:
+Example:
 ```yaml
 database:
   enableCleanupUponCompletion: "true"
@@ -205,46 +199,45 @@ database:
 
 
 
-## Pasos
+## Steps
 
 ---
-### Definir conexión
+### Define connection
 ```
-la URL de conexión a BBDD {url} usando el usuario {username} y la contraseña {password}
+the database connection URL {url} using the user {username} and the password {password}
 ```
-Establece la URL, nombre de usuario y contraseña para conectarse a la base de datos. Este paso es equivalente a
-configurar las propiedades [`database.connection.url`](#databaseconnectionurl),
+Configure the database connection URL, username and password for following connections. This step is the declarative 
+equivalent to set the configuration properties [`database.connection.url`](#databaseconnectionurl),
 [`database.connection.username`](#databaseconnectionusername),
 [`database.connection.password`](#databaseconnectionpassword).
 
-#### Parámetros:
-| Nombre     | Kukumo type | Descripción           |
-|------------|-------------|-----------------------|
-| `url`      | `text`      | La URL de conexión    |
-| `username` | `text`      | Nombre de usuario     |
-| `password` | `text`      | Contraseña de usuario |
+#### Parameters:
+| Name       | Kukumo type | Description        |
+|------------|-------------|--------------------|
+| `url`      | `text`      | The URL connection |
+| `username` | `text`      | User name          |
+| `password` | `text`      | User password      |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Dada la URL de conexión a BBDD 'jdbc:h2:tcp://localhost:9092/~/TESTDB' usando el usuario 'test' y la contraseña 'test'
+  Given the database connection URL 'jdbc:h2:tcp://localhost:9092/~/test' using the user 'test' and the password 'test'
 ```
 
 ---
-### Definir script post ejecución
+### Define script post execution
 ```
-Al finalizar, se ejecuta el siguiente script SQL:
+At finish, the following SQL script is executed:
 ```
-Establece las sentencias SQL que se ejecutarán una vez finalizado el escenario, independientemente del estado de la
-ejecución.
+Sets the SQL statements that will be executed one the scenario is finished, regardless execution status.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción          |
-|--------|-------------|----------------------|
-|        | `document`  | Contenido del script |
+#### Parameters:
+| Name   | Kukumo type | Description    |
+|--------|-------------|----------------|
+|        | `document`  | Script content |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  * Al finalizar, se ejecuta el siguiente script SQL:
+  * At finish, the following SQL script is executed:
     """
     UPDATE AAAA SET STATE = 2 WHERE ID = 1;
     DELETE FROM BBBB WHERE ID = 2;
@@ -252,38 +245,37 @@ ejecución.
 ```
 
 ---
-### Definir script post ejecución (fichero)
+### Define script post execution (file)
 ```
-Al finalizar, se ejecuta el script SQL del fichero {file}
+At finish, the SQL script file {file} is executed
 ```
-Establece las sentencias SQL del fichero indicado que se ejecutarán una vez finalizado el escenario, independientemente
-del estado de la ejecución.
+Sets the SQL statements from file that will be executed one the scenario is finished, regardless execution status.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción |
+#### Parameters:
+| Name   | Kukumo type | Description |
 |--------|-------------|-------------|
-| `file` | `file`      | Fichero SQL |
+| `file` | `file`      | SQL file    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  * Al finalizar, se ejecuta el script SQL del fichero 'data/insert-users.sql'
+  * At finish, the SQL script file 'data/insert-users.sql' is executed
 ```
 
 ---
-### Ejecutar script
+### Execute script
 ```
-se ejecuta el siguiente script SQL:
+the following SQL script is executed:
 ```
-Ejecuta el script SQL escrito a continuación.
+Execute a in-line SQL script.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción          |
-|--------|-------------|----------------------|
-|        | `document`  | Contenido del script |
+#### Parameters:
+| Name | Kukumo type | Description    |
+|------|-------------|----------------|
+|      | `document`  | Script content |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se ejecuta el siguiente script SQL:
+  Given that the following SQL script is executed:
     """sql
     UPDATE USER SET STATE = 2 WHERE BLOCKING_DATE IS NULL;
     DELETE FROM USER WHERE STATE = 3;
@@ -291,540 +283,518 @@ Ejecuta el script SQL escrito a continuación.
 ```
 
 ---
-### Ejecutar script (fichero)
+### Execute script (file)
 ```
-se ejecuta el script SQL del fichero {file}
+the SQL script file {file} is executed
 ```
-Ejecuta el script SQL existente en el fichero indicado.
+Execute a SQL script file.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción |
+#### Parameters:
+| Name   | Kukumo type | Description |
 |--------|-------------|-------------|
-| `file` | `file`      | Fichero SQL |
+| `file` | `file`      | SQL file    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se ejecuta el script SQL del fichero 'data/insert-users.sql'
+  When the SQL script file 'data/insert-users.sql' is executed
 ```
 
 ---
-### Vaciar tabla
+### Clear table
 ```
-se limpia la tabla de BBDD {word}
+the database table {word} is cleared
 ```
-Limpia la tabla indicada, intentando primero con la sentencia `TRUNCATE` , y con la sentencia `DELETE FROM` en caso de
-fallar la primera.
+Clear the given table, first attempting to execute `TRUNCATE`, and then using `DELETE FROM` as fallback.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción        |
-|--------|-------------|--------------------|
-| `word` | `word`      | Nombre de la tabla |
+#### Parameters:
+| Name   | Kukumo type | Description    |
+|--------|-------------|----------------|
+| `word` | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se limpia la tabla de BBDD USERS
+  Given that the database table USER is cleared
 ```
 
 ---
-### Eliminar datos
+### Delete data
 ```
-se (ha) elimina(n|do) * con {column} = {value} de la tabla de BBDD {table}
+* having {column} = {value} (is|are) deleted from the database table {table}
 ```
-Elimina de una tabla dada las filas que satisfagan la comparación indicada.
+Delete the rows in the given table that match the specified value.
 
-#### Parámetros:
-| Nombre   | Kukumo type | Descripción          |
-|----------|-------------|----------------------|
-| `column` | `word`      | Nombre de la columna |
-| `value`  | `text`      | Valor de la columna  |
-| `table`  | `word`      | Nombre de la tabla   |
+#### Parameters:
+| Name     | Kukumo type | Description    |
+|----------|-------------|----------------|
+| `column` | `word`      | Column name    |
+| `value`  | `text`      | Column value   |
+| `table`  | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se eliminan los usuarios con STATE = '2' de la tabla de BBDD USER 
+  When user having NAME = 'user1' is deleted from the database table USER 
 ```
 ```gherkin
-  Cuando se ha eliminado los usuarios con STATE = '2' de la tabla de BBDD USER 
+  When users having STATE = '2' are deleted from the database table USER 
 ```
 
 ---
-### Eliminar datos (tabla)
+### Delete data (table)
 ```
-se (ha) elimina(n|do) (lo|el|la|los|las) siguiente(s) * de la tabla de BBDD {word}:
+the following * (is|are) deleted from the database table {word}:
 ```
-Elimina de una tabla dada las filas indicadas.
+Delete the following in-line rows from the given table.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción         |
-|--------|-------------|---------------------|
-| `word` | `word`      | Nombre de la tabla  |
-|        | `table`     | Tabla con los datos |
+#### Parameters:
+| Name   | Kukumo type | Description    |
+|--------|-------------|----------------|
+| `word` | `word`      | The table name |
+|        | `table`     | Data table     |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se elimina los siguientes usuarios de la tabla de BBDD USER:
+  When the following users are deleted from the database table USER:
     | USER  | STATE | BLOCKING_DATE |   
     | user1 | 2     | <null>        |
     | user2 | 3     | 2020-02-13    |
 ```
 ```gherkin
-  Cuando se ha eliminado lo siguiente de la tabla de BBDD USER:
-    | USER  | STATE | BLOCKING_DATE |   
-    | user1 | 2     | <null>        |
+  When the following user is deleted from the database table USER:
+    | USER  | STATE | BLOCKING_DATE |
+    | user2 | 3     | 2020-02-13    |
 ```
 
 ---
-### Eliminar datos (XLS)
+### Delete data (XLS)
 ```
-se (ha) elimina(do) el contenido del fichero XLS {file} de la BBDD
+the content of the XLS file {file} is deleted from the database
 ```
-Elimina las filas que concuerdan con los datos del fichero XLS indicado.
+Delete the rows contained in the specified XLS file, one sheet per table.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción |
+#### Parameters:
+| Name   | Kukumo type | Description |
 |--------|-------------|-------------|
-| `file` | `file`      | Fichero XLS |
+| `file` | `file`      | XLS file    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se elimina el contenido del fichero XLS 'data/users.xls' de la BBDD
-```
-```gherkin
-  Cuando se ha eliminado el contenido del fichero XLS 'data/users.xls' de la BBDD
+  When the content of the XLS file 'data/users.xls' is deleted from the database
 ```
 
 ---
-### Eliminar datos (CSV)
+### Delete data (CSV)
 ```
-se (ha) elimina(do) el contenido del fichero CSV {csv} de la tabla de BBDD {table}
+the content of the CSV file {csv} is deleted from the database table {table}
 ```
-Elimina las filas de una tabla dada que concuerdan con los datos del fichero CSV proporcionado.
+Delete the rows contained in the specified CSV file from the given table.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción        |
-|---------|-------------|--------------------|
-| `csv`   | `file`      | Fichero CSV        |
-| `table` | `word`      | Nombre de la tabla |
+#### Parameters:
+| Name    | Kukumo type | Description    |
+|---------|-------------|----------------|
+| `csv`   | `file`      | CSV file       |
+| `table` | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se elimina el contenido del fichero CSV 'data/users.csv' de la tabla de BBDD USER
-```
-```gherkin
-  Cuando se ha eliminado el contenido del fichero CSV 'data/users.csv' de la tabla de BBDD USER
+  When the content of the CSV file 'data/users.csv' is deleted from the database table USER
 ```
 
 ---
-### Insertar datos (tabla)
+### Insert data (table)
 ```
-se (ha) inserta(do) (lo|el|la|los|las) siguiente(s) * en la tabla de BBDD {word}:
+the following * (is|are) inserted into the database table {word}:
 ```
-Inserta las filas indicadas a continuación una tabla dada. Las columnas no-nulables para las que no se proporcionen
-datos se rellenarán con datos aleatorios.
+Insert the following in-line rows into the given table. Non-specified but required columns will be populated with random 
+values.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción         |
-|--------|-------------|---------------------|
-| `word` | `word`      | Nombre de la tabla  |
-|        | `table`     | Tabla con los datos |
+#### Parameters:
+| Name   | Kukumo type | Description    |
+|--------|-------------|----------------|
+| `word` | `word`      | The table name |
+|        | `table`     | Data table     |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se inserta lo siguiente en la tabla de BBDD USER:
+  When the following users are inserted into the database table USER:
     | USER  | STATE | BLOCKING_DATE |   
     | user1 | 2     | <null>        |
     | user2 | 3     | 2020-02-13    |
 ```
 ```gherkin
-  Cuando se ha insertado los siguientes usuarios en la tabla de BBDD USER:
+  When the following user is inserted into the database table USER:
     | USER  | STATE | BLOCKING_DATE |   
-    | user1 | 2     | <null>        |
     | user2 | 3     | 2020-02-13    |
 ```
 
 ---
-### Insertar datos (XLS)
+### Insert data (XLS)
 ```
-se (ha) inserta(do) el contenido del fichero XLS {file} en la BBDD
+the content of the XLS file {file} is inserted into the database
 ```
-Inserta las filas contenidas en el fichero XLS indicado, una hoja por tabla. Las columnas no-nulables para las que no se
-proporcionen datos se rellenarán con datos aleatorios.
+Insert the rows contained in the specified XLS file, one sheet per table. Non-specified but required columns will be 
+populated with random values.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción |
+#### Parameters:
+| Name   | Kukumo type | Description |
 |--------|-------------|-------------|
-| `file` | `file`      | Fichero XLS |
+| `file` | `file`      | XLS file    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se inserta el contenido del fichero XLS 'data/users.xls' en la BBDD
-``` 
-```gherkin
-  Cuando se ha insertado el contenido del fichero XLS 'data/users.xls' en la BBDD
+  Given that the content of the XLS file 'data/users.xls' is inserted into the database
 ``` 
 
 ---
-### Insertar datos (CSV)
+### Insert data (CSV)
 ```
-se (ha) inserta(do) el contenido del fichero CSV {csv:file} en la tabla de BBDD {table}
+the content of the CSV file {csv} is inserted into the database table {table}
 ```
-Inserta en una tabla dada las files contenidas en el fichero CSV proporcionado. Las columnas no-nulables para las que no
-se proporcionen datos se rellenarán con datos aleatorios.
+Insert the rows contained in the specified CSV file into the given table. Non-specified but required columns will be 
+populated with random values.
 
-#### Parámetros:
-| Nombre   | Kukumo type | Descripción         |
-|----------|-------------|---------------------|
-| `csv`    | `file`      | Fichero CSV         |
-| `table`  | `word`      | Nombre de la tabla  |
+#### Parameters:
+| Name    | Kukumo type | Description    |
+|---------|-------------|----------------|
+| `csv`   | `file`      | CSV file       |
+| `table` | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Cuando se inserta el contenido del fichero CSV 'data/users.csv' en la tabla de BBDD USER
-```
-```gherkin
-  Cuando se ha insertado el contenido del fichero CSV 'data/users.csv' en la tabla de BBDD USER
+  When the content of the CSV file 'data/users.csv' is inserted into the database table USER
 ```
 
 ---
-### Comprobar existencia de datos
+### Check data exists
 ```
-* con {column} = {value} existe(n) en la tabla de BBDD {table}
+* having {column} = {value} exist(s) in the database table {table}
 ```
-Comprueba que existe al menos una fila en la tabla indicada para la cual se cumple una comparación dada.
+Assert that at least one row in the given table matches the specified value for a column.
 
-#### Parámetros:
-| Nombre   | Kukumo type | Descripción          |
-|----------|-------------|----------------------|
-| `column` | `word`      | Nombre de la columna |
-| `value`  | `text`      | Valor de la columna  |
-| `table`  | `word`      | Nombre de la tabla   |
+#### Parameters:
+| Name     | Kukumo type | Description    |
+|----------|-------------|----------------|
+| `column` | `word`      | Column name    |
+| `value`  | `text`      | Column value   |
+| `table`  | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces varios usuarios con STATE = '1' existen en la tabla de BBDD USER
+  Then several users having STATE = '1' exist in the database table USER
 ```
 
 ---
-### Comprobar inexistencia de datos
+### Check data not exists
 ```
-* con {column} = {value} no existe(n) en la tabla de BBDD {table}
+* having {column} = {value} do(es) not exist in the database table {table}
 ```
-Comprueba que no existe ninguna fila en la tabla indicada para la cual se cumpla una comparación.
+Assert that no row in the given table matches the specified value for a column.
 
-#### Parámetros:
-| Nombre   | Kukumo type | Descripción          |
-|----------|-------------|----------------------|
-| `column` | `word`      | Nombre de la columna |
-| `value`  | `text`      | Valor de la columna  |
-| `table`  | `word`      | Nombre de la tabla   |
+#### Parameters:
+| Name     | Kukumo type | Description    |
+|----------|-------------|----------------|
+| `column` | `word`      | Column name    |
+| `value`  | `text`      | Column value   |
+| `table`  | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces usuarios con STATE = '1' no existen en la tabla de BBDD USER
+  Given that users having STATE = '1' do no exist in the database table USER
 ```
 
 ---
-### Comprobar existencia de datos (id)
+### Check data exists (id)
 ```
-* identificad(o|a|os|as) por {id} existe(n) en la tabla de BBDD {table}
+* identified by {id} exist(s) in the database table {table}
 ```
-Comprueba que existe una fila en la tabla dada cuya clave primaria coincide con la indicada. La tabla debe tener una
-clave primaria formada por una sola columna.
+Assert that a row in the given table has a primary key matching the specified value. The table must have a single-column
+primary key accessible from the database metadata.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción                |
-|---------|-------------|----------------------------|
-| `id`    | `text`      | Valor de la clave primaria |
-| `table` | `word`      | Nombre de la tabla         |
+#### Parameters:
+| Name    | Kukumo type | Description       |
+|---------|-------------|-------------------|
+| `id`    | `text`      | Primary key value |
+| `table` | `word`      | The table name    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el usuario identificado por 'user1' existe en la tabla de BBDD USER
-```
-```gherkin
-  Entonces los usuarios identificados por 'algo' existen en la tabla de BBDD USER
+  Then a user identified by 'user1' exists in the database table USER
 ```
 
 ---
-### Comprobar inexistencia de datos (id)
+### Check data not exists (id)
 ```
-* identificad(o|a|os|as) por {id} no existe(n) en la tabla de BBDD {table}
+* identified by {id} do(es) not exist in the database table {table}
 ```
-Comprueba que no existe una fila en la tabla dada cuya clave primaria coincide con la indicada. La tabla debe tener una
-clave primaria formada por una sola columna.
+Assert that no row in the given table has a primary key matching the specified value. The table must have a single-column
+primary key accessible from the database metadata.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción                |
-|---------|-------------|----------------------------|
-| `id`    | `text`      | Valor de la clave primaria |
-| `table` | `word`      | Nombre de la tabla         |
+#### Parameters:
+| Name    | Kukumo type | Description       |
+|---------|-------------|-------------------|
+| `id`    | `text`      | Primary key value |
+| `table` | `word`      | The table name    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el usuario identificado por 'user1' no existe en la tabla de BBDD USER
-```
-```gherkin
-  Entonces los usuarios identificados por 'algo' no existen en la tabla de BBDD USER
+  Given that a user identified by 'user1' does not exist in the database table USER
 ```
 
 ---
-### Comprobar existencia de datos (tabla)
+### Check data exists (table)
 ```
-(el|los) siguiente(s) registro(s) existe(n) en la tabla de BBDD {table}:
+the following record(s) exist(s) in the database table {table}:
 ```
-Comprueba que todas las filas siguientes existen en una tabla dada.
+Assert that all the subsequent data rows exist in the given table.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción         |
-|---------|-------------|---------------------|
-| `table` | `word`      | Nombre de la tabla  |
-|         | `table`     | Tabla con los datos |
+#### Parameters:
+| Name    | Kukumo type | Description    |
+|---------|-------------|----------------|
+| `table` | `word`      | The table name |
+|         | `table`     | Data table     |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces los siguientes registros existen en la tabla de BBDD USER:
+  Then the following users exist in the database table USER:
     | USER  | STATE | BLOCKING_DATE |   
     | user1 | 2     | <null>        |
     | user2 | 3     | 2020-02-13    |
 ```
 
 ---
-### Comprobar inexistencia de datos (tabla)
+### Check data not exists (table)
 ```
-(el|los) siguiente(s) registro(s) no existe(n) en la tabla de BBDD {table}:
+the following record(s) do(es) not exist in the database table {table}:
 ```
-Comprueba que ninguna de las filas siguientes existen en una tabla dada.
+Assert that none of the subsequent data rows exist in the given table.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción         |
-|---------|-------------|---------------------|
-| `table` | `word`      | Nombre de la tabla  |
-|         | `table`     | Tabla con los datos |
+#### Parameters:
+| Name    | Kukumo type | Description    |
+|---------|-------------|----------------|
+| `table` | `word`      | The table name |
+|         | `table`     | Data table     |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces los siguientes registros no existen en la tabla de BBDD USER:
+  Then the following users do not exist in the database table USER:
     | USER  | STATE | BLOCKING_DATE |   
     | user1 | 2     | <null>        |
     | user2 | 3     | 2020-02-13    |
 ```
 
 ---
-### Comprobar existencia de datos (XLS)
+### Check data exists (XLS)
 ```
-el contenido del fichero XLS {file} existe en la base de datos
+the content of the XLS file {file} exists in the database
 ```
-Comprueba que todas las filas del fichero XLS proporcionado existen en la base de datos, correspondiendo cada hoja a una
-tabla.
+Assert that all the data rows included in the specified XLS file exist in the database, using one sheet per table.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción |
-|---------|-------------|-------------|
-| `file`  | `file`      | Fichero XLS |
+#### Parameters:
+| Name   | Kukumo type | Description |
+|--------|-------------|-------------|
+| `file` | `file`      | XLS file    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el contenido del fichero XLS 'data/example.xls' existe en la base de datos
+  Given that the content of the XLS file 'data/users.xls' exists in the database
 ```
 
 ---
-### Comprobar inexistencia de datos (XLS)
+### Check data not exists (XLS)
 ```
-el contenido del fichero XLS {file} no existe en la base de datos
+the content of the XLS file {file} does not exist in the database
 ```
-Comprueba que ninguna de las filas del fichero XLS proporcionado existen en la base de datos, correspondiendo cada hoja
-a una tabla.
+Assert that none of the data rows included in the specified XLS file exist in the database, using one sheet per table.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción |
-|---------|-------------|-------------|
-| `file`  | `file`      | Fichero XLS |
+#### Parameters:
+| Name   | Kukumo type | Description |
+|--------|-------------|-------------|
+| `file` | `file`      | XLS file    |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el contenido del fichero XLS 'data/example.xls' no existe en la base de datos
+  Given that the content of the XLS file 'data/users.xls' does not exist in the database
 ```
 
 ---
-### Comprobar existencia de datos (CSV)
+### Check data exists (CSV)
 ```
-el contenido del fichero CSV {csv} existe en la tabla de BBDD {table}
+the content of the CSV file {csv} exists in the database table {table}
 ```
-Comprueba que todas las filas del fichero CSV proporcionado existen en una tabla dada.
+Assert that all the data rows included in the specified CSV file exists in the given table.
 
-#### Parámetros:
-| Nombre   | Kukumo type | Descripción         |
-|----------|-------------|---------------------|
-| `csv`    | `file`      | Fichero CSV         |
-| `table`  | `word`      | Nombre de la tabla  |
+#### Parameters:
+| Name    | Kukumo type | Description    |
+|---------|-------------|----------------|
+| `csv`   | `file`      | CSV file       |
+| `table` | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el contenido del fichero CSV 'data/users.csv' existe en la tabla de BBDD USER
+  Then the content of the CSV file 'data/users.csv' exists in the database table USER
 ```
 
 ---
-### Comprobar inexistencia de datos (CSV)
+### Check data not exists (CSV)
 ```
-el contenido del fichero CSV {csv} no existe en la tabla de BBDD {table}
+the content of the CSV file {csv} does not exist in the database table {table}
 ```
-Comprueba que todas las filas incluidas en el fichero CSV proporcionado existen en una tabla dada
+Assert that all the data rows included in the specified CSV file does not exist in the given table.
 
-#### Parámetros:
-| Nombre   | Kukumo type | Descripción         |
-|----------|-------------|---------------------|
-| `csv`    | `file`      | Fichero CSV         |
-| `table`  | `word`      | Nombre de la tabla  |
+#### Parameters:
+| Name    | Kukumo type | Description    |
+|---------|-------------|----------------|
+| `csv`   | `file`      | CSV file       |
+| `table` | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el contenido del fichero CSV 'data/users.csv' no existe en la tabla de BBDD USER
+  Given that the content of the CSV file 'data/users.csv' does not exists in the database table USER
 ```
 
 ---
-### Comprobar existencia de datos (documento)
+### Check data exists (document)
 ```
-* que satisface(n) la siguiente cláusula SQL existe(n) en la tabla de BBDD {table}:
+* satisfying the following SQL clause exist(s) in the database table {table}:
 ```
-Comprueba que al menos una fila de la tabla dada satisface la claúsula SQL indicada.
+Assert that at least one row in the given table satisfies the specified SQL clause exist.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción        |
-|---------|-------------|--------------------|
-| `table` | `word`      | Nombre de la tabla |
-|         | `document`  | Cláusula where     |
+#### Parameters:
+| Name    | Kukumo type | Description    |
+|---------|-------------|----------------|
+| `table` | `word`      | The table name |
+|         | `document`  | Where clause   |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces al menos un usuario que satisface la siguiente cláusula SQL existe en la tabla de BBDD USER:
+  Then a user satisfying the following SQL clause exists in the database table USER:
     """
     STATE IN (2,3) OR BLOCKING_DATE IS NULL
     """
 ```
 
 ---
-### Comprobar inexistencia de datos (documento)
+### Check data not exists (document)
 ```
-* que satisface(n) la siguiente cláusula SQL no existe(n) en la tabla de BBDD {table}:
+* satisfying the following SQL clause do(es) not exist in the database table {table}:
 ```
-Comprueba que ninguna fila de la tabla dada satisface la claúsula SQL indicada.
+Assert that no row in the given table satisfies the specified SQL clause exist.
 
-#### Parámetros:
-| Nombre  | Kukumo type | Descripción        |
-|---------|-------------|--------------------|
-| `table` | `word`      | Nombre de la tabla |
-|         | `document`  | Cláusula where     |
+#### Parameters:
+| Name    | Kukumo type | Description    |
+|---------|-------------|----------------|
+| `table` | `word`      | The table name |
+|         | `document`  | Where clause   |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces usuarios que satisfacen la siguiente cláusula SQL no existen en la tabla de BBDD USER:
-    """sql
+  Given that a user satisfying the following SQL clause does not exist in the database table USER:
+    """
     STATE IN (2,3) OR BLOCKING_DATE IS NULL
     """
 ```
 
 ---
-### Comprobar número de datos
+### Check row count
 ```
-el número de * con {column} = {value} en la tabla de BBDD {table} {matcher}
+the number of * having {column} = {value} in the database table {table} {matcher}
 ```
-Comprueba que el número de filas que satisfacen la condición indicada en la tabla indicada cumple la comparación
-numérica indicada.
+Assert that the number of rows in the given table matching the specified values for two columns satisfies a numeric 
+assertion.
 
-#### Parámetros:
-| Nombre    | Kukumo type      | Descripción          |
-|-----------|------------------|----------------------|
-| `column`  | `word`           | Nombre de la columna |
-| `value`   | `text`           | Valor de la columna  |
-| `table`   | `word`           | Nombre de la tabla   |
-| `matcher` | `long-assertion` | Comparador numérico  |
+#### Parameters:
+| Name      | Kukumo type      | Description             |
+|-----------|------------------|-------------------------|
+| `column`  | `word`           | Column name             |
+| `value`   | `text`           | Column value            |
+| `table`   | `word`           | The table name          |
+| `matcher` | `long-assertion` | Numeric [comparator][2] |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el número de usuarios con STATE = '1' en la tabla de BBDD USER es mayor que 5
+  Given that the number of users having STATE = '1' in the database table USER is greater than 5
 ```
 
 ---
-### Comprobar número de datos (tabla)
+### Check row count (table)
 ```
-el número de * que satisfacen (lo|el|la|los|las) siguiente(s) * en la tabla de BBDD {table} {matcher}:
+the number of * satisfying the following * in the database table {table} {matcher}:
 ```
-Comprueba que el número de filas que satisfacen los valores indicados en la tabla indicada cumple la comparación
-numérica indicada.
+Assert that the number of rows in the given table matching the specified values for every column satisfies a numeric 
+expression. Only the first row of the given data is considered.
 
-#### Parámetros:
-| Nombre    | Kukumo type      | Descripción         |
-|-----------|------------------|---------------------|
-| `table`   | `word`           | Nombre de la tabla  |
-| `matcher` | `long-assertion` | Comparador numérico |
-|           | `table`          | Tabla con los datos |
+#### Parameters:
+| Name      | Kukumo type      | Description             |
+|-----------|------------------|-------------------------|
+| `table`   | `word`           | The table name          |
+| `matcher` | `long-assertion` | Numeric [comparator][2] |
+|           | `table`          | Data table              |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el número de usuarios que satisfacen lo siguiente en la tabla de BBDD USER es 0
+  Then the number of users satisfying the following data in the database table USER is 0:
     | USER  | STATE | BLOCKING_DATE |   
     | user1 | 2     | <null>        |
 ```
 
 ---
-### Comprobar número de datos (documento)
+### Check row count (document)
 ```
-el número de * que satisfacen la siguiente cláusula SQL en la tabla de BBDD {table} {matcher}:
+the number of * satisfying the following SQL clause in the database table {table} {matcher}:
 ```
-Comprueba que el número de filas que satisfacen la condición indicada en la tabla indicada cumple la comparación
-numérica indicada.
+Assert that the number of rows in the given table matching the SQL clause satisfies a numeric assertion.
 
-#### Parámetros:
-| Nombre    | Kukumo type      | Descripción         |
-|-----------|------------------|---------------------|
-| `table`   | `word`           | Nombre de la tabla  |
-| `matcher` | `long-assertion` | Comparador numérico |
-|           | `document`       | Cláusula where      |
+#### Parameters:
+| Name      | Kukumo type      | Description             |
+|-----------|------------------|-------------------------|
+| `table`   | `word`           | The table name          |
+| `matcher` | `long-assertion` | Numeric [comparator][2] |
+|           | `document`       | Where clause            |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces el número de usuarios que satisfacen la siguiente cláusula SQL en la tabla de BBDD USER es menor que 3:
+  Then the number of users satisfying the following SQL clause in the database table USER is less than 10:
     """
     STATE IN (2,3) OR BLOCKING_DATE IS NULL
     """
 ```
 
 ---
-### Comprobar tabla vacía
+### Check table is empty
 ```
-la tabla de BBDD {word} está vacía
+the database table {word} is empty
 ```
-Comprueba que no existe ninguna fila en la tabla indicada.
+Assert that the given table has no data.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción        |
-|--------|-------------|--------------------|
-| `word` | `word`      | Nombre de la tabla |
+#### Parameters:
+| Name   | Kukumo type | Description    |
+|--------|-------------|----------------|
+| `word` | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces la tabla de BBDD USER está vacía
+  Then the database table USER is empty
 ```
 
 ---
-### Comprobar tabla no vacía
+### Check table is not empty
 ```
-la tabla de BBDD {word} no está vacía
+the database table {word} is not empty
 ```
-Comprueba que existe al menos una fila en la tabla indicada.
+Assert that the given tabla has some data.
 
-#### Parámetros:
-| Nombre | Kukumo type | Descripción        |
-|--------|-------------|--------------------|
-| `word` | `word`      | Nombre de la tabla |
+#### Parameters:
+| Name   | Kukumo type | Description    |
+|--------|-------------|----------------|
+| `word` | `word`      | The table name |
 
-#### Ejemplos:
+#### Examples:
 ```gherkin
-  Entonces la tabla de BBDD USER no está vacía
+  Then the database table USER is not empty
 ```
 
 
 
 
 
-[1]:  https://commons.apache.org/proper/commons-csv/
+[1]: https://commons.apache.org/proper/commons-csv/
+[2]: en/plugins/kukumo/architecture#comparator

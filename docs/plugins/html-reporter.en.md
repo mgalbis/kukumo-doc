@@ -4,18 +4,18 @@ date: 2022-09-20
 slug: /en/plugins/html-reporter
 ---
 
-Un generador de informes en formato `HTML` con los resultados de las pruebas.
+A report generator in `HTML` format with the tests results.
 
 
-## Configuración
+## Configuration
 
 ---
 ####  `htmlReport.output`
-La ruta (relativa) y el nombre del archivo generado.
+The (relative) path and name of the generated file.
 
-El valor por defecto es `kukumo.html`.
+Default value is `kukumo.html`.
 
-Ejemplo:
+Example:
 
 ```yaml
 htmlReport:
@@ -24,9 +24,9 @@ htmlReport:
 
 ---
 ####  `htmlReport.title`
-Establece el título indicado en el informe.
+Sets the indicated title in the report.
 
-Ejemplo:
+Example:
 
 ```yaml
 htmlReport:
@@ -35,9 +35,9 @@ htmlReport:
 
 ---
 ####  `htmlReport.css`
-Indica la ruta de un fichero css que establecerá el aspecto del informe html.
+Indicates the path of a css file that will establish the appearance of the html report.
 
-Ejemplo:
+Example:
 
 ```yaml
 htmlReport:

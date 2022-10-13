@@ -1,5 +1,5 @@
 ---
-title: Core
+title: Arquitectura
 date: 2022-09-20
 slug: /kukumo/architecture
 ---
@@ -30,7 +30,7 @@ Kukumo buscará el fichero con el nombre `kukumo.yaml`.
 ---
 ### `kukumo.resourceTypes`
 
-Establece el lenguaje de los escenarios de prueba. Actualmente sólo está disponible `gherkin`.
+Establece el lenguaje de los escenarios de prueba. Actualmente solo está disponible `gherkin`.
 
 Ejemplo:
 
@@ -53,9 +53,8 @@ Ejemplo:
 kukumo:
   resourcePath: /other/path
 ```
-&nbsp;
 
-
+---
 ### `kukumo.outputFilePath`
 
 Establece el directorio de salida del fichero con el resultado de las pruebas.
@@ -68,14 +67,11 @@ Ejemplo:
 kukumo:
   outputFilePath: result/kukumo.json
 ```
-&nbsp;
 
-
-
+---
 ### `kukumo.tagFilter`
 
-Filtra los escenarios etiquetados con la etiqueta indicada. Debe contener una 
-[expresión](https://cucumber.io/docs/cucumber/api/#tag-expressions) válida.
+Filtra los escenarios etiquetados con la [expresión](https://cucumber.io/docs/cucumber/api/#tag-expressions) indicada. 
 
 Ejemplo:
 
@@ -83,9 +79,8 @@ Ejemplo:
 kukumo:
   tagFilter: not Ignore
 ```
-&nbsp;
 
-
+---
 ### `kukumo.idTagPattern`
 
 Establece el patrón de identificadores de los escenarios. Debe contener una expresión regular válida.
@@ -98,9 +93,8 @@ Ejemplo:
 kukumo:
   idTagPattern: ([0-9]+)
 ```
-&nbsp;
 
-
+---
 ### `kukumo.launcher.modules`
 
 Establece los módulos que serán utilizados durante las pruebas. Estos módulos son artefactos maven ubicados en un 
@@ -117,12 +111,11 @@ kukumo:
       - iti.kukumo:kukumo-db:1.0.0
       - mysql:mysql-connector-java:8.0.28
 ```
-&nbsp;
 
-
+---
 ### `kukumo.report.generation`
 
-Indica si se debe generar el informe con el resultados de las pruebas al terminar la ejecución o no.
+Indica si se generará el informe con el resultado de las pruebas al terminar la ejecución o no.
 
 El valor por defecto es `true`.
 
@@ -133,21 +126,8 @@ kukumo:
   report: 
     generation: "false"
 ```
-&nbsp;
 
-
-### `kukumo.htmlReport.output`
-
-Ejemplo:
-
-```yaml
-kukumo:
-  htmlReport:
-    output: result/kukumo.html
-```
-&nbsp;
-
-
+---
 ### `kukumo.redefinition.definitionTag`
 
 Establece la etiqueta para indicar que la **caracteristica** es una [definición]().
@@ -161,9 +141,8 @@ kukumo:
   redefinition:
     definitionTag: def
 ```
-&nbsp;
 
-
+---
 ### `kukumo.redefinition.implementationTag`
 
 Establece la etiqueta para indicar que la **caracteristica** es una [implementación]().
@@ -177,9 +156,8 @@ kukumo:
   redefinition:
     implementationTag: impl
 ```
-&nbsp;
 
-
+---
 ### `mavenFetcher.remoteRepositories`
 
 Establece repositorios remotos.
@@ -190,8 +168,8 @@ Ejemplo:
 mavenFetcher:
   remoteRepositories: https://repo.maven.apache.org/maven2;file:///home/user/.m2/repository
 ```
-&nbsp;
 
+---
 ### `mavenFetcher.localRepository`
 
 Establece la ubicación del repositorio local.
@@ -202,9 +180,8 @@ Ejemplo:
 mavenFetcher:
   localRepository: /usr/mvn-repo
 ```
-&nbsp;
 
-
+---
 ### `KUKUMO_LOG_PATH`
 
 Establece la ruta donde se generará el log de ejecución.
@@ -214,8 +191,8 @@ El valor por defecto es `/var/log`.
 ```
 KUKUMO_LOG_PATH=/kukumo/result
 ```
-&nbsp;
 
+---
 ### `KUKUMO_LOG_LEVEL`
 
 Establece el nivel de los logs de kukumo. Dependiendo del nivel indicado se mostrará u omitirá más o menos información.
@@ -227,50 +204,85 @@ El valor por defecto es `info`.
 ```
 KUKUMO_LOG_LEVEL=trace
 ```
-&nbsp;
 
 
 
-
+---
 ## Tipos de datos
 
+---
 ### `text`
-Cualquier texto entrecomillado con `''`. Ejemplo: `'texto de ejemplo'`.
+Cualquier texto entrecomillado con `''`. 
 
+Ejemplo: `'texto de ejemplo'`.
+
+---
 ### `word`
-Cualquier palabra (admite guiones). Ejemplo: `AB_C-1D`.
+Cualquier palabra (admite guiones). 
 
+Ejemplo: `AB_C-1D`.
+
+---
 ### `file`
-Una ruta local (relativa o absoluta). Ejemplo: `'dir/file.yaml'`.
+Una ruta local (relativa o absoluta). 
 
+Ejemplo: `'dir/file.yaml'`.
+
+---
 ### `url`
-Una dirección URL. Ejemplo: `'https://localhost/test'`.
+Una dirección URL. 
+
+---
+Ejemplo: `https://localhost/test`.
 
 ### `integer`
-Un número entero. Ejemplo: `14`.
+Un número entero. 
 
+Ejemplo: `14`.
+
+---
 ### `decimal`
-Un número con decimales. Ejemplo: `14.5`.
+Un número con decimales. 
 
+Ejemplo: `14.5`.
+
+---
 ### `date`
-Una fecha con formato `yyyy-MM-dd`. Ejemplo: `'2022-02-22'`.
+Una fecha con formato `yyyy-MM-dd`. 
 
+Ejemplo: `'2022-02-22'`.
+
+---
 ### `time`
-Una hora con formato `hh:mm`, `hh:mm:ss` o `hh:mm:ss.SSS`. Ejemplo: `'12:05:06.468'`.
+Una hora con formato `hh:mm`, `hh:mm:ss` o `hh:mm:ss.SSS`. 
 
+Ejemplo: `'12:05:06.468'`.
+
+---
 ### `datetime`
-Una fecha y hora con formato `yyyy-MM-ddThh:mm`, `yyyy-MM-ddThh:mm:ss` o `yyyy-MM-ddThh:mm:ss.SSS`. Ejemplo: 
-`'2022-02-22T12:05:06.468'`.
+Una fecha y hora con formato `yyyy-MM-ddThh:mm`, `yyyy-MM-ddThh:mm:ss` o `yyyy-MM-ddThh:mm:ss.SSS`. 
 
+Ejemplo: `'2022-02-22T12:05:06.468'`.
+
+---
 ### `text-assertion`
-Comparador de textos. [Ver más](#comparadores). Ejemplo: `es igual a 'algo'`.
+Comparador de textos. [Ver más](#comparadores). 
 
+Ejemplo: `es igual a 'algo'`.
+
+---
 ### `long-assertion`
-Comparador de números enteros. [Ver más](#comparadores). Ejemplo: `es igual o mayor que 13`.
+Comparador de números enteros. [Ver más](#comparadores). 
 
+Ejemplo: `es igual o mayor que 13`.
+
+---
 ### `float-assertion`
-Comparador de números decimales. [Ver más](#comparadores). Ejemplo: `es igual o menor que 10.02`.
+Comparador de números decimales. [Ver más](#comparadores). 
 
+Ejemplo: `es igual o menor que 10.02`.
+
+---
 ### `document`
 Bloque de texto ubicado en la siguiente línea de la descripción del paso. 
 [Ver más](https://cucumber.io/docs/gherkin/reference/#doc-strings). 
@@ -283,6 +295,7 @@ multilínea
 """
 ```
 
+---
 ### `table`
 Tabla de datos ubicada en la siguiente línea de la descipción del paso.
 [Ver más](https://cucumber.io/docs/gherkin/reference/#data-tables).
@@ -293,11 +306,15 @@ Ejemplo:
 | user1 | 2     | <null>        |
 ```
 
-
+---
 ## Comparadores
 
 Fragmentos de texto que se traducen en comparadores para distintos tipos de datos, reutilizables en cualquier paso.
-
+Los tipos de comparadores disponibles son:
+- `text-assertion`
+- `integer-assertion`
+- `long-assertion`
+- `decimal-assertion`
 
 ---
 ### `(no) es (igual a) ~x~` 
@@ -409,6 +426,9 @@ contiene 'algo'
 ```
 ```
 contiene 'aLgo' (sin distinguir mayúsculas)
+```
+```
+no contiene 'algo'
 ```
 
 ---

@@ -4,13 +4,13 @@ date: 2022-09-20
 slug: /en/plugins
 ---
 
-Kukumo, por sí solo, no tiene pasos definidos, sino que se incluyen a través de diferentes plugins. Actualmente, existen 
-los siguientes, ¡pero también puedes desarrollar tus propios plugins!:
+Kukumo itself does not have defined steps, but they are included through different plugins. Currently, the following 
+exist, but you can also develop your own plugins!:
 
-- [Pasos REST](en/plugins/rest)
-- [Pasos DB](en/plugins/database)
-- [Pasos AMQP](en/plugins/amqp)
-- [Informe HTML](en/plugins/html-reporter)
-- [Informe Cucumber](en/plugins/cucumber-exporter)
+- [REST steps](en/plugins/rest)
+- [DB steps](en/plugins/database)
+- [AMQP steps](en/plugins/amqp)
+- [HTML report](en/plugins/html-reporter)
+- [Cucumber report](en/plugins/cucumber-exporter)
 
 
