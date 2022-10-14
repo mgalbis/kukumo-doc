@@ -1,5 +1,5 @@
 ---
-title: Pasos Base de Datos
+title: Pasos BD
 date: 2022-09-20
 slug: /plugins/database
 ---
