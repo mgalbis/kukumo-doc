@@ -1,5 +1,5 @@
 ---
-title: Informe HTML
+title: HTML reporter
 date: 2022-09-20
 slug: /en/plugins/html-reporter
 ---

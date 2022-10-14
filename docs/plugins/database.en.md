@@ -1,5 +1,5 @@
 ---
-title: Pasos DB
+title: Database steps
 date: 2022-09-20
 slug: /en/plugins/database
 ---

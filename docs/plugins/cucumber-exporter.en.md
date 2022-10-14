@@ -1,5 +1,5 @@
 ---
-title: Informe Cucumber 
+title: Cucumber exporter
 date: 2022-09-20
 slug: /en/plugins/cucumber-exporter
 ---

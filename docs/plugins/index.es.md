@@ -8,7 +8,7 @@ Kukumo, por sí solo, no tiene pasos definidos, sino que se incluyen a través d
 los siguientes, ¡pero también puedes desarrollar tus propios plugins!:
 
 - [Pasos REST](plugins/rest)
-- [Pasos DB](plugins/database)
+- [Pasos Base de Datos](plugins/database)
 - [Pasos AMQP](plugins/amqp)
 - [Informe HTML](plugins/html-reporter)
 - [Informe Cucumber](plugins/cucumber-exporter)

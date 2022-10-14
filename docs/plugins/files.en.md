@@ -1,5 +1,5 @@
 ---
-title: Plugin IO
+title: File steps
 date: 2022-09-20
 slug: /en/plugins/files
 ---

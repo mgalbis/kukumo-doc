@@ -1,5 +1,5 @@
 ---
-title: Rest
+title: REST steps
 date: 2022-09-20
 slug: /en/plugins/rest
 ---

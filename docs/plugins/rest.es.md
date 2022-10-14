@@ -1,5 +1,5 @@
 ---
-title: Rest
+title: Pasos REST
 date: 2022-09-20
 slug: /plugins/rest
 ---

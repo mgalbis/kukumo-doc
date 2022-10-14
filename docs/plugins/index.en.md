@@ -8,7 +8,7 @@ Kukumo itself does not have defined steps, but they are included through differe
 exist, but you can also develop your own plugins!:
 
 - [REST steps](en/plugins/rest)
-- [DB steps](en/plugins/database)
+- [Database steps](en/plugins/database)
 - [AMQP steps](en/plugins/amqp)
 - [HTML report](en/plugins/html-reporter)
 - [Cucumber report](en/plugins/cucumber-exporter)

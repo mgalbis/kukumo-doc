@@ -47,6 +47,7 @@ export default {
         this.$router.push({
           path: this.$tp(this.$route.path, language, true)
         })
+        this.$emit('theme-change')
       }
     }
   }

@@ -1,5 +1,5 @@
 ---
-title: Plugin IO
+title: Plugin Ficheros
 date: 2022-09-20
 slug: /plugins/files
 ---
